@@ -313,12 +313,11 @@ class FaceObject {
         let viewBoxRegex = /viewBox=["']\s*([\d\.-]+)\s+([\d\.-]+)\s+([\d\.-]+)\s+([\d\.-]+)\s*["']/;
         let match = this.SVGString.match(viewBoxRegex);
 
+        //Note to self: refind source of this piece of code
         if (match) {
-            // match[3] is width, match[4] is height (based on standard SVG viewBox x y w h)
             this.nativeW = parseFloat(match[3]);
             this.nativeH = parseFloat(match[4]);
         } else {
-            // Fallback if no viewBox found (rare)
             this.nativeW = 500; 
             this.nativeH = 500;
         }
@@ -329,7 +328,6 @@ class FaceObject {
         this.colorToReplace = this.color;
 
         if (!this.SVGString.includes('width=')) {
-            // We use the numbers we parsed in the constructor
             this.SVGString = this.SVGString.replace('<svg ', `<svg width="${this.nativeW}" height="${this.nativeH}" `);
         }
         
