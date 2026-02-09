@@ -43,11 +43,17 @@
         <button class="tablinks" onclick="changeTab(event, 'bangs')">Bangs</button>
         <button class="tablinks" onclick="changeTab(event, 'back')">Back</button>
         <button class="tablinks" onclick="changeTab(event, 'eyes')">Eyes</button>
+        <button class="tablinks" onclick="changeTab(event, 'brows')">Eyebrows</button>
+        <button class="tablinks" onclick="changeTab(event, 'noses')">Nose</button>
+        <button class="tablinks" onclick="changeTab(event, 'mouths')">Mouth</button>
+        <button class="tablinks" onclick="changeTab(event, 'misc')">Misc.</button>
         <button class="tablinks" onclick="changeTab(event, 'bodyinfo')">Body</button>
     </div>
 
     <div id="head" class="tabcontent">
         <h2>Head</h2>
+        <button onclick="changeHead(-1)">&lt</button>
+        <button onclick="changeHead(1)">&gt</button>
         <h3>Skin Tone</h3>
         <input id="HeadSkinToneInput" type="color"></input>
         <button onclick="setColor(heads, 'HeadSkinToneInput')">Confirm</button>
@@ -58,6 +64,8 @@
 
     <div id="bangs" class="tabcontent">
         <h2>Bangs</h2>
+        <button onclick="changeBangs(-1)">&lt</button>
+        <button onclick="changeBangs(1)">&gt</button>
         <h3>Color</h3>
         <input id="BangsColorInput" type="color"></input>
         <button onclick="setColor(bangs, 'BangsColorInput')">Confirm</button>
@@ -73,6 +81,8 @@
     
     <div id="back" class="tabcontent">
         <h2>Back</h2>
+        <button onclick="changeBack(-1)">&lt</button>
+        <button onclick="changeBack(1)">&gt</button>
         <h3>Color</h3>
         <input id="HairColorInput" type="color"></input>
         <button id="HairColorButton" onclick="setColor(backs, 'HairColorInput')">Confirm</button>
@@ -88,6 +98,8 @@
 
     <div id="eyes" class="tabcontent">
         <h2>Eyes</h2>
+        <button onclick="changeEyes(-1)">&lt</button>
+        <button onclick="changeEyes(1)">&gt</button>
         <h3>Color</h3>
         <input id="EyeColorInput" type="color"></input>
         <button onclick="setColor(eyes, 'EyeColorInput')">Confirm</button>
@@ -105,6 +117,92 @@
         <h3>Rotate</h3>
         <button onclick="rotateFaceObject(eyes, -15)">Left</button>
         <button onclick="rotateFaceObject(eyes, 5)">Right</button>
+    </div>
+
+    <div id="brows" class="tabcontent">
+        <h2>Eyebrows</h2>
+        <button onclick="changeBrows(-1)">&lt</button>
+        <button onclick="changeBrows(1)">&gt</button>
+        <h3>Nudge</h3>
+        <button onclick="nudgeFaceObject(brows, 0, -0.05)">Up</button>
+        <button onclick="nudgeFaceObject(brows, 0, 0.05)">Down</button>
+        <button onclick="nudgeFaceObject(brows, -0.05, 0)">Left</button>
+        <button onclick="nudgeFaceObject(brows, 0.05, 0)">Right</button>
+        <h3>Size</h3>
+        <button onclick="scaleFaceObject(brows, 0.05, 0.05)">Up</button>
+        <button onclick="scaleFaceObject(brows, -0.05, -0.05)">Down</button>
+        <h3>Squint</h3>
+        <button onclick="scaleFaceObject(brows, 0, 0.05)">Up</button>
+        <button onclick="scaleFaceObject(brows, 0, -0.05)">Down</button>
+        <h3>Rotate</h3>
+        <button onclick="rotateFaceObject(brows, -15)">Left</button>
+        <button onclick="rotateFaceObject(brows, 5)">Right</button>
+    </div>
+
+    <div id="noses" class="tabcontent">
+        <h2>Nose</h2>
+        <button onclick="changeNose(-1)">&lt</button>
+        <button onclick="changeNose(1)">&gt</button>
+        <h3>Nudge</h3>
+        <button onclick="nudgeFaceObject(noses, 0, -0.05)">Up</button>
+        <button onclick="nudgeFaceObject(noses, 0, 0.05)">Down</button>
+        <button onclick="nudgeFaceObject(noses, -0.05, 0)">Left</button>
+        <button onclick="nudgeFaceObject(noses, 0.05, 0)">Right</button>
+        <h3>Size</h3>
+        <button onclick="scaleFaceObject(noses, 0.05, 0.05)">Up</button>
+        <button onclick="scaleFaceObject(noses, -0.05, -0.05)">Down</button>
+        <h3>Squint</h3>
+        <button onclick="scaleFaceObject(noses, 0, 0.05)">Up</button>
+        <button onclick="scaleFaceObject(noses, 0, -0.05)">Down</button>
+        <h3>Rotate</h3>
+        <button onclick="rotateFaceObject(noses, -15)">Left</button>
+        <button onclick="rotateFaceObject(noses, 5)">Right</button>
+    </div>
+
+    <div id="mouths" class="tabcontent">
+        <h2>Mouth</h2>
+        <button onclick="changeMouth(-1)">&lt</button>
+        <button onclick="changeMouth(1)">&gt</button>
+        <h3>Color</h3>
+        <input id="MouthColorInput" type="color"></input>
+        <button onclick="setColor(mouths, 'MouthColorInput')">Confirm</button>
+        <h3>Nudge</h3>
+        <button onclick="nudgeFaceObject(mouths, 0, -0.05)">Up</button>
+        <button onclick="nudgeFaceObject(mouths, 0, 0.05)">Down</button>
+        <button onclick="nudgeFaceObject(mouths, -0.05, 0)">Left</button>
+        <button onclick="nudgeFaceObject(mouths, 0.05, 0)">Right</button>
+        <h3>Size</h3>
+        <button onclick="scaleFaceObject(mouths, 0.05, 0.05)">Up</button>
+        <button onclick="scaleFaceObject(mouths, -0.05, -0.05)">Down</button>
+        <h3>Squint</h3>
+        <button onclick="scaleFaceObject(mouths, 0, 0.05)">Up</button>
+        <button onclick="scaleFaceObject(mouths, 0, -0.05)">Down</button>
+        <h3>Rotate</h3>
+        <button onclick="rotateFaceObject(mouths, -15)">Left</button>
+        <button onclick="rotateFaceObject(mouths, 5)">Right</button>
+    </div>
+
+    <div id="misc" class="tabcontent">
+        <h2>Misc.</h2>
+        <button onclick="changeMisc(-1)">&lt</button>
+        <button onclick="changeMisc(1)">&gt</button>
+        <h3>Color</h3>
+        <input id="MiscColorInput" type="color"></input>
+        <button onclick="setColor(miscs, 'MiscColorInput')">Confirm</button>
+        <h3>Nudge</h3>
+        <button onclick="nudgeFaceObject(miscs, 0, -0.05)">Up</button>
+        <button onclick="nudgeFaceObject(miscs, 0, 0.05)">Down</button>
+        <button onclick="nudgeFaceObject(miscs, -0.05, 0)">Left</button>
+        <button onclick="nudgeFaceObject(miscs, 0.05, 0)">Right</button>
+        <h3>Size</h3>
+        <button onclick="scaleFaceObject(miscs, 0.05, 0.05)">Up</button>
+        <button onclick="scaleFaceObject(miscs, -0.05, -0.05)">Down</button>
+        <h3>Squint</h3>
+        <button onclick="scaleFaceObject(miscs, 0, 0.05)">Up</button>
+        <button onclick="scaleFaceObject(miscs, 0, -0.05)">Down</button>
+        <h3>Rotate</h3>
+        <button onclick="rotateFaceObject(miscs, -15)">Left</button>
+        <button onclick="rotateFaceObject(miscs, 5)">Right</button>
     </div>
 
     <div id="bodyinfo" class="tabcontent">

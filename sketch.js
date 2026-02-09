@@ -1,6 +1,6 @@
 const container = document.getElementById('sketch-container');
-const w = window.innerWidth;
-const h = w * 0.5;
+const w = 350;
+const h = 350;
 
 var canvasWidth;
 var canvasHeight;
@@ -62,22 +62,28 @@ function setup() {
     canvas.parent('sketch-container');
     rectMode(CENTER);
 
-    headHeightRange = createVector(100, 150);
+    headHeightRange = createVector(175, 215);
     headHeightPercent = 1;
 
-    headNum = 2;
-    heads = createFaceObjects(headStrings, 0.0, createVector(0.5, 0.5), createVector(0.5, 0.5), false);
-    bangNum = 1;
-    bangs = createFaceObjects(bangsStrings, 1, createVector(0.5, 0.5), createVector(0.5, 0.5), false);
-    backNum = 1;
-    backs = createFaceObjects(backStrings, 2, createVector(0.5, 0.5), createVector(0.5, 0.5), false);
-    eyeNum = 0;
-    eyes = createFaceObjects(eyeStrings, 3, createVector(0.4, 0.4), createVector(0.15, 0.5), true);
-    browNum = 0;
-    brows = createFaceObjects(browStrings, 4, createVector(0.4, 0.4), createVector(0.15, 0.5), true);
+    headNum = 0;
+    heads = createFaceObjects(headStrings, 0.0, createVector(0.5, 0.5), createVector(0.5, 0.5), false, createVector(-50, 50));
+    bangNum = 0;
+    bangs = createFaceObjects(bangsStrings, 1, createVector(0.5, 0.5), createVector(0.5, 0.5), false, createVector(-50, 50));
+    backNum = -1;
+    backs = createFaceObjects(backStrings, 2, createVector(0.5, 0.5), createVector(0.5, 0.5), false, createVector(-50, 50));
+    eyeNum = 2;
+    eyes = createFaceObjects(eyeStrings, 3, createVector(0.4, 0.4), createVector(0.4, 0.5), true, createVector(-100, 50));
+    browNum = 4;
+    brows = createFaceObjects(browStrings, 4, createVector(0.4, 0.4), createVector(0.4, 0.5), true, createVector(-100, 50));
+    noseNum = 0;
+    noses = createFaceObjects(noseStrings, 5, createVector(0.5, 0.5), createVector(0.5, 0.5), false, createVector(-50, 50));
+    mouthNum = 3;
+    mouths = createFaceObjects(mouthStrings, 6, createVector(0.5, 0.5), createVector(0.5, 0.5), false, createVector(-50, 50));
+    miscNum = -1;
+    miscs = createFaceObjects(miscStrings, 7, createVector(0.5, 0.5), createVector(0.5, 0.5), false, createVector(-150, 100));
 
-    neck = createFaceObjects(neckStrings, 8, createVector(0.5, 0.5), createVector(0.5, 0.5), false);
-    torso = createFaceObjects(torsoStrings, 9, createVector(0.5, 0.5), createVector(0.5, 0.5), false);
+    neck = createFaceObjects(neckStrings, 8, createVector(0.5, 0.5), createVector(0.5, 0.5), false, createVector(-50, 50));
+    torso = createFaceObjects(torsoStrings, 9, createVector(0.5, 0.5), createVector(0.5, 0.5), false, createVector(-50, 50));
     
     //testBack = new FaceObject(testBackString, 2, 2, createVector(1, 1), createVector(0, 0), false);
     //testBack.reloadIMG();
@@ -108,41 +114,59 @@ function preload() {
     browFilepaths = getFilepaths(basepath, "brow", 5);
     browStrings = getStrings(browFilepaths);
 
+    noseFilepaths = getFilepaths(basepath, "nose", 7);
+    noseStrings = getStrings(noseFilepaths);
+
+    mouthFilepaths = getFilepaths(basepath, "mouth", 9);
+    mouthStrings = getStrings(mouthFilepaths);
+
+    miscFilepaths = getFilepaths(basepath, "misc", 6);
+    miscStrings = getStrings(miscFilepaths);
+
     neckStrings = [loadStrings("assets/svg/neck.svg")];
     torsoStrings = [loadStrings("assets/svg/torso.svg")];
 }
 
 function draw() {
-    background(255);
+    background(100);
     //testBack.show(0, 0, 1);
 
     headHeight = lerp(headHeightRange.x, headHeightRange.y, headHeightPercent);
 
     if (!(backNum < 0)) {
-        backs[backNum].show(int(w/2), headHeight + 35, 0.7);
+        backs[backNum].show(int(w/2), headHeight + 60, 0.6);
     }
 
-    torso[0].show(int(w/2), headHeightRange.y + 115, 0.5);
-    neck[0].show(int(w/2), headHeightRange.y + 50, 0.6);
+    torso[0].show(int(w/2), headHeightRange.y + 115, 0.6);
+    //pop()
+    neck[0].show(int(w/2), headHeightRange.y +60, 0.6);
     
     if (!(headNum < 0)) {
-        heads[headNum].show(int(w/2), headHeight, 1);
+        heads[headNum].show(int(w/2), headHeight, 0.6);
     }
 
     if (!(eyeNum < 0)) {
-        eyes[eyeNum].show(int(w/2), headHeight + 20, 0.3);
+        eyes[eyeNum].show(int(w/2), headHeight + 50, 0.6);
+    }
+
+    if (!(miscNum < 0)) {
+        miscs[miscNum].show(int(w/2) + 25, headHeight + 65, 0.6);
     }
 
     if (!(bangNum < 0)) {
-        bangs[bangNum].show(int(w/2), headHeight - 40, 1);
+        bangs[bangNum].show(int(w/2), headHeight - 40, 0.6);
     }
 
     if (!(browNum < 0)) {
-        brows[browNum].show(int(w/2), headHeight - 20, 0.15);
+        brows[browNum].show(int(w/2), headHeight + 10, 0.6);
     }
 
-    for (let i = 0; i < backs.length; i++) {
-        
+    if (!(noseNum < 0)) {
+        noses[noseNum].show(int(w/2), headHeight + 45, 0.6);
+    }
+
+    if (!(mouthNum < 0)) {
+        mouths[mouthNum].show(int(w/2), headHeight + 75, 0.6);
     }
 }
 
@@ -162,10 +186,10 @@ function getStrings(filepaths) {
     return stringList;
 }
 
-function createFaceObjects(stringLists, type, defaultScale, defaultOffset, mirrored) {
+function createFaceObjects(stringLists, type, defaultScale, defaultOffset, mirrored, translateRange) {
     var faceObjectList = [stringLists.length];
     for (let i = 0; i < stringLists.length; i++) {
-        faceObjectList[i] = new FaceObject(stringLists[i], type, i + 1, defaultScale, defaultOffset, mirrored);
+        faceObjectList[i] = new FaceObject(stringLists[i], type, i + 1, defaultScale, defaultOffset, mirrored, translateRange);
         faceObjectList[i].reloadIMG();
     }
     return faceObjectList;
@@ -209,12 +233,67 @@ function rotateFaceObject(objectList, amount) {
     }
 }
 
+function changeHead(amount){
+    headNum = changeFaceObject(heads, headNum, amount, false);
+}
+
+function changeBangs(amount){
+    bangNum = changeFaceObject(bangs, bangNum, amount, true);
+}
+
+function changeBack(amount){
+    backNum = changeFaceObject(backs, backNum, amount, true);
+}
+
+function changeEyes(amount){
+    eyeNum = changeFaceObject(eyes, eyeNum, amount, true);
+}
+
+function changeBrows(amount){
+    browNum = changeFaceObject(brows, browNum, amount, true);
+}
+
+function changeNose(amount){
+    noseNum = changeFaceObject(noses, noseNum, amount, true);
+}
+
+function changeMouth(amount){
+    mouthNum = changeFaceObject(mouths, mouthNum, amount, true);
+}
+
+function changeMisc(amount){
+    miscNum = changeFaceObject(miscs, miscNum, amount, true);
+}
+
+function changeFaceObject(objectList, objectNum, amount, allowDelete) {
+    objectNum += amount;
+    if (allowDelete) {
+        if (objectNum < -1) {
+            objectNum = objectList.length - 1;
+        }
+        if (objectNum > objectList.length - 1) {
+            objectNum = -1;
+        }
+    } else {
+        if (objectNum < 0) {
+            objectNum = objectList.length - 1;
+        }
+        if (objectNum > objectList.length - 1) {
+            objectNum = 0;
+        }
+    }
+    return objectNum;
+}
+
 class FaceObject {
-    constructor(SVGString, type, number, defaultScale, defaultOffset, mirrored) {
-        this.TRANSLATE_RANGE = createVector(-50, 50);
+    constructor(SVGString, type, number, defaultScale, defaultOffset, mirrored, translateRange) {
+        //this.TRANSLATE_RANGE = createVector(-50, 50);
+        this.translateRange = translateRange;
         this.SCALE_RANGE = createVector(0.1, 2.5);
-        
+
         this.SVGString = SVGString;
+        this.SVGString = SVGString.join('\n');
+
         this.type = type;
         this.number = number;
         this.mirrored = mirrored;
@@ -227,16 +306,34 @@ class FaceObject {
         this.offsetY = defaultOffset.y;
         this.rotation = 0;
         this.colorToReplace = "#f0f";
-        this.color = "#ff0000";
+        this.color = "#ffffff";
 
-        this.SVGString = this.SVGString.join('\n');
-        this.img;
+        this.img = null;
+
+        let viewBoxRegex = /viewBox=["']\s*([\d\.-]+)\s+([\d\.-]+)\s+([\d\.-]+)\s+([\d\.-]+)\s*["']/;
+        let match = this.SVGString.match(viewBoxRegex);
+
+        if (match) {
+            // match[3] is width, match[4] is height (based on standard SVG viewBox x y w h)
+            this.nativeW = parseFloat(match[3]);
+            this.nativeH = parseFloat(match[4]);
+        } else {
+            // Fallback if no viewBox found (rare)
+            this.nativeW = 500; 
+            this.nativeH = 500;
+        }
     }
 
     reloadIMG() {
         this.SVGString = this.SVGString.replaceAll(this.colorToReplace, this.color);
         this.colorToReplace = this.color;
-        this.img = loadImage("data:image/svg+xml;base64," + btoa(this.SVGString));
+
+        if (!this.SVGString.includes('width=')) {
+            // We use the numbers we parsed in the constructor
+            this.SVGString = this.SVGString.replace('<svg ', `<svg width="${this.nativeW}" height="${this.nativeH}" `);
+        }
+        
+        this.img = loadImage("data:image/svg+xml;utf8," + encodeURIComponent(this.SVGString));
     }
 
     show(x, y, scaleFactor) {
@@ -244,11 +341,11 @@ class FaceObject {
             return;
         }
 
-        let partX = lerp(this.TRANSLATE_RANGE.x, this.TRANSLATE_RANGE.y, this.offsetX);
-        let partY = lerp(this.TRANSLATE_RANGE.x, this.TRANSLATE_RANGE.y, this.offsetY);
+        let partX = lerp(this.translateRange.x, this.translateRange.y, this.offsetX);
+        let partY = lerp(this.translateRange.x, this.translateRange.y, this.offsetY);
 
-        let partW = this.img.width * lerp(this.SCALE_RANGE.x, this.SCALE_RANGE.y, this.scaleX) * scaleFactor;
-        let partH = this.img.height * lerp(this.SCALE_RANGE.x, this.SCALE_RANGE.y, this.scaleY) * scaleFactor;
+        let partW = this.nativeW * lerp(this.SCALE_RANGE.x, this.SCALE_RANGE.y, this.scaleX) * scaleFactor;
+        let partH = this.nativeH * lerp(this.SCALE_RANGE.x, this.SCALE_RANGE.y, this.scaleY) * scaleFactor;
 
         if (this.mirrored) {
             push();
