@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 71.53 19.08">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #000;
+        stroke-miterlimit: 10;
+        stroke-width: 5px;
+      }
+    </style>
+  </defs>
+  <g id="Mouths">
+    <path id="mouth7" class="cls-1" d="M1.19,14.34c12.63,6.83,26.28-3.89,29.07-6.27.31-.27.76-.28,1.1-.04l7.14,5.09c.99.71,2.35.61,3.23-.24l10.37-9.98c.7-.68,1.86-.48,2.3.39,2.24,4.37,8.62,15.12,16.48,12.98"/>
+  </g>
+</svg>

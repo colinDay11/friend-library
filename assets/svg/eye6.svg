@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67.98 36.49">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-1, .cls-2 {
+        stroke: #000;
+        stroke-miterlimit: 10;
+        stroke-width: 5px;
+      }
+
+      .cls-3 {
+        fill: #f0f;
+      }
+
+      .cls-2 {
+        fill: none;
+      }
+    </style>
+  </defs>
+  <g id="Eyes">
+    <g id="eye6">
+      <path class="cls-1" d="M33.99,33.99c17.39,0,31.49-14.1,31.49-31.49H2.5c0,17.39,14.1,31.49,31.49,31.49Z"/>
+      <path class="cls-3" d="M33.99,24.4c12.1,0,21.9-9.81,21.9-21.9H12.09c0,12.1,9.81,21.9,21.9,21.9Z"/>
+      <path d="M33.99,12.5c5.52,0,10-4.48,10-10h-20c0,5.52,4.48,10,10,10Z"/>
+      <path class="cls-2" d="M33.99,33.99c17.39,0,31.49-14.1,31.49-31.49H2.5c0,17.39,14.1,31.49,31.49,31.49Z"/>
+    </g>
+  </g>
+</svg>

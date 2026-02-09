@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 157">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f0f;
+        stroke: #000;
+        stroke-miterlimit: 10;
+        stroke-width: 5px;
+      }
+    </style>
+  </defs>
+  <g id="Body">
+    <rect id="neck" class="cls-1" x="2.5" y="2.5" width="60" height="152" rx="30" ry="30"/>
+  </g>
+</svg>

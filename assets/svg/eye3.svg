@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55 22.5">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f0f;
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke: #000;
+        stroke-miterlimit: 10;
+        stroke-width: 5px;
+      }
+    </style>
+  </defs>
+  <g id="Eyes">
+    <g id="eye3">
+      <circle class="cls-1" cx="27.5" cy="12.5" r="10"/>
+      <circle cx="27.5" cy="12.5" r="5"/>
+      <path class="cls-2" d="M2.5,17.5C2.5,9.22,13.69,2.5,27.5,2.5s25,6.72,25,15"/>
+    </g>
+  </g>
+</svg>

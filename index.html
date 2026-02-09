@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.11/lib/p5.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.11/lib/addons/p5.sound.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8" />
+
+    <script>
+        function changeTab(evt, tabName) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+        } 
+
+    </script>
+
+  </head>
+  <body>
+    <main>
+    </main>
+    <script src="sketch.js"></script>
+    <div id="sketch-container"></div>
+
+    <div class="tab">
+        <button class="tablinks" onclick="changeTab(event, 'head')">Head</button>
+        <button class="tablinks" onclick="changeTab(event, 'bangs')">Bangs</button>
+        <button class="tablinks" onclick="changeTab(event, 'back')">Back</button>
+        <button class="tablinks" onclick="changeTab(event, 'eyes')">Eyes</button>
+        <button class="tablinks" onclick="changeTab(event, 'bodyinfo')">Body</button>
+    </div>
+
+    <div id="head" class="tabcontent">
+        <h2>Head</h2>
+        <h3>Skin Tone</h3>
+        <input id="HeadSkinToneInput" type="color"></input>
+        <button onclick="setColor(heads, 'HeadSkinToneInput')">Confirm</button>
+        <h3>Head Height</h3>
+        <button onclick="nudgeHeadHeight(-0.1)">Up</button>
+        <button onclick="nudgeHeadHeight(0.1)">Down</button>
+    </div>
+
+    <div id="bangs" class="tabcontent">
+        <h2>Bangs</h2>
+        <h3>Color</h3>
+        <input id="BangsColorInput" type="color"></input>
+        <button onclick="setColor(bangs, 'BangsColorInput')">Confirm</button>
+        <h3>Nudge</h3>
+        <button onclick="nudgeFaceObject(bangs, 0, -0.05)">Up</button>
+        <button onclick="nudgeFaceObject(bangs, 0, 0.05)">Down</button>
+        <button onclick="nudgeFaceObject(bangs, -0.05, 0)">Left</button>
+        <button onclick="nudgeFaceObject(bangs, 0.05, 0)">Right</button>
+        <h3>Size</h3>
+        <button onclick="scaleFaceObject(bangs, 0.05, 0.05)">Up</button>
+        <button onclick="scaleFaceObject(bangs, -0.05, -0.05)">Down</button>
+    </div>
+    
+    <div id="back" class="tabcontent">
+        <h2>Back</h2>
+        <h3>Color</h3>
+        <input id="HairColorInput" type="color"></input>
+        <button id="HairColorButton" onclick="setColor(backs, 'HairColorInput')">Confirm</button>
+        <h3>Nudge</h3>
+        <button onclick="nudgeFaceObject(backs, 0, -0.05)">Up</button>
+        <button onclick="nudgeFaceObject(backs, 0, 0.05)">Down</button>
+        <button onclick="nudgeFaceObject(backs, -0.05, 0)">Left</button>
+        <button onclick="nudgeFaceObject(backs, 0.05, 0)">Right</button>
+        <h3>Size</h3>
+        <button onclick="scaleFaceObject(backs, 0.05, 0.05)">Up</button>
+        <button onclick="scaleFaceObject(backs, -0.05, -0.05)">Down</button>
+    </div>
+
+    <div id="eyes" class="tabcontent">
+        <h2>Eyes</h2>
+        <h3>Color</h3>
+        <input id="EyeColorInput" type="color"></input>
+        <button onclick="setColor(eyes, 'EyeColorInput')">Confirm</button>
+        <h3>Nudge</h3>
+        <button onclick="nudgeFaceObject(eyes, 0, -0.05)">Up</button>
+        <button onclick="nudgeFaceObject(eyes, 0, 0.05)">Down</button>
+        <button onclick="nudgeFaceObject(eyes, -0.05, 0)">Left</button>
+        <button onclick="nudgeFaceObject(eyes, 0.05, 0)">Right</button>
+        <h3>Size</h3>
+        <button onclick="scaleFaceObject(eyes, 0.05, 0.05)">Up</button>
+        <button onclick="scaleFaceObject(eyes, -0.05, -0.05)">Down</button>
+        <h3>Squint</h3>
+        <button onclick="scaleFaceObject(eyes, 0, 0.05)">Up</button>
+        <button onclick="scaleFaceObject(eyes, 0, -0.05)">Down</button>
+        <h3>Rotate</h3>
+        <button onclick="rotateFaceObject(eyes, -15)">Left</button>
+        <button onclick="rotateFaceObject(eyes, 5)">Right</button>
+    </div>
+
+    <div id="bodyinfo" class="tabcontent">
+        <h2>Body</h2>
+        <h3>Skin Tone</h3>
+        <input id="SkinToneInput" type="color"></input>
+        <button onclick="setColor(neck, 'SkinToneInput')">Confirm</button>
+        <h3>Shirt Color</h3>
+        <input id="ShirtColorInput" type="color"></input>
+        <button onclick="setColor(torso, 'ShirtColorInput')">Confirm</button>
+    </div>
+  </body>
+</html>

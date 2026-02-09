@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220.86 216.04">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f0f;
+        stroke: #000;
+        stroke-miterlimit: 10;
+        stroke-width: 5px;
+      }
+    </style>
+  </defs>
+  <g id="Bangs">
+    <path id="bangs4" class="cls-1" d="M105.63,2.53S-21.28-2.36,6.47,182.34l23.75,26.98-1.14-95.43,4.57,27.43,32.57,6.86,8.57-66.86v67.43l53.71-.57v-49.38l7.43,46.36,47.43-6.7,8-32.55-11.43,100.55,31.76-25.68S258.2-.26,105.63,2.53Z"/>
+  </g>
+</svg>

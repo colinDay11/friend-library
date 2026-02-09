@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260.43 98.35">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f0f;
+        stroke: #000;
+        stroke-miterlimit: 10;
+        stroke-width: 5px;
+      }
+    </style>
+  </defs>
+  <g id="Body">
+    <path id="torso" class="cls-1" d="M257.04,95.85C240.25,41.77,189.82,2.5,130.22,2.5S20.19,41.77,3.39,95.85h253.65Z"/>
+  </g>
+</svg>

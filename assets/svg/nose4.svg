@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 62.93 22.89">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #000;
+        stroke-miterlimit: 10;
+        stroke-width: 5px;
+      }
+    </style>
+  </defs>
+  <g id="Noses">
+    <g id="nose4">
+      <path class="cls-1" d="M31.81,20.39c4.65,0,16.47-1.75,16.84-15.12,0-.18.17-.29.29-.18,1.47,1.34,8.3,6.77,11.59-4.37"/>
+      <path class="cls-1" d="M31.81,20.39c-4.8,0-17.16-1.71-17.53-15.09,0-.18-.17-.29-.29-.18-1.47,1.34-8.3,6.77-11.59-4.37"/>
+    </g>
+  </g>
+</svg>
