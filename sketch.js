@@ -200,11 +200,36 @@ function nudgeHeadHeight(amount) {
     headHeightPercent = constrain(headHeightPercent, 0, 1);
 }
 
-function setColor(objectList, id) {
-    let inputElement = document.getElementById(id);
-    let hexValue = inputElement.value;
+function isValidHex(str) {
+    // This Regex checks:
+    // ^#?   -> Starts with an optional hash
+    // [0-9a-f] -> Contains only numbers or a-f
+    // {3}|{6} -> Must be exactly 3 or 6 characters long
+    const hexRegex = /^#?([0-9a-f]{3}|[0-9a-f]{6})$/i; 
+    return hexRegex.test(str);
+}
+
+function setColor(objectList, id, idHex) {
+    let colorPickerElement = document.getElementById(id);
+    finalValue = colorPickerElement.value;
+
+    if (idHex) {
+        let colorTextElement = document.getElementById(idHex);
+
+        if (colorTextElement) {
+            let textValue = colorTextElement.value.trim();
+
+            if (isValidHex(textValue)) {
+                if (!textValue.startsWith("#")) {
+                    textValue = "#" + textValue;
+                }
+                finalValue = textValue;
+            }
+        }
+    }
+
     for (let i = 0; i < objectList.length; i++) {
-        objectList[i].color = hexValue;
+        objectList[i].color = finalValue;
         objectList[i].reloadIMG();
     }
 }

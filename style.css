@@ -1,5 +1,6 @@
 body {
     font-family: 'Bai Jamjuree', sans-serif;
+    align-content: center;
 }
 
 button {
@@ -9,7 +10,37 @@ button {
     width: 50px;
     font-family: 'Bai Jamjuree', sans-serif;
     vertical-align: middle;
+    cursor: pointer;
 }
+
+input {
+    vertical-align: middle;
+}
+
+.tab {
+    overflow: hidden;
+    border: 1px, solid, #b8afc2;
+    width: 350px;
+}
+
+.tab button {
+  background-color: inherit;
+  float:none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  vertical-align: middle;
+  transition: 0.3s;
+}
+
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+
 
 button:hover {
     background-color: #b8afc2;

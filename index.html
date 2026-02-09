@@ -41,15 +41,18 @@
         <h1>Firend Library - Creator</h1>
     </main>
     <script src="sketch.js"></script>
+    <script>
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultCreatorTab").click();
+    </script>
     <div id="sketch-container"></div>
 
     <div class="tab">
-        <button class="tablinks" onclick="changeTab(event, 'head')"><img src="assets/svg/head1.svg" width = 20px></button>
+        <button class="tablinks" onclick="changeTab(event, 'head')" id="defaultCreatorTab"><img src="assets/svg/head1.svg" width = 20px></button>
         <button class="tablinks" onclick="changeTab(event, 'bangs')"><img src="assets/svg/bangs1.svg" width = 20px></button>
         <button class="tablinks" onclick="changeTab(event, 'back')"><img src="assets/svg/back3.svg" width = 20px></button>
         <button class="tablinks" onclick="changeTab(event, 'eyes')"><img src="assets/svg/eye3.svg" width = 20px></button>
         <button class="tablinks" onclick="changeTab(event, 'brows')"><img src="assets/svg/brow5.svg" width = 20px></button>
-        <br>
         <button class="tablinks" onclick="changeTab(event, 'noses')"><img src="assets/svg/nose4.svg" width = 20px></button>
         <button class="tablinks" onclick="changeTab(event, 'mouths')"><img src="assets/svg/mouth1.svg" width = 20px></button>
         <button class="tablinks" onclick="changeTab(event, 'misc')"><img src="assets/svg/misc1.svg" width = 20px></button>
@@ -62,7 +65,8 @@
         <button onclick="changeHead(1)">&gt</button>
         <h3>Skin Tone</h3>
         <input id="HeadSkinToneInput" type="color"></input>
-        <button onclick="setColor(heads, 'HeadSkinToneInput')">Confirm</button>
+        <input id="HeadSkinToneInputHex" maxlength="7" placeholder="#ffffff"></input>
+        <button onclick="setColor(heads, 'HeadSkinToneInput', 'HeadSkinToneInputHex')">✔</button>
         <h3>Head Height</h3>
         <button onclick="nudgeHeadHeight(-0.1)">Up</button>
         <button onclick="nudgeHeadHeight(0.1)">Down</button>
@@ -74,7 +78,8 @@
         <button onclick="changeBangs(1)">&gt</button>
         <h3>Color</h3>
         <input id="BangsColorInput" type="color"></input>
-        <button onclick="setColor(bangs, 'BangsColorInput')">Confirm</button>
+        <input id="BangsColorInputHex" placeholder="#ffffff"></input>
+        <button onclick="setColor(bangs, 'BangsColorInput', 'BangsColorInputHex')">✔</button>
         <h3>Nudge</h3>
         <button onclick="nudgeFaceObject(bangs, 0, -0.05)">Up</button>
         <button onclick="nudgeFaceObject(bangs, 0, 0.05)">Down</button>
@@ -91,7 +96,8 @@
         <button onclick="changeBack(1)">&gt</button>
         <h3>Color</h3>
         <input id="HairColorInput" type="color"></input>
-        <button id="HairColorButton" onclick="setColor(backs, 'HairColorInput')">Confirm</button>
+        <input id="HairColorInputHex" placeholder="#ffffff"></input>
+        <button id="HairColorButton" onclick="setColor(backs, 'HairColorInput', 'HairColorInputHex')">✔</button>
         <h3>Nudge</h3>
         <button onclick="nudgeFaceObject(backs, 0, -0.05)">Up</button>
         <button onclick="nudgeFaceObject(backs, 0, 0.05)">Down</button>
@@ -108,7 +114,8 @@
         <button onclick="changeEyes(1)">&gt</button>
         <h3>Color</h3>
         <input id="EyeColorInput" type="color"></input>
-        <button onclick="setColor(eyes, 'EyeColorInput')">Confirm</button>
+        <input id="EyeColorInputHex" placeholder="#ffffff"></input>
+        <button onclick="setColor(eyes, 'EyeColorInput', 'EyeColorInputHex')">✔</button>
         <h3>Nudge</h3>
         <button onclick="nudgeFaceObject(eyes, 0, -0.05)">Up</button>
         <button onclick="nudgeFaceObject(eyes, 0, 0.05)">Down</button>
@@ -171,7 +178,8 @@
         <button onclick="changeMouth(1)">&gt</button>
         <h3>Color</h3>
         <input id="MouthColorInput" type="color"></input>
-        <button onclick="setColor(mouths, 'MouthColorInput')">Confirm</button>
+        <input id="MouthColorInputHex" placeholder="#ffffff"></input>
+        <button onclick="setColor(mouths, 'MouthColorInput', 'MouthColorInputHex')">✔</button>
         <h3>Nudge</h3>
         <button onclick="nudgeFaceObject(mouths, 0, -0.05)">Up</button>
         <button onclick="nudgeFaceObject(mouths, 0, 0.05)">Down</button>
@@ -194,7 +202,8 @@
         <button onclick="changeMisc(1)">&gt</button>
         <h3>Color</h3>
         <input id="MiscColorInput" type="color"></input>
-        <button onclick="setColor(miscs, 'MiscColorInput')">Confirm</button>
+        <input id="MiscColorInputHex" placeholder="#ffffff"></input>
+        <button onclick="setColor(miscs, 'MiscColorInput', 'MiscColorInputHex')">✔</button>
         <h3>Nudge</h3>
         <button onclick="nudgeFaceObject(miscs, 0, -0.05)">Up</button>
         <button onclick="nudgeFaceObject(miscs, 0, 0.05)">Down</button>
@@ -215,10 +224,10 @@
         <h2>Body</h2>
         <h3>Skin Tone</h3>
         <input id="SkinToneInput" type="color"></input>
-        <button onclick="setColor(neck, 'SkinToneInput')">Confirm</button>
+        <button onclick="setColor(neck, 'SkinToneInput')">✔</button>
         <h3>Shirt Color</h3>
         <input id="ShirtColorInput" type="color"></input>
-        <button onclick="setColor(torso, 'ShirtColorInput')">Confirm</button>
+        <button onclick="setColor(torso, 'ShirtColorInput')">✔</button>
     </div>
 
     <p>Site by Colin Day - In Progress!</p>
