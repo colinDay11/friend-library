@@ -58,5 +58,5 @@ button img {
 }
 
 button.active img {
-    filter: invert(1) brightness(100) saturate(100%);
+    filter: invert(1) brightness(100) saturate(0%);
 }
