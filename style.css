@@ -1,0 +1,20 @@
+body {
+    font-family: 'Bai Jamjuree', sans-serif;
+}
+
+button {
+    border: 1px solid #ddd;
+    background-color: #f0f0f0;
+    height: 50px;
+    width: 50px;
+    font-family: 'Bai Jamjuree', sans-serif;
+    vertical-align: middle;
+}
+
+button:hover {
+    background-color: #b8afc2;
+}
+
+button img {
+    filter: brightness(0) saturate(100%);
+}
