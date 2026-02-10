@@ -38,7 +38,7 @@
   </head>
   <body>
     <main>
-        <h1>Firend Library - Creator</h1>
+        <h1>Friend Library - Creator</h1>
     </main>
     <script src="sketch.js"></script>
     <script>
@@ -56,7 +56,10 @@
         <button class="tablinks" onclick="changeTab(event, 'noses')"><img src="assets/svg/nose4.svg" width = 20px></button>
         <button class="tablinks" onclick="changeTab(event, 'mouths')"><img src="assets/svg/mouth1.svg" width = 20px></button>
         <button class="tablinks" onclick="changeTab(event, 'misc')"><img src="assets/svg/misc1.svg" width = 20px></button>
-        <button class="tablinks" onclick="changeTab(event, 'bodyinfo')">Body</button>
+        <button class="tablinks" onclick="changeTab(event, 'bodyinfo')"><img src="assets/svg/body.svg" width = 20px></button>
+        <button class="tablinks" onclick="changeTab(event, 'info')"><img src="assets/svg/info.svg" width = 17px></button>
+        <button class="tablinks" onclick="changeTab(event, 'download')"><img src="assets/svg/download.svg" width = 20px></button>
+        <button class="tablinks" onclick="changeTab(event, 'upload')"><img src="assets/svg/upload.svg" width = 20px></button>
     </div>
 
     <div id="head" class="tabcontent">
@@ -224,10 +227,34 @@
         <h2>Body</h2>
         <h3>Skin Tone</h3>
         <input id="SkinToneInput" type="color"></input>
-        <button onclick="setColor(neck, 'SkinToneInput')">✔</button>
+        <input id="SkinToneInputHex" placeholder="#ffffff"></input>
+        <button onclick="setColor(neck, 'SkinToneInput', 'SkinToneInputHex')">✔</button>
         <h3>Shirt Color</h3>
         <input id="ShirtColorInput" type="color"></input>
-        <button onclick="setColor(torso, 'ShirtColorInput')">✔</button>
+        <input id="ShirtColorInputHex" placeholder="#ffffff"></input>
+        <button onclick="setColor(torso, 'ShirtColorInput', 'ShirtColorInputHex')">✔</button>
+    </div>
+
+    <div id="info" class="tabcontent">
+        <h2>Info</h2>
+        <h3>Name</h3>
+        <input id="NameInput"></input>
+        <h3>Birthday</h3>
+        <input id="MonthDayInput" placeholder="MMDD" maxlength="4"></input> <input id="YearInput" placeholder="YYYY" maxlength="4"></input>
+    </div>
+
+    <div id="download" class="tabcontent">
+        <h2>Download</h2>
+        <code id="FriendCodeExport">Example Code</code>
+        <button onclick="copyCode('FriendCodeExport')">Copy Friend Code</button>
+        <button onclick="downloadCode('FriendCodeExport')">Download Friend Code</button>
+    </div>
+
+    <div id="upload" class="tabcontent">
+        <h2>Upload</h2>
+        <h3>Friend Code</h3>
+        <input id="FriendCodeInput"></input>
+        <button onclick="upload('FriendCodeInput')">Upload</button>
     </div>
 
     <p>Site by Colin Day - In Progress!</p>

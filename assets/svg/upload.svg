@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 97.46 133.21">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke: #fff;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        stroke-miterlimit: 10;
+        stroke-width: 5px;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-2, .cls-3 {
+        stroke: #000;
+      }
+
+      .cls-3 {
+        fill: none;
+      }
+    </style>
+  </defs>
+  <g id="Layer_11" data-name="Layer 11">
+    <g id="upload">
+      <circle class="cls-2" cx="48.73" cy="95.57" r="35.14"/>
+      <circle cx="33.14" cy="91.9" r="5.41"/>
+      <circle cx="64.32" cy="91.9" r="5.41"/>
+      <path id="mouth1" class="cls-3" d="M65.06,104.61c0,7.22-7.31,13.07-16.33,13.07s-16.33-5.85-16.33-13.07"/>
+      <polygon class="cls-1" points="16.78 50.37 39.43 31.83 39.43 85.89 48.73 85.89 58.03 85.89 58.03 31.83 80.68 50.37 93.51 39.87 48.73 3.23 3.95 39.87 16.78 50.37"/>
+    </g>
+  </g>
+</svg>
