@@ -18,6 +18,8 @@ input {
 }
 
 .tab {
+    display: flex;
+    flex-wrap: wrap;
     overflow: hidden;
     border: 1px, solid, #b8afc2;
     width: 350px;
@@ -45,12 +47,24 @@ input {
   border-top: none;
 }
 
-h3 {
+.tabcontent h2 {
+    margin-top: 0rem;
+}
+
+.tabcontent h3 {
     margin-bottom: 0rem;
 }
 
 button:hover {
     background-color: #b8afc2;
+}
+
+.partButton {
+    background-color: cadetblue;
+}
+
+.partButton:hover {
+    background-color: darkcyan;
 }
 
 button img {

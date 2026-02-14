@@ -43,7 +43,7 @@
     <script src="sketch.js"></script>
     <script>
         // Get the element with id="defaultOpen" and click on it
-        document.getElementById("defaultCreatorTab").click();
+        //document.getElementById("defaultCreatorTab").click();
     </script>
     <div id="sketch-container"></div>
 
@@ -55,7 +55,8 @@
         <button class="tablinks" onclick="changeTab(event, 'brows')"><img src="assets/svg/brow5.svg" width = 20px></button>
         <button class="tablinks" onclick="changeTab(event, 'noses')"><img src="assets/svg/nose4.svg" width = 20px></button>
         <button class="tablinks" onclick="changeTab(event, 'mouths')"><img src="assets/svg/mouth1.svg" width = 20px></button>
-        <button class="tablinks" onclick="changeTab(event, 'misc')"><img src="assets/svg/misc1.svg" width = 20px></button>
+        <button class="tablinks" onclick="changeTab(event, 'misc1')"><img src="assets/svg/misc1.svg" width = 20px></button>
+        <button class="tablinks" onclick="changeTab(event, 'misc2')"><img src="assets/svg/misc5.svg" width = 20px></button>
         <button class="tablinks" onclick="changeTab(event, 'bodyinfo')"><img src="assets/svg/body.svg" width = 20px></button>
         <button class="tablinks" onclick="changeTab(event, 'info')"><img src="assets/svg/info.svg" width = 17px></button>
         <button class="tablinks" onclick="changeTab(event, 'download')"><img src="assets/svg/download.svg" width = 20px></button>
@@ -77,20 +78,23 @@
 
     <div id="bangs" class="tabcontent">
         <h2>Bangs</h2>
-        <button onclick="changeBangs(-1)">&lt</button>
-        <button onclick="changeBangs(1)">&gt</button>
+        <button onclick="changeBangs(-1)" class="partButton"><img src="assets/svg/left.svg" alt="left" width="50%"></button>
+        <button onclick="changeBangs(1)" class="partButton"><img src="assets/svg/right.svg" alt="right" width="50%"></button>
         <h3>Color</h3>
         <input id="BangsColorInput" type="color"></input>
         <input id="BangsColorInputHex" placeholder="#ffffff"></input>
-        <button onclick="setColor(bangs, 'BangsColorInput', 'BangsColorInputHex')">✔</button>
+        <button onclick="setColor(bangs, 'BangsColorInput', 'BangsColorInputHex')">OK</button>
         <h3>Nudge</h3>
-        <button onclick="nudgeFaceObject(bangs, 0, -0.05)">Up</button>
-        <button onclick="nudgeFaceObject(bangs, 0, 0.05)">Down</button>
-        <button onclick="nudgeFaceObject(bangs, -0.05, 0)">Left</button>
-        <button onclick="nudgeFaceObject(bangs, 0.05, 0)">Right</button>
+        <button onclick="nudgeFaceObject(bangs, 0, -0.05)"><img src="assets/svg/up.svg" alt="up" width="50%"></button>
+        <button onclick="nudgeFaceObject(bangs, 0, 0.05)"><img src="assets/svg/down.svg" alt="left" width="50%"></button>
+        <button onclick="nudgeFaceObject(bangs, -0.05, 0)"><img src="assets/svg/left.svg" alt="down" width="40%"></button>
+        <button onclick="nudgeFaceObject(bangs, 0.05, 0)"><img src="assets/svg/right.svg" alt="right" width="40%"></button>
         <h3>Size</h3>
-        <button onclick="scaleFaceObject(bangs, 0.05, 0.05)">Up</button>
-        <button onclick="scaleFaceObject(bangs, -0.05, -0.05)">Down</button>
+        <button onclick="scaleFaceObject(bangs, 0.05, 0.05)"><img src="assets/svg/plus.svg" alt="plus" width="50%"></button>
+        <button onclick="scaleFaceObject(bangs, -0.05, -0.05)"><img src="assets/svg/minus.svg" alt="minus" width="50%"></button>
+        <h3>Squint</h3>
+        <button onclick="scaleFaceObject(bangs, 0, 0.05)"><img src="assets/svg/unsquint.svg" alt="widen vertical" width="50%"></button>
+        <button onclick="scaleFaceObject(bangs, 0, -0.05)"><img src="assets/svg/squint.svg" alt="narrow vertical" width="50%"></button>
     </div>
     
     <div id="back" class="tabcontent">
@@ -109,6 +113,9 @@
         <h3>Size</h3>
         <button onclick="scaleFaceObject(backs, 0.05, 0.05)">Up</button>
         <button onclick="scaleFaceObject(backs, -0.05, -0.05)">Down</button>
+        <h3>Squint</h3>
+        <button onclick="scaleFaceObject(backs, 0, 0.05)">Up</button>
+        <button onclick="scaleFaceObject(backs, 0, -0.05)">Down</button>
     </div>
 
     <div id="eyes" class="tabcontent">
@@ -151,7 +158,7 @@
         <button onclick="scaleFaceObject(brows, 0, 0.05)">Up</button>
         <button onclick="scaleFaceObject(brows, 0, -0.05)">Down</button>
         <h3>Rotate</h3>
-        <button onclick="rotateFaceObject(brows, -15)">Left</button>
+        <button onclick="rotateFaceObject(brows, -5)">Left</button>
         <button onclick="rotateFaceObject(brows, 5)">Right</button>
     </div>
 
@@ -171,7 +178,7 @@
         <button onclick="scaleFaceObject(noses, 0, 0.05)">Up</button>
         <button onclick="scaleFaceObject(noses, 0, -0.05)">Down</button>
         <h3>Rotate</h3>
-        <button onclick="rotateFaceObject(noses, -15)">Left</button>
+        <button onclick="rotateFaceObject(noses, -5)">Left</button>
         <button onclick="rotateFaceObject(noses, 5)">Right</button>
     </div>
 
@@ -195,32 +202,56 @@
         <button onclick="scaleFaceObject(mouths, 0, 0.05)">Up</button>
         <button onclick="scaleFaceObject(mouths, 0, -0.05)">Down</button>
         <h3>Rotate</h3>
-        <button onclick="rotateFaceObject(mouths, -15)">Left</button>
+        <button onclick="rotateFaceObject(mouths, -5)">Left</button>
         <button onclick="rotateFaceObject(mouths, 5)">Right</button>
     </div>
 
-    <div id="misc" class="tabcontent">
-        <h2>Misc.</h2>
-        <button onclick="changeMisc(-1)">&lt</button>
-        <button onclick="changeMisc(1)">&gt</button>
+    <div id="misc1" class="tabcontent">
+        <h2>Misc. 1</h2>
+        <button onclick="changeMisc1(-1)">&lt</button>
+        <button onclick="changeMisc1(1)">&gt</button>
         <h3>Color</h3>
-        <input id="MiscColorInput" type="color"></input>
-        <input id="MiscColorInputHex" placeholder="#ffffff"></input>
-        <button onclick="setColor(miscs, 'MiscColorInput', 'MiscColorInputHex')">✔</button>
+        <input id="Misc1ColorInput" type="color"></input>
+        <input id="Misc1ColorInputHex" placeholder="#ffffff"></input>
+        <button onclick="setColor(miscs1, 'Misc1ColorInput', 'Misc1ColorInputHex')">✔</button>
         <h3>Nudge</h3>
-        <button onclick="nudgeFaceObject(miscs, 0, -0.05)">Up</button>
-        <button onclick="nudgeFaceObject(miscs, 0, 0.05)">Down</button>
-        <button onclick="nudgeFaceObject(miscs, -0.05, 0)">Left</button>
-        <button onclick="nudgeFaceObject(miscs, 0.05, 0)">Right</button>
+        <button onclick="nudgeFaceObject(miscs1, 0, -0.05)">Up</button>
+        <button onclick="nudgeFaceObject(miscs1, 0, 0.05)">Down</button>
+        <button onclick="nudgeFaceObject(miscs1, -0.05, 0)">Left</button>
+        <button onclick="nudgeFaceObject(miscs1, 0.05, 0)">Right</button>
         <h3>Size</h3>
-        <button onclick="scaleFaceObject(miscs, 0.05, 0.05)">Up</button>
-        <button onclick="scaleFaceObject(miscs, -0.05, -0.05)">Down</button>
+        <button onclick="scaleFaceObject(miscs1, 0.05, 0.05)">Up</button>
+        <button onclick="scaleFaceObject(miscs1, -0.05, -0.05)">Down</button>
         <h3>Squint</h3>
-        <button onclick="scaleFaceObject(miscs, 0, 0.05)">Up</button>
-        <button onclick="scaleFaceObject(miscs, 0, -0.05)">Down</button>
+        <button onclick="scaleFaceObject(miscs1, 0, 0.05)">Up</button>
+        <button onclick="scaleFaceObject(miscs1, 0, -0.05)">Down</button>
         <h3>Rotate</h3>
-        <button onclick="rotateFaceObject(miscs, -15)">Left</button>
-        <button onclick="rotateFaceObject(miscs, 5)">Right</button>
+        <button onclick="rotateFaceObject(miscs1, -5)">Left</button>
+        <button onclick="rotateFaceObject(miscs1, 5)">Right</button>
+    </div>
+
+    <div id="misc2" class="tabcontent">
+        <h2>Misc. 2</h2>
+        <button onclick="changeMisc2(-1)">&lt</button>
+        <button onclick="changeMisc2(1)">&gt</button>
+        <h3>Color</h3>
+        <input id="Misc2ColorInput" type="color"></input>
+        <input id="Misc2ColorInputHex" placeholder="#ffffff"></input>
+        <button onclick="setColor(miscs2, 'Misc2ColorInput', 'Misc2ColorInputHex')">✔</button>
+        <h3>Nudge</h3>
+        <button onclick="nudgeFaceObject(miscs2, 0, -0.05)">Up</button>
+        <button onclick="nudgeFaceObject(miscs2, 0, 0.05)">Down</button>
+        <button onclick="nudgeFaceObject(miscs2, -0.05, 0)">Left</button>
+        <button onclick="nudgeFaceObject(miscs2, 0.05, 0)">Right</button>
+        <h3>Size</h3>
+        <button onclick="scaleFaceObject(miscs2, 0.05, 0.05)">Up</button>
+        <button onclick="scaleFaceObject(miscs2, -0.05, -0.05)">Down</button>
+        <h3>Squint</h3>
+        <button onclick="scaleFaceObject(miscs2, 0, 0.05)">Up</button>
+        <button onclick="scaleFaceObject(miscs2, 0, -0.05)">Down</button>
+        <h3>Rotate</h3>
+        <button onclick="rotateFaceObject(miscs2, -5)">Left</button>
+        <button onclick="rotateFaceObject(miscs2, 5)">Right</button>
     </div>
 
     <div id="bodyinfo" class="tabcontent">
@@ -238,23 +269,24 @@
     <div id="info" class="tabcontent">
         <h2>Info</h2>
         <h3>Name</h3>
-        <input id="NameInput"></input>
+        <input id="NameInput" maxlength="32"></input>
         <h3>Birthday</h3>
         <input id="MonthDayInput" placeholder="MMDD" maxlength="4"></input> <input id="YearInput" placeholder="YYYY" maxlength="4"></input>
+        <h3>Personality</h3>
     </div>
 
     <div id="download" class="tabcontent">
-        <h2>Download</h2>
-        <code id="FriendCodeExport">Example Code</code>
+        <h2>Download (Not Working)</h2>
+        <code id="FriendCodeExport"><span id="friendCode">...</span></code>
         <button onclick="copyCode('FriendCodeExport')">Copy Friend Code</button>
         <button onclick="downloadCode('FriendCodeExport')">Download Friend Code</button>
     </div>
 
     <div id="upload" class="tabcontent">
-        <h2>Upload</h2>
+        <h2>Upload (Not Working)</h2>
         <h3>Friend Code</h3>
         <input id="FriendCodeInput"></input>
-        <button onclick="upload('FriendCodeInput')">Upload</button>
+        <button onclick="uploadCode('FriendCodeInput')">Upload</button>
     </div>
 
     <p>Site by Colin Day - In Progress!</p>

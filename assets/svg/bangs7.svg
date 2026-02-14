@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 215.53 102.41">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f0f;
+        stroke: #000;
+        stroke-miterlimit: 10;
+        stroke-width: 5px;
+      }
+    </style>
+  </defs>
+  <g id="Layer_12" data-name="Layer 12">
+    <g id="bangs7">
+      <ellipse class="cls-1" cx="107.77" cy="22.82" rx="16.76" ry="20.32"/>
+      <ellipse class="cls-1" cx="17.42" cy="86.75" rx="12.76" ry="15.26" transform="translate(-69.34 69.38) rotate(-67.33)"/>
+      <ellipse class="cls-1" cx="36.29" cy="54.91" rx="12.76" ry="18.77" transform="translate(-28.2 41.74) rotate(-45)"/>
+      <ellipse class="cls-1" cx="67.44" cy="29.85" rx="14.26" ry="18.77" transform="translate(-6.16 25.13) rotate(-20.2)"/>
+      <ellipse class="cls-1" cx="198.11" cy="85.93" rx="15.26" ry="12.76" transform="translate(-17.81 83.02) rotate(-22.67)"/>
+      <ellipse class="cls-1" cx="179.25" cy="54.09" rx="18.77" ry="12.76" transform="translate(14.25 142.59) rotate(-45)"/>
+      <ellipse class="cls-1" cx="148.09" cy="29.03" rx="18.77" ry="14.26" transform="translate(69.71 157.99) rotate(-69.8)"/>
+    </g>
+  </g>
+</svg>

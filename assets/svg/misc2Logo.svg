@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 71.26">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        mask: url(#mask);
+      }
+
+      .cls-3 {
+        font-family: BaiJamjuree-Bold, 'Bai Jamjuree';
+        font-size: 72px;
+        font-weight: 700;
+      }
+
+      .cls-4 {
+        filter: url(#luminosity-noclip);
+      }
+    </style>
+    <filter id="luminosity-noclip" x="0" y="0" width="100" height="102.92" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feFlood flood-color="#fff" result="bg"/>
+      <feBlend in="SourceGraphic" in2="bg"/>
+    </filter>
+    <mask id="mask" x="0" y="0" width="100" height="102.92" maskUnits="userSpaceOnUse">
+      <g class="cls-4">
+        <text class="cls-3" transform="translate(29.01 62.53)"><tspan x="0" y="0">2</tspan></text>
+      </g>
+    </mask>
+  </defs>
+  <g id="Layer_12" data-name="Layer 12">
+    <g class="cls-2">
+      <rect id="misc2Logo" class="cls-1" x="0" y="0" width="100" height="71.26" rx="35.63" ry="35.63"/>
+    </g>
+  </g>
+</svg>

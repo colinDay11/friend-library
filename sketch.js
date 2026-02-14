@@ -5,7 +5,6 @@ const h = 350;
 var canvasWidth;
 var canvasHeight;
 
-//TEST
 let headHeightPercent;
 let headHeightRange;
 let headHeight;
@@ -47,13 +46,19 @@ let mouthNum;
 
 let miscFilepaths;
 let miscStrings;
-let miscs;
-let miscNum;
+let miscs1;
+let misc1Num;
+let miscs2;
+let misc2Num;
 
 let neck;
 let neckStrings;
 let torso;
 let torsoStrings;
+
+let friendName;
+let birthday;
+let friendCode;
 
 function setup() {
     canvasWidth = w;
@@ -64,6 +69,9 @@ function setup() {
 
     headHeightRange = createVector(175, 215);
     headHeightPercent = 1;
+
+    friendName = "..."
+    birthday = "01012000";
 
     headNum = 0;
     heads = createFaceObjects(headStrings, 0.0, createVector(0.5, 0.5), createVector(0.5, 0.5), false, createVector(-50, 50));
@@ -79,12 +87,16 @@ function setup() {
     noses = createFaceObjects(noseStrings, 5, createVector(0.5, 0.5), createVector(0.5, 0.5), false, createVector(-50, 50));
     mouthNum = 3;
     mouths = createFaceObjects(mouthStrings, 6, createVector(0.5, 0.5), createVector(0.5, 0.5), false, createVector(-50, 50));
-    miscNum = -1;
-    miscs = createFaceObjects(miscStrings, 7, createVector(0.5, 0.5), createVector(0.5, 0.5), false, createVector(-150, 100));
+    misc1Num = -1;
+    miscs1 = createFaceObjects(miscStrings, 7, createVector(0.5, 0.5), createVector(0.5, 0.5), false, createVector(-150, 100));
+    misc2Num = -1;
+    miscs2 = createFaceObjects(miscStrings, 7, createVector(0.5, 0.5), createVector(0.5, 0.5), false, createVector(-150, 100));
+
 
     neck = createFaceObjects(neckStrings, 8, createVector(0.5, 0.5), createVector(0.5, 0.5), false, createVector(-50, 50));
     torso = createFaceObjects(torsoStrings, 9, createVector(0.5, 0.5), createVector(0.5, 0.5), false, createVector(-50, 50));
     
+    friendCode = createCode();
     //testBack = new FaceObject(testBackString, 2, 2, createVector(1, 1), createVector(0, 0), false);
     //testBack.reloadIMG();
 }
@@ -102,7 +114,7 @@ function preload() {
     headFilepaths = getFilepaths(basepath, "head", 8);
     headStrings = getStrings(headFilepaths);
 
-    bangsFilepaths = getFilepaths(basepath, "bangs", 6);
+    bangsFilepaths = getFilepaths(basepath, "bangs", 10);
     bangsStrings = getStrings(bangsFilepaths);
 
     backFilepaths = getFilepaths(basepath, "back", 7);
@@ -120,7 +132,7 @@ function preload() {
     mouthFilepaths = getFilepaths(basepath, "mouth", 9);
     mouthStrings = getStrings(mouthFilepaths);
 
-    miscFilepaths = getFilepaths(basepath, "misc", 6);
+    miscFilepaths = getFilepaths(basepath, "misc", 15);
     miscStrings = getStrings(miscFilepaths);
 
     neckStrings = [loadStrings("assets/svg/neck.svg")];
@@ -149,8 +161,8 @@ function draw() {
         eyes[eyeNum].show(int(w/2), headHeight + 50, 0.6);
     }
 
-    if (!(miscNum < 0)) {
-        miscs[miscNum].show(int(w/2) + 25, headHeight + 65, 0.6);
+    if (!(misc2Num < 0)) {
+        miscs2[misc2Num].show(int(w/2) + 25, headHeight + 65, 0.6);
     }
 
     if (!(bangNum < 0)) {
@@ -167,6 +179,10 @@ function draw() {
 
     if (!(mouthNum < 0)) {
         mouths[mouthNum].show(int(w/2), headHeight + 75, 0.6);
+    }
+
+    if (!(misc1Num < 0)) {
+        miscs1[misc1Num].show(int(w/2) + 25, headHeight + 65, 0.6);
     }
 }
 
@@ -198,13 +214,10 @@ function createFaceObjects(stringLists, type, defaultScale, defaultOffset, mirro
 function nudgeHeadHeight(amount) {
     headHeightPercent += amount;
     headHeightPercent = constrain(headHeightPercent, 0, 1);
+    friendCode = createCode();
 }
 
 function isValidHex(str) {
-    // This Regex checks:
-    // ^#?   -> Starts with an optional hash
-    // [0-9a-f] -> Contains only numbers or a-f
-    // {3}|{6} -> Must be exactly 3 or 6 characters long
     const hexRegex = /^#?([0-9a-f]{3}|[0-9a-f]{6})$/i; 
     return hexRegex.test(str);
 }
@@ -232,6 +245,8 @@ function setColor(objectList, id, idHex) {
         objectList[i].color = finalValue;
         objectList[i].reloadIMG();
     }
+
+    friendCode = createCode();
 }
 
 function nudgeFaceObject(objectList, amountX, amountY) {
@@ -241,6 +256,7 @@ function nudgeFaceObject(objectList, amountX, amountY) {
         objectList[i].offsetX = constrain(objectList[i].offsetX, 0.0, 1.0);
         objectList[i].offsetY = constrain(objectList[i].offsetY, 0.0, 1.0);
     }
+    friendCode = createCode();
 }
 
 function scaleFaceObject(objectList, amountX, amountY) {
@@ -250,44 +266,59 @@ function scaleFaceObject(objectList, amountX, amountY) {
         objectList[i].scaleX = constrain(objectList[i].scaleX, 0.0, 1.0);
         objectList[i].scaleY = constrain(objectList[i].scaleY, 0.0, 1.0);
     }
+    friendCode = createCode();
 }
 
 function rotateFaceObject(objectList, amount) {
     for (let i = 0; i < objectList.length; i++) {
         objectList[i].rotation += amount;
     }
+    friendCode = createCode();
 }
 
 function changeHead(amount){
     headNum = changeFaceObject(heads, headNum, amount, false);
+    friendCode = createCode();
 }
 
 function changeBangs(amount){
     bangNum = changeFaceObject(bangs, bangNum, amount, true);
+    friendCode = createCode();
 }
 
 function changeBack(amount){
     backNum = changeFaceObject(backs, backNum, amount, true);
+    friendCode = createCode();
 }
 
 function changeEyes(amount){
     eyeNum = changeFaceObject(eyes, eyeNum, amount, true);
+    friendCode = createCode();
 }
 
 function changeBrows(amount){
     browNum = changeFaceObject(brows, browNum, amount, true);
+    friendCode = createCode();
 }
 
 function changeNose(amount){
     noseNum = changeFaceObject(noses, noseNum, amount, true);
+    friendCode = createCode();
 }
 
 function changeMouth(amount){
     mouthNum = changeFaceObject(mouths, mouthNum, amount, true);
+    friendCode = createCode();
 }
 
-function changeMisc(amount){
-    miscNum = changeFaceObject(miscs, miscNum, amount, true);
+function changeMisc1(amount){
+    misc1Num = changeFaceObject(miscs1, misc1Num, amount, true);
+    friendCode = createCode();
+}
+
+function changeMisc2(amount){
+    misc2Num = changeFaceObject(miscs2, misc2Num, amount, true);
+    friendCode = createCode();
 }
 
 function changeFaceObject(objectList, objectNum, amount, allowDelete) {
@@ -308,6 +339,81 @@ function changeFaceObject(objectList, objectNum, amount, allowDelete) {
         }
     }
     return objectNum;
+}
+
+function updateInfo(){
+    let nameInput = document.getElementById("NameInput");
+    let monthDayInput = document.getElementById("MonthDayInput");
+    let yearInput = document.getElementById("YearInput");
+    if (!nameInput.value || !monthDayInput.value || !yearInput.value) {
+        return;
+    }
+    if (nameInput.value.length > 0) {
+        friendName = nameInput.value;
+    }
+    if (monthDayInput.value.length == 4 && yearInput.value.length == 4) {
+        birthday = monthDayInput.value + yearInput.value;
+    }
+}
+
+function createCode() {
+    updateInfo();
+
+    var codeString = "";
+    //Version
+    codeString += "1";    
+    //Name
+    codeString += "|" + friendName;
+    //Birthday
+    codeString += "|" + birthday;
+    //Head
+    codeString += "|" + String(headNum) + "-" + String(heads[0].color) + "-" + String(headHeight);
+    //Bangs
+    codeString += "|" + String(bangNum) + "-" + String(bangs[0].color) + "-" + String(bangs[0].scaleX) + "-" + String(bangs[0].scaleY) + "-" + String(bangs[0].offsetX) + "-" + String(bangs[0].offsetY);
+    //Back
+    codeString += "|" + String(backNum) + "-" + String(backs[0].color) + "-" + String(backs[0].scaleX) + "-" + String(backs[0].scaleY) + "-" + String(backs[0].offsetX) + "-" + String(backs[0].offsetY);
+    //Eyes
+    codeString += "|" + String(eyeNum) + "-" + String(eyes[0].color) + "-" + String(eyes[0].scaleX) + "-" + String(eyes[0].scaleY) + "-" + String(eyes[0].offsetX) + "-" + String(eyes[0].offsetY) + "-" + String(eyes[0].rotation);
+    //Brows
+    codeString += "|" + String(browNum) + "-" + String(brows[0].scaleX) + "-" + String(brows[0].scaleY) + "-" + String(brows[0].offsetX) + "-" + String(brows[0].offsetY) + "-" + String(brows[0].rotation);
+    //Nose
+    codeString += "|" + String(noseNum) + "-" + String(noses[0].scaleX) + "-" + String(noses[0].scaleY) + "-" + String(noses[0].offsetX) + "-" + String(noses[0].offsetY) + "-" + String(noses[0].rotation);
+    //Mouth
+    codeString += "|" + String(mouthNum) + "-" + String(mouths[0].color) + "-" + String(mouths[0].scaleX) + "-" + String(mouths[0].scaleY) + "-" + String(mouths[0].offsetX) + "-" + String(mouths[0].offsetY) + "-" + String(mouths[0].rotation);
+    //Misc.1
+    codeString += "|" + String(misc1Num) + "-" + String(miscs1[0].color) + "-" + String(miscs1[0].scaleX) + "-" + String(miscs1[0].scaleY) + "-" + String(miscs1[0].offsetX) + "-" + String(miscs1[0].offsetY) + "-" + String(miscs1[0].rotation);
+    //Misc.2
+    codeString += "|" + String(misc2Num) + "-" + String(miscs2[0].color) + "-" + String(miscs2[0].scaleX) + "-" + String(miscs2[0].scaleY) + "-" + String(miscs2[0].offsetX) + "-" + String(miscs2[0].offsetY) + "-" + String(miscs2[0].rotation);
+    //Body
+    codeString += "|" + String(torso[0].color);
+    codeString += "|" + String(neck[0].color);
+    document.getElementById("friendCode").innerHTML = codeString;
+    return codeString;
+}
+
+function uploadCode(codeID) {
+    const codeElement = document.getElementById(codeID);
+    if (!codeElement || !codeElement.value){
+        alert("Invalid Code");
+        return;
+    }
+    console.debug("code:" + codeElement.value);
+    if (codeElement && codeElement.value) {
+        applyCode(codeElement.value);
+    }
+}
+
+function applyCode(newCode) {
+    const myCode = newCode.split("|");
+    friendName = myCode[1];
+    birthday = myCode[2];
+    const mdString = birthday.slice(0,4);
+    const yString = birthday.slice(4,8);
+    document.getElementById("NameInput").value = friendName;
+    document.getElementById("MonthDayInput").value = mdString;
+    document.getElementById("YearInput").value = yString;
+
+    
 }
 
 class FaceObject {
@@ -338,7 +444,7 @@ class FaceObject {
         let viewBoxRegex = /viewBox=["']\s*([\d\.-]+)\s+([\d\.-]+)\s+([\d\.-]+)\s+([\d\.-]+)\s*["']/;
         let match = this.SVGString.match(viewBoxRegex);
 
-        //Note to self: refind source of this piece of code
+        //Note to self: refine source of this piece of code
         if (match) {
             this.nativeW = parseFloat(match[3]);
             this.nativeH = parseFloat(match[4]);
