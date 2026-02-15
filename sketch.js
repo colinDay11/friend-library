@@ -210,10 +210,11 @@ function updateInfo(){
         return;
     }
     if (nameInput.value.length > 0) {
-        friendName = nameInput.value;
+        myFriend.name = nameInput.value;
     }
     if (monthDayInput.value.length == 4 && yearInput.value.length == 4) {
-        birthday = monthDayInput.value + yearInput.value;
+        myFriend.birthMonthDay = monthDayInput.value;
+        myFriend.birthYear = yearInput.value;
     }
 }
 
@@ -335,6 +336,7 @@ class FriendRenderer {
                 this.faceObjects[partType][part].reloadIMG();
             }
         }
+        updateInfo();
     }
 
     reloadPartsSoft() {
@@ -347,6 +349,7 @@ class FriendRenderer {
             this.faceObjects[partType][part].rotation = this.partStatesArray[partType].rotationDegrees;
             }
         }
+        updateInfo();
     }
 
     show() {
