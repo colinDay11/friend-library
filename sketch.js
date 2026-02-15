@@ -278,11 +278,16 @@ function applyCode(newCode) {
     
 }
 
+function saveImage() {
+    saveCanvas(myFriend.name + ".png");
+    describe('A picture of a friend created with Friend Library');
+}
+
 class Friend {
     constructor() {
         this.HEAD_HEIGHT_RANGE = createVector(0.5, 0.6);
 
-        this.name = "";
+        this.name = "Friend";
         this.birthMonthDay = "0101";
         this.birthYear = "2000";
         this.headHeight = 0.75;
