@@ -206,13 +206,11 @@ function updateInfo(){
     let nameInput = document.getElementById("NameInput");
     let monthDayInput = document.getElementById("MonthDayInput");
     let yearInput = document.getElementById("YearInput");
-    if (!nameInput.value || !monthDayInput.value || !yearInput.value) {
-        return;
-    }
-    if (nameInput.value.length > 0) {
+
+    if (nameInput && nameInput.value.length > 0) {
         myFriend.name = nameInput.value;
     }
-    if (monthDayInput.value.length == 4 && yearInput.value.length == 4) {
+    if (monthDayInput && yearInput && monthDayInput.value.length == 4 && yearInput.value.length == 4) {
         myFriend.birthMonthDay = monthDayInput.value;
         myFriend.birthYear = yearInput.value;
     }
