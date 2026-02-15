@@ -5,55 +5,31 @@ const h = 350;
 var canvasWidth;
 var canvasHeight;
 
-let headHeightPercent;
-let headHeightRange;
-let headHeight;
-
 let headFilepaths;
 let headStrings;
-let heads;
-let headNum;
 
 let bangsFilepaths;
 let bangsStrings;
-let bangs;
-let bangNum;
 
 let backFilepaths;
 let backStrings;
-let backs;
-let backNum;
 
 let eyeFilepaths;
 let eyeStrings;
-let eyes;
-let eyeNum;
 
 let browFilepaths;
 let browStrings;
-let brows;
-let browNum;
 
 let noseFilepaths;
 let noseStrings;
-let noses;
-let noseNum;
 
 let mouthFilepaths;
 let mouthStrings;
-let mouths;
-let mouthNum;
 
 let miscFilepaths;
 let miscStrings;
-let miscs1;
-let misc1Num;
-let miscs2;
-let misc2Num;
 
-let neck;
 let neckStrings;
-let torso;
 let torsoStrings;
 
 let friendName;
@@ -67,38 +43,20 @@ function setup() {
     canvas.parent('sketch-container');
     rectMode(CENTER);
 
-    headHeightRange = createVector(175, 215);
-    headHeightPercent = 1;
-
-    friendName = "..."
-    birthday = "01012000";
-
-    headNum = 0;
-    heads = createFaceObjects(headStrings, 0.0, createVector(0.5, 0.5), createVector(0.5, 0.5), false, createVector(-50, 50));
-    bangNum = 0;
-    bangs = createFaceObjects(bangsStrings, 1, createVector(0.5, 0.5), createVector(0.5, 0.5), false, createVector(-50, 50));
-    backNum = -1;
-    backs = createFaceObjects(backStrings, 2, createVector(0.5, 0.5), createVector(0.5, 0.5), false, createVector(-50, 50));
-    eyeNum = 2;
-    eyes = createFaceObjects(eyeStrings, 3, createVector(0.4, 0.4), createVector(0.4, 0.5), true, createVector(-100, 50));
-    browNum = 4;
-    brows = createFaceObjects(browStrings, 4, createVector(0.4, 0.4), createVector(0.4, 0.5), true, createVector(-100, 50));
-    noseNum = 0;
-    noses = createFaceObjects(noseStrings, 5, createVector(0.5, 0.5), createVector(0.5, 0.5), false, createVector(-50, 50));
-    mouthNum = 3;
-    mouths = createFaceObjects(mouthStrings, 6, createVector(0.5, 0.5), createVector(0.5, 0.5), false, createVector(-50, 50));
-    misc1Num = -1;
-    miscs1 = createFaceObjects(miscStrings, 7, createVector(0.5, 0.5), createVector(0.5, 0.5), false, createVector(-150, 100));
-    misc2Num = -1;
-    miscs2 = createFaceObjects(miscStrings, 7, createVector(0.5, 0.5), createVector(0.5, 0.5), false, createVector(-150, 100));
-
-
-    neck = createFaceObjects(neckStrings, 8, createVector(0.5, 0.5), createVector(0.5, 0.5), false, createVector(-50, 50));
-    torso = createFaceObjects(torsoStrings, 9, createVector(0.5, 0.5), createVector(0.5, 0.5), false, createVector(-50, 50));
-    
-    friendCode = createCode();
-    //testBack = new FaceObject(testBackString, 2, 2, createVector(1, 1), createVector(0, 0), false);
-    //testBack.reloadIMG();
+    myFriend = new Friend();
+    myFriendRenderer = new FriendRenderer(myFriend, [350, 350], [
+        createFaceObjects(backStrings, 2, false, createVector(myFriend.partStates["back"].transMin, myFriend.partStates["back"].transMax)),
+        createFaceObjects(torsoStrings, 9, false, createVector(myFriend.partStates["torso"].transMin, myFriend.partStates["torso"].transMax)),
+        createFaceObjects(neckStrings, 8, false, createVector(myFriend.partStates["neck"].transMin, myFriend.partStates["neck"].transMax)),
+        createFaceObjects(headStrings, 0.0, false, createVector(myFriend.partStates["head"].transMin, myFriend.partStates["head"].transMax)),
+        createFaceObjects(eyeStrings, 3, true, createVector(myFriend.partStates["eye"].transMin, myFriend.partStates["back"].transMax)),
+        createFaceObjects(miscStrings, 7, false, createVector(myFriend.partStates["misc1"].transMin, myFriend.partStates["back"].transMax)),
+        createFaceObjects(bangsStrings, 1, false, createVector(myFriend.partStates["bang"].transMin, myFriend.partStates["back"].transMax)),
+        createFaceObjects(browStrings, 4, true, createVector(myFriend.partStates["brow"].transMin, myFriend.partStates["back"].transMax)),
+        createFaceObjects(mouthStrings, 6, false, createVector(myFriend.partStates["mouth"].transMin, myFriend.partStates["back"].transMax)),
+        createFaceObjects(noseStrings, 5, false, createVector(myFriend.partStates["nose"].transMin, myFriend.partStates["back"].transMax)),
+        createFaceObjects(miscStrings, 7, false, createVector(myFriend.partStates["misc2"].transMin, myFriend.partStates["back"].transMax))
+    ]);
 }
 
 function windowResized() {
@@ -140,50 +98,8 @@ function preload() {
 }
 
 function draw() {
-    background(100);
-    //testBack.show(0, 0, 1);
-
-    headHeight = lerp(headHeightRange.x, headHeightRange.y, headHeightPercent);
-
-    if (!(backNum < 0)) {
-        backs[backNum].show(int(w/2), headHeight + 60, 0.6);
-    }
-
-    torso[0].show(int(w/2), headHeightRange.y + 115, 0.6);
-    //pop()
-    neck[0].show(int(w/2), headHeightRange.y +60, 0.6);
-    
-    if (!(headNum < 0)) {
-        heads[headNum].show(int(w/2), headHeight, 0.6);
-    }
-
-    if (!(eyeNum < 0)) {
-        eyes[eyeNum].show(int(w/2), headHeight + 50, 0.6);
-    }
-
-    if (!(misc2Num < 0)) {
-        miscs2[misc2Num].show(int(w/2) + 25, headHeight + 65, 0.6);
-    }
-
-    if (!(bangNum < 0)) {
-        bangs[bangNum].show(int(w/2), headHeight - 40, 0.6);
-    }
-
-    if (!(browNum < 0)) {
-        brows[browNum].show(int(w/2), headHeight + 10, 0.6);
-    }
-
-    if (!(noseNum < 0)) {
-        noses[noseNum].show(int(w/2), headHeight + 45, 0.6);
-    }
-
-    if (!(mouthNum < 0)) {
-        mouths[mouthNum].show(int(w/2), headHeight + 75, 0.6);
-    }
-
-    if (!(misc1Num < 0)) {
-        miscs1[misc1Num].show(int(w/2) + 25, headHeight + 65, 0.6);
-    }
+    background(50);
+    myFriendRenderer.show();
 }
 
 function getFilepaths(basepath, basefile, amount) {
@@ -202,18 +118,18 @@ function getStrings(filepaths) {
     return stringList;
 }
 
-function createFaceObjects(stringLists, type, defaultScale, defaultOffset, mirrored, translateRange) {
+function createFaceObjects(stringLists, type, mirrored, translateRange) {
     var faceObjectList = [stringLists.length];
     for (let i = 0; i < stringLists.length; i++) {
-        faceObjectList[i] = new FaceObject(stringLists[i], type, i + 1, defaultScale, defaultOffset, mirrored, translateRange);
+        faceObjectList[i] = new FaceObject(stringLists[i], type, i + 1, mirrored, translateRange);
         faceObjectList[i].reloadIMG();
     }
     return faceObjectList;
 }
 
 function nudgeHeadHeight(amount) {
-    headHeightPercent += amount;
-    headHeightPercent = constrain(headHeightPercent, 0, 1);
+    myFriend.headHeight += amount;
+    myFriend.headHeight = constrain(myFriend.headHeight, 0, 1);
     friendCode = createCode();
 }
 
@@ -222,7 +138,7 @@ function isValidHex(str) {
     return hexRegex.test(str);
 }
 
-function setColor(objectList, id, idHex) {
+function setColor(part, id, idHex) {
     let colorPickerElement = document.getElementById(id);
     finalValue = colorPickerElement.value;
 
@@ -241,104 +157,49 @@ function setColor(objectList, id, idHex) {
         }
     }
 
-    for (let i = 0; i < objectList.length; i++) {
-        objectList[i].color = finalValue;
-        objectList[i].reloadIMG();
-    }
-
-    friendCode = createCode();
+    myFriend.partStates[part].color = finalValue;
+    myFriendRenderer.reloadParts();
 }
 
-function nudgeFaceObject(objectList, amountX, amountY) {
-    for (let i = 0; i < objectList.length; i++) {
-        objectList[i].offsetX += amountX;
-        objectList[i].offsetY += amountY;
-        objectList[i].offsetX = constrain(objectList[i].offsetX, 0.0, 1.0);
-        objectList[i].offsetY = constrain(objectList[i].offsetY, 0.0, 1.0);
-    }
-    friendCode = createCode();
+function nudgeFaceObject(part, amountX, amountY) {
+    myFriend.partStates[part].positionX += amountX;
+    myFriend.partStates[part].positionY += amountY;
+    myFriend.partStates[part].positionX = constrain(myFriend.partStates[part].positionX, 0.0, 1.0);
+    myFriend.partStates[part].positionY = constrain(myFriend.partStates[part].positionY, 0.0, 1.0);
+    myFriendRenderer.reloadPartsSoft();
 }
 
-function scaleFaceObject(objectList, amountX, amountY) {
-    for (let i = 0; i < objectList.length; i++) {
-        objectList[i].scaleX += amountX;
-        objectList[i].scaleY += amountY;
-        objectList[i].scaleX = constrain(objectList[i].scaleX, 0.0, 1.0);
-        objectList[i].scaleY = constrain(objectList[i].scaleY, 0.0, 1.0);
-    }
-    friendCode = createCode();
+function scaleFaceObject(part, amountX, amountY) {
+    myFriend.partStates[part].scaleX += amountX;
+    myFriend.partStates[part].scaleY += amountY;
+    myFriend.partStates[part].scaleX = constrain(myFriend.partStates[part].scaleX, 0.0, 1.0);
+    myFriend.partStates[part].scaleY = constrain(myFriend.partStates[part].scaleY, 0.0, 1.0);
+    myFriendRenderer.reloadPartsSoft();
 }
 
-function rotateFaceObject(objectList, amount) {
-    for (let i = 0; i < objectList.length; i++) {
-        objectList[i].rotation += amount;
-    }
-    friendCode = createCode();
+function rotateFaceObject(part, amount) {
+    myFriend.partStates[part].rotationDegrees += amount;
+    myFriendRenderer.reloadPartsSoft();
 }
 
-function changeHead(amount){
-    headNum = changeFaceObject(heads, headNum, amount, false);
-    friendCode = createCode();
-}
-
-function changeBangs(amount){
-    bangNum = changeFaceObject(bangs, bangNum, amount, true);
-    friendCode = createCode();
-}
-
-function changeBack(amount){
-    backNum = changeFaceObject(backs, backNum, amount, true);
-    friendCode = createCode();
-}
-
-function changeEyes(amount){
-    eyeNum = changeFaceObject(eyes, eyeNum, amount, true);
-    friendCode = createCode();
-}
-
-function changeBrows(amount){
-    browNum = changeFaceObject(brows, browNum, amount, true);
-    friendCode = createCode();
-}
-
-function changeNose(amount){
-    noseNum = changeFaceObject(noses, noseNum, amount, true);
-    friendCode = createCode();
-}
-
-function changeMouth(amount){
-    mouthNum = changeFaceObject(mouths, mouthNum, amount, true);
-    friendCode = createCode();
-}
-
-function changeMisc1(amount){
-    misc1Num = changeFaceObject(miscs1, misc1Num, amount, true);
-    friendCode = createCode();
-}
-
-function changeMisc2(amount){
-    misc2Num = changeFaceObject(miscs2, misc2Num, amount, true);
-    friendCode = createCode();
-}
-
-function changeFaceObject(objectList, objectNum, amount, allowDelete) {
-    objectNum += amount;
-    if (allowDelete) {
-        if (objectNum < -1) {
-            objectNum = objectList.length - 1;
+function changePart(part, amount) {
+    myFriend.partStates[part].index += amount;
+    partCount = myFriend.partStates[part].partCount;
+    if (myFriend.partStates[part].allowDelete) {
+        if (myFriend.partStates[part].index < -1) {
+            myFriend.partStates[part].index = partCount - 1;
         }
-        if (objectNum > objectList.length - 1) {
-            objectNum = -1;
+        if (myFriend.partStates[part].index > partCount - 1) {
+            myFriend.partStates[part].index = -1;
         }
     } else {
-        if (objectNum < 0) {
-            objectNum = objectList.length - 1;
+        if (myFriend.partStates[part].index < 0) {
+            myFriend.partStates[part].index = partCount - 1;
         }
-        if (objectNum > objectList.length - 1) {
-            objectNum = 0;
+        if (myFriend.partStates[part].index > partCount - 1) {
+            myFriend.partStates[part].index = 0;
         }
     }
-    return objectNum;
 }
 
 function updateInfo(){
@@ -358,6 +219,7 @@ function updateInfo(){
 
 function createCode() {
     updateInfo();
+    return;
 
     var codeString = "";
     //Version
@@ -416,8 +278,98 @@ function applyCode(newCode) {
     
 }
 
+function saveImage() {
+    saveCanvas(myFriend.name + ".png");
+    describe('A picture of a friend created with Friend Library');
+}
+
+class Friend {
+    constructor() {
+        this.HEAD_HEIGHT_RANGE = createVector(0.5, 0.6);
+
+        this.name = "Friend";
+        this.birthMonthDay = "0101";
+        this.birthYear = "2000";
+        this.headHeight = 0.75;
+
+        this.partStates = {
+            "head": {index: 0, color: "#ffffff", scaleX: 0.5, scaleY: 0.5, positionX: 0.5, positionY: 0.5, rotationDegrees: 0, mirrored: false, transMin: -50, transMax: 50, dOffsetX: 0, dOffsetY: 0, allowDelete: false, partCount: 8},
+            "bang": {index: 0, color: "#ffffff", scaleX: 0.5, scaleY: 0.5, positionX: 0.5, positionY: 0.5, rotationDegrees: 0, mirrored: false, transMin: -50, transMax: 50, dOffsetX: 0, dOffsetY: -0.11, allowDelete: true, partCount: 10},
+            "back": {index: -1, color: "#ffffff", scaleX: 0.5, scaleY: 0.5, positionX: 0.5, positionY: 0.5, rotationDegrees: 0, mirrored: false, transMin: -50, transMax: 50, dOffsetX: 0, dOffsetY: 0.17, allowDelete: true, partCount: 7},
+            "eye": {index: 2, color: "#000000", scaleX: 0.4, scaleY: 0.4, positionX: 0.4, positionY: 0.5, rotationDegrees: 0, mirrored: true, transMin: -100, transMax: 50, dOffsetX: 0, dOffsetY: 0.14, allowDelete: true, partCount: 9},
+            "brow": {index: 4, color: "#ffffff", scaleX: 0.4, scaleY: 0.4, positionX: 0.4, positionY: 0.5, rotationDegrees: 0, mirrored: true, transMin: -100, transMax: 50, dOffsetX: 0, dOffsetY: 0.03, allowDelete: true, partCount: 5},
+            "nose": {index: 0, color: "#ffffff", scaleX: 0.5, scaleY: 0.5, positionX: 0.5, positionY: 0.5, rotationDegrees: 0, mirrored: false, transMin: -50, transMax: 50, dOffsetX: 0, dOffsetY: 0.13, allowDelete: true, partCount: 7},
+            "mouth": {index: 3, color: "#ffffff", scaleX: 0.5, scaleY: 0.5, positionX: 0.5, positionY: 0.5, rotationDegrees: 0, mirrored: false, transMin: -50, transMax: 50, dOffsetX: 0, dOffsetY: 0.2, allowDelete: true, partCount: 9},
+            "misc1": {index: -1, color: "#ffffff", scaleX: 0.5, scaleY: 0.5, positionX: 0.5, positionY: 0.5, rotationDegrees: 0, mirrored: false, transMin: -150, transMax: 50, dOffsetX: 0.14, dOffsetY: 0.19, allowDelete: true, partCount: 15},
+            "misc2": {index: -1, color: "#ffffff", scaleX: 0.5, scaleY: 0.5, positionX: 0.5, positionY: 0.5, rotationDegrees: 0, mirrored: false, transMin: -150, transMax: 50, dOffsetX: 0.14, dOffsetY: 0.19, allowDelete: true, partCount: 15},
+            "neck": {index: 0, color: "#e8eaf6", scaleX: 0.5, scaleY: 0.5, positionX: 0.5, positionY: 0.5, rotationDegrees: 0, mirrored: false, transMin: 0, transMax: 0, dOffsetX: 0, dOffsetY: 0.17, allowDelete: false, partCount: 1},
+            "torso": {index: 0, color: "#ff0000", scaleX: 0.5, scaleY: 0.5, positionX: 0.5, positionY: 0.5, rotationDegrees: 0, mirrored: false, transMin: 0, transMax: 0, dOffsetX: 0, dOffsetY: 0.33, allowDelete: false, partCount: 1}
+        };
+
+        this.friendCode = "";
+    }
+
+}
+
+class FriendRenderer {
+    constructor(friend, canvasSize, faceObjects) {
+        this.friend = friend;
+        this.headHeightRange = this.friend.HEAD_HEIGHT_RANGE;
+        this.canvasSize = createVector(canvasSize[0], canvasSize[1]);
+        this.faceObjects = faceObjects;
+        this.partStatesArray = [this.friend.partStates["back"], this.friend.partStates["torso"], 
+                                this.friend.partStates["neck"], this.friend.partStates["head"], 
+                                this.friend.partStates["eye"], this.friend.partStates["misc2"], 
+                                this.friend.partStates["bang"], this.friend.partStates["brow"], 
+                                this.friend.partStates["mouth"], this.friend.partStates["nose"], 
+                                this.friend.partStates["misc1"]];
+        this.scale = 0.6;
+        this.reloadParts();
+        this.reloadPartsSoft();
+    }
+
+    reloadParts(){
+        for (let partType = 0; partType < this.faceObjects.length; partType++) {
+            for (let part = 0; part < this.faceObjects[partType].length; part++) {
+                this.faceObjects[partType][part].color = this.partStatesArray[partType].color;
+                this.faceObjects[partType][part].reloadIMG();
+            }
+        }
+    }
+
+    reloadPartsSoft() {
+        for (let partType = 0; partType < this.faceObjects.length; partType++) {
+            for (let part = 0; part < this.faceObjects[partType].length; part++) {
+            this.faceObjects[partType][part].offsetX = this.partStatesArray[partType].positionX;
+            this.faceObjects[partType][part].offsetY = this.partStatesArray[partType].positionY;
+            this.faceObjects[partType][part].scaleX = this.partStatesArray[partType].scaleX;
+            this.faceObjects[partType][part].scaleY = this.partStatesArray[partType].scaleY;
+            this.faceObjects[partType][part].rotation = this.partStatesArray[partType].rotationDegrees;
+            }
+        }
+    }
+
+    show() {
+    clear();
+    // back, torso, neck, head, eyes, misc2, bangs, brows, mouth, nose, misc1
+    for (let i = 0; i < this.faceObjects.length; i++) {
+        let headHeight = lerp(this.headHeightRange.x, this.headHeightRange.y, this.friend.headHeight);
+
+        // No floating body
+        if ((i == 1 || i == 2)) {
+            headHeight = this.headHeightRange.y;
+        }
+
+        let partNum = this.partStatesArray[i].index;
+        if (this.faceObjects[i] && this.faceObjects[i][partNum]) {
+            this.faceObjects[i][partNum].show(int(width/2 + (width * this.partStatesArray[i].dOffsetX)), (headHeight + this.partStatesArray[i].dOffsetY) * int(width), this.scale);
+        }
+    }
+    }
+}
+
 class FaceObject {
-    constructor(SVGString, type, number, defaultScale, defaultOffset, mirrored, translateRange) {
+    constructor(SVGString, type, number, mirrored, translateRange) {
         //this.TRANSLATE_RANGE = createVector(-50, 50);
         this.translateRange = translateRange;
         this.SCALE_RANGE = createVector(0.1, 2.5);
@@ -429,12 +381,10 @@ class FaceObject {
         this.number = number;
         this.mirrored = mirrored;
 
-        this.defaultScale = defaultScale;
-        this.scaleX = defaultScale.x;
-        this.scaleY = defaultScale.y;
-        this.defaultOffset = defaultOffset;
-        this.offsetX = defaultOffset.x;
-        this.offsetY = defaultOffset.y;
+        this.scaleX = 0.5;
+        this.scaleY = 0.5;
+        this.offsetX = 0.5;
+        this.offsetY = 0.5;
         this.rotation = 0;
         this.colorToReplace = "#f0f";
         this.color = "#ffffff";
