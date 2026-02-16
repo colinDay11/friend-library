@@ -1,6 +1,12 @@
 body {
     font-family: 'Bai Jamjuree', sans-serif;
-    align-content: center;
+}
+
+.creator {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 button {
@@ -13,8 +19,16 @@ button {
     cursor: pointer;
 }
 
+.sketch-container {
+    border: 1px solid #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 input {
     vertical-align: middle;
+    height: 50px;
 }
 
 .tab {
@@ -22,7 +36,11 @@ input {
     flex-wrap: wrap;
     overflow: hidden;
     border: 1px, solid, #b8afc2;
-    width: 350px;
+}
+
+h2 {
+    background-color: #888888;
+    color: white;
 }
 
 .tab button {
@@ -45,6 +63,7 @@ input {
   padding: 6px 12px;
   border: 1px solid #ccc;
   border-top: none;
+  max-width: 400px;
 }
 
 .tabcontent h2 {

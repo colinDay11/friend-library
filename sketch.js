@@ -36,15 +36,18 @@ let friendName;
 let birthday;
 let friendCode;
 
+const BASE_DESIGN_SIZE = 350;
+
 function setup() {
     canvasWidth = w;
     canvasHeight = h;
-    let canvas = createCanvas(w, h);
+    let s = calculateCanvasSize();
+    let canvas = createCanvas(s, s);
     canvas.parent('sketch-container');
     rectMode(CENTER);
 
     myFriend = new Friend();
-    myFriendRenderer = new FriendRenderer(myFriend, [350, 350], [
+    myFriendRenderer = new FriendRenderer(myFriend, [s, s], [
         createFaceObjects(backStrings, 2, false, createVector(myFriend.partStates["back"].transMin, myFriend.partStates["back"].transMax)),
         createFaceObjects(torsoStrings, 9, false, createVector(myFriend.partStates["torso"].transMin, myFriend.partStates["torso"].transMax)),
         createFaceObjects(neckStrings, 8, false, createVector(myFriend.partStates["neck"].transMin, myFriend.partStates["neck"].transMax)),
@@ -59,11 +62,25 @@ function setup() {
     ]);
 }
 
+function calculateCanvasSize() {
+    let minDimension = min(windowWidth, windowHeight);
+    
+    let marginPercent = 0.8;
+    let size = minDimension * marginPercent;
+    
+    // 3. (Optional) Set a maximum size so it doesn't look absurd on 4k monitors
+    // Remove this line if you want it to be huge on desktop
+    let maxSize = 500;
+    size = min(size, maxSize); 
+    
+    return size;
+}
+
 function windowResized() {
-    const {w, h} = getContainerSize();
-    canvasWidth = w;
-    canvasHeight = h;
-    resizeCanvas(canvasWidth, canvasHeight)
+    let s = calculateCanvasSize();
+    canvasWidth = s;
+    canvasHeight = s;
+    resizeCanvas(canvasWidth, canvasHeight);
 }
 
 function preload() {
@@ -98,7 +115,7 @@ function preload() {
 }
 
 function draw() {
-    background(50);
+    clear();
     myFriendRenderer.show();
 }
 
@@ -278,6 +295,8 @@ function applyCode(newCode) {
 }
 
 function saveImage() {
+    myFriendRenderer.overrideBackground = true;
+    myFriendRenderer.show();
     saveCanvas(myFriend.name + ".png");
     describe('A picture of a friend created with Friend Library');
 }
@@ -295,9 +314,9 @@ class Friend {
             "head": {index: 0, color: "#ffffff", scaleX: 0.5, scaleY: 0.5, positionX: 0.5, positionY: 0.5, rotationDegrees: 0, mirrored: false, transMin: -50, transMax: 50, dOffsetX: 0, dOffsetY: 0, allowDelete: false, partCount: 8},
             "bang": {index: 0, color: "#ffffff", scaleX: 0.5, scaleY: 0.5, positionX: 0.5, positionY: 0.5, rotationDegrees: 0, mirrored: false, transMin: -50, transMax: 50, dOffsetX: 0, dOffsetY: -0.11, allowDelete: true, partCount: 10},
             "back": {index: -1, color: "#ffffff", scaleX: 0.5, scaleY: 0.5, positionX: 0.5, positionY: 0.5, rotationDegrees: 0, mirrored: false, transMin: -50, transMax: 50, dOffsetX: 0, dOffsetY: 0.17, allowDelete: true, partCount: 7},
-            "eye": {index: 2, color: "#000000", scaleX: 0.4, scaleY: 0.4, positionX: 0.4, positionY: 0.5, rotationDegrees: 0, mirrored: true, transMin: -100, transMax: 50, dOffsetX: 0, dOffsetY: 0.14, allowDelete: true, partCount: 9},
-            "brow": {index: 4, color: "#ffffff", scaleX: 0.4, scaleY: 0.4, positionX: 0.4, positionY: 0.5, rotationDegrees: 0, mirrored: true, transMin: -100, transMax: 50, dOffsetX: 0, dOffsetY: 0.03, allowDelete: true, partCount: 5},
-            "nose": {index: 0, color: "#ffffff", scaleX: 0.5, scaleY: 0.5, positionX: 0.5, positionY: 0.5, rotationDegrees: 0, mirrored: false, transMin: -50, transMax: 50, dOffsetX: 0, dOffsetY: 0.13, allowDelete: true, partCount: 7},
+            "eye": {index: 2, color: "#000000", scaleX: 0.4, scaleY: 0.4, positionX: 0.4, positionY: 0.4, rotationDegrees: 0, mirrored: true, transMin: -120, transMax: 10, dOffsetX: 0, dOffsetY: 0.14, allowDelete: true, partCount: 9},
+            "brow": {index: 4, color: "#ffffff", scaleX: 0.4, scaleY: 0.4, positionX: 0.4, positionY: 0.5, rotationDegrees: 0, mirrored: true, transMin: -120, transMax: 10, dOffsetX: 0, dOffsetY: 0.03, allowDelete: true, partCount: 5},
+            "nose": {index: 0, color: "#ffffff", scaleX: 0.5, scaleY: 0.5, positionX: 0.6, positionY: 0.5, rotationDegrees: 0, mirrored: false, transMin: -50, transMax: 50, dOffsetX: 0, dOffsetY: 0.13, allowDelete: true, partCount: 7},
             "mouth": {index: 3, color: "#ffffff", scaleX: 0.5, scaleY: 0.5, positionX: 0.5, positionY: 0.5, rotationDegrees: 0, mirrored: false, transMin: -50, transMax: 50, dOffsetX: 0, dOffsetY: 0.2, allowDelete: true, partCount: 9},
             "misc1": {index: -1, color: "#ffffff", scaleX: 0.5, scaleY: 0.5, positionX: 0.5, positionY: 0.5, rotationDegrees: 0, mirrored: false, transMin: -150, transMax: 50, dOffsetX: 0.14, dOffsetY: 0.19, allowDelete: true, partCount: 15},
             "misc2": {index: -1, color: "#ffffff", scaleX: 0.5, scaleY: 0.5, positionX: 0.5, positionY: 0.5, rotationDegrees: 0, mirrored: false, transMin: -150, transMax: 50, dOffsetX: 0.14, dOffsetY: 0.19, allowDelete: true, partCount: 15},
@@ -312,6 +331,13 @@ class Friend {
 
 class FriendRenderer {
     constructor(friend, canvasSize, faceObjects) {
+        this.MIN_BG_COLOR = color(205);
+        this.MAX_BG_COLOR = color(245);
+        this.bgPercent = 0;
+        this.bgSpeed = 1;
+        this.backgroundColor = this.MIN_BG_COLOR;
+        this.overrideBackground = false;
+
         this.friend = friend;
         this.headHeightRange = this.friend.HEAD_HEIGHT_RANGE;
         this.canvasSize = createVector(canvasSize[0], canvasSize[1]);
@@ -322,7 +348,7 @@ class FriendRenderer {
                                 this.friend.partStates["bang"], this.friend.partStates["brow"], 
                                 this.friend.partStates["mouth"], this.friend.partStates["nose"], 
                                 this.friend.partStates["misc1"]];
-        this.scale = 0.6;
+        this.scale = canvasSize[0]/583;
         this.reloadParts();
         this.reloadPartsSoft();
     }
@@ -352,6 +378,24 @@ class FriendRenderer {
 
     show() {
     clear();
+
+    //Change BG Color
+    angleMode(DEGREES);
+    this.bgPercent += this.bgSpeed;
+    
+    let easeVal = map(sin(this.bgPercent), -1, 1, 0, 1)
+    this.backgroundColor = lerpColor(this.MIN_BG_COLOR, this.MAX_BG_COLOR, easeVal);
+    
+    
+    if (this.overrideBackground) {
+        background(0, 0, 0, 0);
+    } else {
+        background(this.backgroundColor);
+    }
+
+    this.scale = width/583;
+
+    push();
     // back, torso, neck, head, eyes, misc2, bangs, brows, mouth, nose, misc1
     for (let i = 0; i < this.faceObjects.length; i++) {
         let headHeight = lerp(this.headHeightRange.x, this.headHeightRange.y, this.friend.headHeight);
@@ -363,9 +407,13 @@ class FriendRenderer {
 
         let partNum = this.partStatesArray[i].index;
         if (this.faceObjects[i] && this.faceObjects[i][partNum]) {
-            this.faceObjects[i][partNum].show(int(width/2 + (width * this.partStatesArray[i].dOffsetX)), (headHeight + this.partStatesArray[i].dOffsetY) * int(width), this.scale);
+            this.faceObjects[i][partNum].show(
+                int(width/2 + (width * this.partStatesArray[i].dOffsetX)), 
+                (headHeight + this.partStatesArray[i].dOffsetY) * int(width), 
+                this.scale);
         }
     }
+    this.overrideBackground = false;
     }
 }
 
@@ -395,7 +443,7 @@ class FaceObject {
         let viewBoxRegex = /viewBox=["']\s*([\d\.-]+)\s+([\d\.-]+)\s+([\d\.-]+)\s+([\d\.-]+)\s*["']/;
         let match = this.SVGString.match(viewBoxRegex);
 
-        //Note to self: refine source of this piece of code
+        //Note to self: find source of this piece of code
         if (match) {
             this.nativeW = parseFloat(match[3]);
             this.nativeH = parseFloat(match[4]);
@@ -421,8 +469,8 @@ class FaceObject {
             return;
         }
 
-        let partX = lerp(this.translateRange.x, this.translateRange.y, this.offsetX);
-        let partY = lerp(this.translateRange.x, this.translateRange.y, this.offsetY);
+        let partX = lerp(this.translateRange.x, this.translateRange.y, this.offsetX) * scaleFactor;
+        let partY = lerp(this.translateRange.x, this.translateRange.y, this.offsetY) * scaleFactor;
 
         let partW = this.nativeW * lerp(this.SCALE_RANGE.x, this.SCALE_RANGE.y, this.scaleX) * scaleFactor;
         let partH = this.nativeH * lerp(this.SCALE_RANGE.x, this.SCALE_RANGE.y, this.scaleY) * scaleFactor;
@@ -434,6 +482,7 @@ class FaceObject {
             imageMode(CENTER);
             image(this.img, 0, 0, partW, partH);
             pop();
+
             push();
             translate(x, y);
             scale(-1, 1);

@@ -38,15 +38,14 @@
   </head>
   <body>
     <main>
-        <h1>Friend Library - Creator</h1>
+        <h1>FriendLibrary <span style="color: #264aff;">Creator</span></h1>
     </main>
+    <div class="creator">
     <script src="sketch.js"></script>
     <script>
         // Get the element with id="defaultOpen" and click on it
         //document.getElementById("defaultCreatorTab").click();
     </script>
-    <div id="sketch-container"></div>
-
     <div class="tab">
         <button class="tablinks" onclick="changeTab(event, 'head')" id="defaultCreatorTab"><img src="assets/svg/head1.svg" width = 20px></button>
         <button class="tablinks" onclick="changeTab(event, 'bangs')"><img src="assets/svg/bangs1.svg" width = 20px></button>
@@ -63,17 +62,19 @@
         <button class="tablinks" onclick="changeTab(event, 'upload')"><img src="assets/svg/upload.svg" width = 20px></button>
     </div>
 
+    <div id="sketch-container" class="sketch-container"></div>
+
     <div id="head" class="tabcontent">
         <h2>Head</h2>
-        <button onclick="changePart('head', -1)">&lt</button>
-        <button onclick="changePart('head', 1)">&gt</button>
+        <button onclick="changePart('head', -1)"><img src="assets/svg/left.svg" alt="left" width="50%"></button>
+        <button onclick="changePart('head', 1)"><img src="assets/svg/right.svg" alt="right" width="50%"></button>
         <h3>Skin Tone</h3>
         <input id="HeadSkinToneInput" type="color"></input>
         <input id="HeadSkinToneInputHex" maxlength="7" placeholder="#ffffff"></input>
-        <button onclick="setColor('head', 'HeadSkinToneInput', 'HeadSkinToneInputHex')">✔</button>
+        <button onclick="setColor('head', 'HeadSkinToneInput', 'HeadSkinToneInputHex')">OK</button>
         <h3>Head Height</h3>
-        <button onclick="nudgeHeadHeight(-0.1)">Up</button>
-        <button onclick="nudgeHeadHeight(0.1)">Down</button>
+        <button onclick="nudgeHeadHeight(-0.1)"><img src="assets/svg/up.svg" alt="up" width="50%"></button>
+        <button onclick="nudgeHeadHeight(0.1)"><img src="assets/svg/down.svg" alt="down" width="50%"></button>
     </div>
 
     <div id="bangs" class="tabcontent">
@@ -86,8 +87,8 @@
         <button onclick="setColor('bang', 'BangsColorInput', 'BangsColorInputHex')">OK</button>
         <h3>Nudge</h3>
         <button onclick="nudgeFaceObject('bang', 0, -0.05)"><img src="assets/svg/up.svg" alt="up" width="50%"></button>
-        <button onclick="nudgeFaceObject('bang', 0, 0.05)"><img src="assets/svg/down.svg" alt="left" width="50%"></button>
-        <button onclick="nudgeFaceObject('bang', -0.05, 0)"><img src="assets/svg/left.svg" alt="down" width="40%"></button>
+        <button onclick="nudgeFaceObject('bang', 0, 0.05)"><img src="assets/svg/down.svg" alt="down" width="50%"></button>
+        <button onclick="nudgeFaceObject('bang', -0.05, 0)"><img src="assets/svg/left.svg" alt="left" width="40%"></button>
         <button onclick="nudgeFaceObject('bang', 0.05, 0)"><img src="assets/svg/right.svg" alt="right" width="40%"></button>
         <h3>Size</h3>
         <button onclick="scaleFaceObject('bang', 0.05, 0.05)"><img src="assets/svg/plus.svg" alt="plus" width="50%"></button>
@@ -99,159 +100,159 @@
     
     <div id="back" class="tabcontent">
         <h2>Back</h2>
-        <button onclick="changePart('back', -1)">&lt</button>
-        <button onclick="changePart('back', 1)">&gt</button>
+        <button onclick="changePart('back', -1)"><img src="assets/svg/left.svg" alt="left" width="50%"></button>
+        <button onclick="changePart('back', 1)"><img src="assets/svg/right.svg" alt="right" width="50%"></button>
         <h3>Color</h3>
         <input id="HairColorInput" type="color"></input>
         <input id="HairColorInputHex" placeholder="#ffffff"></input>
-        <button id="HairColorButton" onclick="setColor('back', 'HairColorInput', 'HairColorInputHex')">✔</button>
+        <button id="HairColorButton" onclick="setColor('back', 'HairColorInput', 'HairColorInputHex')">OK</button>
         <h3>Nudge</h3>
-        <button onclick="nudgeFaceObject('back', 0, -0.05)">Up</button>
-        <button onclick="nudgeFaceObject('back', 0, 0.05)">Down</button>
-        <button onclick="nudgeFaceObject('back', -0.05, 0)">Left</button>
-        <button onclick="nudgeFaceObject('back', 0.05, 0)">Right</button>
+        <button onclick="nudgeFaceObject('back', 0, -0.05)"><img src="assets/svg/up.svg" alt="up" width="50%"></button>
+        <button onclick="nudgeFaceObject('back', 0, 0.05)"><img src="assets/svg/down.svg" alt="down" width="50%"></button>
+        <button onclick="nudgeFaceObject('back', -0.05, 0)"><img src="assets/svg/left.svg" alt="left" width="40%"></button>
+        <button onclick="nudgeFaceObject('back', 0.05, 0)"><img src="assets/svg/right.svg" alt="right" width="40%"></button>
         <h3>Size</h3>
-        <button onclick="scaleFaceObject('back', 0.05, 0.05)">Up</button>
-        <button onclick="scaleFaceObject('back', -0.05, -0.05)">Down</button>
+        <button onclick="scaleFaceObject('back', 0.05, 0.05)"><img src="assets/svg/plus.svg" alt="plus" width="50%"></button>
+        <button onclick="scaleFaceObject('back', -0.05, -0.05)"><img src="assets/svg/minus.svg" alt="minus" width="50%"></button>
         <h3>Squint</h3>
-        <button onclick="scaleFaceObject('back', 0, 0.05)">Up</button>
-        <button onclick="scaleFaceObject('back', 0, -0.05)">Down</button>
+        <button onclick="scaleFaceObject('back', 0, 0.05)"><img src="assets/svg/unsquint.svg" alt="unsquint" width="50%"></button>
+        <button onclick="scaleFaceObject('back', 0, -0.05)"><img src="assets/svg/squint.svg" alt="squint" width="50%"></button>
     </div>
 
     <div id="eyes" class="tabcontent">
         <h2>Eyes</h2>
-        <button onclick="changePart('eye', -1)">&lt</button>
-        <button onclick="changePart('eye', 1)">&gt</button>
+        <button onclick="changePart('eye', -1)"><img src="assets/svg/left.svg" alt="left" width="50%"></button>
+        <button onclick="changePart('eye', 1)"><img src="assets/svg/right.svg" alt="right" width="50%"></button>
         <h3>Color</h3>
         <input id="EyeColorInput" type="color"></input>
         <input id="EyeColorInputHex" placeholder="#ffffff"></input>
-        <button onclick="setColor('eye', 'EyeColorInput', 'EyeColorInputHex')">✔</button>
+        <button onclick="setColor('eye', 'EyeColorInput', 'EyeColorInputHex')">OK</button>
         <h3>Nudge</h3>
-        <button onclick="nudgeFaceObject('eye', 0, -0.05)">Up</button>
-        <button onclick="nudgeFaceObject('eye', 0, 0.05)">Down</button>
-        <button onclick="nudgeFaceObject('eye', -0.05, 0)">&lt &gt</button>
-        <button onclick="nudgeFaceObject('eye', 0.05, 0)">&gt &lt</button>
+        <button onclick="nudgeFaceObject('eye', 0, -0.05)"><img src="assets/svg/up.svg" alt="up" width="50%"></button>
+        <button onclick="nudgeFaceObject('eye', 0, 0.05)"><img src="assets/svg/down.svg" alt="down" width="50%"></button>
+        <button onclick="nudgeFaceObject('eye', -0.05, 0)"><img src="assets/svg/unsquint.svg" style="transform:rotate(90deg);" alt="widen" height="30%"></button>
+        <button onclick="nudgeFaceObject('eye', 0.05, 0)"><img src="assets/svg/squint.svg" style="transform:rotate(90deg);" alt="narrow" height="30%"></button>
         <h3>Size</h3>
-        <button onclick="scaleFaceObject('eye', 0.05, 0.05)">Up</button>
-        <button onclick="scaleFaceObject('eye', -0.05, -0.05)">Down</button>
+        <button onclick="scaleFaceObject('eye', 0.05, 0.05)"><img src="assets/svg/plus.svg" alt="plus" width="50%"></button>
+        <button onclick="scaleFaceObject('eye', -0.05, -0.05)"><img src="assets/svg/minus.svg" alt="minus" width="50%"></button>
         <h3>Squint</h3>
-        <button onclick="scaleFaceObject('eye', 0, 0.05)">Up</button>
-        <button onclick="scaleFaceObject('eye', 0, -0.05)">Down</button>
+        <button onclick="scaleFaceObject('eye', 0, 0.05)"><img src="assets/svg/unsquint.svg" alt="unsquint" width="50%"></button>
+        <button onclick="scaleFaceObject('eye', 0, -0.05)"><img src="assets/svg/squint.svg" alt="squint" width="50%"></button>
         <h3>Rotate</h3>
-        <button onclick="rotateFaceObject('eye', -5)">Left</button>
-        <button onclick="rotateFaceObject('eye', 5)">Right</button>
+        <button onclick="rotateFaceObject('eye', -5)"><img src="assets/svg/rotateLeft.svg" alt="rotateLeft" width="60%"></button>
+        <button onclick="rotateFaceObject('eye', 5)"><img src="assets/svg/rotateRight.svg" alt="rotateRight" width="60%"></button>
     </div>
 
     <div id="brows" class="tabcontent">
         <h2>Eyebrows</h2>
-        <button onclick="changePart('brow', -1)">&lt</button>
-        <button onclick="changePart('brow', 1)">&gt</button>
+        <button onclick="changePart('brow', -1)"><img src="assets/svg/left.svg" alt="left" width="50%"></button>
+        <button onclick="changePart('brow', 1)"><img src="assets/svg/right.svg" alt="right" width="50%"></button>
         <h3>Nudge</h3>
-        <button onclick="nudgeFaceObject('brow', 0, -0.05)">Up</button>
-        <button onclick="nudgeFaceObject('brow', 0, 0.05)">Down</button>
-        <button onclick="nudgeFaceObject('brow', -0.05, 0)">&lt &gt</button>
-        <button onclick="nudgeFaceObject('brow', 0.05, 0)">&gt &lt</button>
+        <button onclick="nudgeFaceObject('brow', 0, -0.05)"><img src="assets/svg/up.svg" alt="up" width="50%"></button>
+        <button onclick="nudgeFaceObject('brow', 0, 0.05)"><img src="assets/svg/down.svg" alt="down" width="50%"></button>
+        <button onclick="nudgeFaceObject('brow', -0.05, 0)"><img src="assets/svg/unsquint.svg" style="transform:rotate(90deg);" alt="widen" height="30%"></button>
+        <button onclick="nudgeFaceObject('brow', 0.05, 0)"><img src="assets/svg/squint.svg" style="transform:rotate(90deg);" alt="narrow" height="30%"></button>
         <h3>Size</h3>
-        <button onclick="scaleFaceObject('brow', 0.05, 0.05)">Up</button>
-        <button onclick="scaleFaceObject('brow', -0.05, -0.05)">Down</button>
+        <button onclick="scaleFaceObject('brow', 0.05, 0.05)"><img src="assets/svg/plus.svg" alt="plus" width="50%"></button>
+        <button onclick="scaleFaceObject('brow', -0.05, -0.05)"><img src="assets/svg/minus.svg" alt="minus" width="50%"></button>
         <h3>Squint</h3>
-        <button onclick="scaleFaceObject('brow', 0, 0.05)">Up</button>
-        <button onclick="scaleFaceObject('brow', 0, -0.05)">Down</button>
+        <button onclick="scaleFaceObject('brow', 0, 0.05)"><img src="assets/svg/unsquint.svg" alt="unsquint" width="50%"></button>
+        <button onclick="scaleFaceObject('brow', 0, -0.05)"><img src="assets/svg/squint.svg" alt="squint" width="50%"></button>
         <h3>Rotate</h3>
-        <button onclick="rotateFaceObject('brow', -5)">Left</button>
-        <button onclick="rotateFaceObject('brow', 5)">Right</button>
+        <button onclick="rotateFaceObject('brow', -5)"><img src="assets/svg/rotateLeft.svg" alt="rotateLeft" width="60%"></button>
+        <button onclick="rotateFaceObject('brow', 5)"><img src="assets/svg/rotateRight.svg" alt="rotateRight" width="60%"></button>
     </div>
 
     <div id="noses" class="tabcontent">
         <h2>Nose</h2>
-        <button onclick="changePart('nose', -1)">&lt</button>
-        <button onclick="changePart('nose', 1)">&gt</button>
+        <button onclick="changePart('nose', -1)"><img src="assets/svg/left.svg" alt="left" width="50%"></button>
+        <button onclick="changePart('nose', 1)"><img src="assets/svg/right.svg" alt="right" width="50%"></button>
         <h3>Nudge</h3>
-        <button onclick="nudgeFaceObject('nose', 0, -0.05)">Up</button>
-        <button onclick="nudgeFaceObject('nose', 0, 0.05)">Down</button>
-        <button onclick="nudgeFaceObject('nose', -0.05, 0)">Left</button>
-        <button onclick="nudgeFaceObject('nose', 0.05, 0)">Right</button>
+        <button onclick="nudgeFaceObject('nose', 0, -0.05)"><img src="assets/svg/up.svg" alt="up" width="50%"></button>
+        <button onclick="nudgeFaceObject('nose', 0, 0.05)"><img src="assets/svg/down.svg" alt="down" width="50%"></button>
+        <button onclick="nudgeFaceObject('nose', -0.05, 0)"><img src="assets/svg/left.svg" alt="left" width="40%"></button>
+        <button onclick="nudgeFaceObject('nose', 0.05, 0)"><img src="assets/svg/right.svg" alt="right" width="40%"></button>
         <h3>Size</h3>
-        <button onclick="scaleFaceObject('nose', 0.05, 0.05)">Up</button>
-        <button onclick="scaleFaceObject('nose', -0.05, -0.05)">Down</button>
+        <button onclick="scaleFaceObject('nose', 0.05, 0.05)"><img src="assets/svg/plus.svg" alt="plus" width="50%"></button>
+        <button onclick="scaleFaceObject('nose', -0.05, -0.05)"><img src="assets/svg/minus.svg" alt="minus" width="50%"></button>
         <h3>Squint</h3>
-        <button onclick="scaleFaceObject('nose', 0, 0.05)">Up</button>
-        <button onclick="scaleFaceObject('nose', 0, -0.05)">Down</button>
+        <button onclick="scaleFaceObject('nose', 0, 0.05)"><img src="assets/svg/unsquint.svg" alt="unsquint" width="50%"></button>
+        <button onclick="scaleFaceObject('nose', 0, -0.05)"><img src="assets/svg/squint.svg" alt="squint" width="50%"></button>
         <h3>Rotate</h3>
-        <button onclick="rotateFaceObject('nose', -5)">Left</button>
-        <button onclick="rotateFaceObject('nose', 5)">Right</button>
+        <button onclick="rotateFaceObject('nose', -5)"><img src="assets/svg/rotateLeft.svg" alt="rotateLeft" width="60%"></button>
+        <button onclick="rotateFaceObject('nose', 5)"><img src="assets/svg/rotateRight.svg" alt="rotateRight" width="60%"></button>
     </div>
 
     <div id="mouths" class="tabcontent">
         <h2>Mouth</h2>
-        <button onclick="changePart('mouth', -1)">&lt</button>
-        <button onclick="changePart('mouth', 1)">&gt</button>
+        <button onclick="changePart('mouth', -1)"><img src="assets/svg/left.svg" alt="left" width="50%"></button>
+        <button onclick="changePart('mouth', 1)"><img src="assets/svg/right.svg" alt="right" width="50%"></button>
         <h3>Color</h3>
         <input id="MouthColorInput" type="color"></input>
         <input id="MouthColorInputHex" placeholder="#ffffff"></input>
-        <button onclick="setColor('mouth', 'MouthColorInput', 'MouthColorInputHex')">✔</button>
+        <button onclick="setColor('mouth', 'MouthColorInput', 'MouthColorInputHex')">OK</button>
         <h3>Nudge</h3>
-        <button onclick="nudgeFaceObject('mouth', 0, -0.05)">Up</button>
-        <button onclick="nudgeFaceObject('mouth', 0, 0.05)">Down</button>
-        <button onclick="nudgeFaceObject('mouth', -0.05, 0)">Left</button>
-        <button onclick="nudgeFaceObject('mouth', 0.05, 0)">Right</button>
+        <button onclick="nudgeFaceObject('mouth', 0, -0.05)"><img src="assets/svg/up.svg" alt="up" width="50%"></button>
+        <button onclick="nudgeFaceObject('mouth', 0, 0.05)"><img src="assets/svg/down.svg" alt="down" width="50%"></button>
+        <button onclick="nudgeFaceObject('mouth', -0.05, 0)"><img src="assets/svg/left.svg" alt="left" width="40%"></button>
+        <button onclick="nudgeFaceObject('mouth', 0.05, 0)"><img src="assets/svg/right.svg" alt="right" width="40%"></button>
         <h3>Size</h3>
-        <button onclick="scaleFaceObject('mouth', 0.05, 0.05)">Up</button>
-        <button onclick="scaleFaceObject('mouth', -0.05, -0.05)">Down</button>
+        <button onclick="scaleFaceObject('mouth', 0.05, 0.05)"><img src="assets/svg/plus.svg" alt="plus" width="50%"></button>
+        <button onclick="scaleFaceObject('mouth', -0.05, -0.05)"><img src="assets/svg/minus.svg" alt="minus" width="50%"></button>
         <h3>Squint</h3>
-        <button onclick="scaleFaceObject('mouth', 0, 0.05)">Up</button>
-        <button onclick="scaleFaceObject('mouth', 0, -0.05)">Down</button>
+        <button onclick="scaleFaceObject('mouth', 0, 0.05)"><img src="assets/svg/unsquint.svg" alt="unsquint" width="50%"></button>
+        <button onclick="scaleFaceObject('mouth', 0, -0.05)"><img src="assets/svg/squint.svg" alt="squint" width="50%"></button>
         <h3>Rotate</h3>
-        <button onclick="rotateFaceObject('mouth', -5)">Left</button>
-        <button onclick="rotateFaceObject('mouth', 5)">Right</button>
+        <button onclick="rotateFaceObject('mouth', -5)"><img src="assets/svg/rotateLeft.svg" alt="rotateLeft" width="60%"></button>
+        <button onclick="rotateFaceObject('mouth', 5)"><img src="assets/svg/rotateRight.svg" alt="rotateRight" width="60%"></button>
     </div>
 
     <div id="misc1" class="tabcontent">
         <h2>Misc. 1</h2>
-        <button onclick="changePart('misc1', -1)">&lt</button>
-        <button onclick="changePart('misc1', 1)">&gt</button>
+        <button onclick="changePart('misc1', -1)"><img src="assets/svg/left.svg" alt="left" width="50%"></button>
+        <button onclick="changePart('misc1', 1)"><img src="assets/svg/right.svg" alt="right" width="50%"></button>
         <h3>Color</h3>
         <input id="Misc1ColorInput" type="color"></input>
         <input id="Misc1ColorInputHex" placeholder="#ffffff"></input>
-        <button onclick="setColor('misc1', 'Misc1ColorInput', 'Misc1ColorInputHex')">✔</button>
+        <button onclick="setColor('misc1', 'Misc1ColorInput', 'Misc1ColorInputHex')">OK</button>
         <h3>Nudge</h3>
-        <button onclick="nudgeFaceObject('misc1', 0, -0.05)">Up</button>
-        <button onclick="nudgeFaceObject('misc1', 0, 0.05)">Down</button>
-        <button onclick="nudgeFaceObject('misc1', -0.05, 0)">Left</button>
-        <button onclick="nudgeFaceObject('misc1', 0.05, 0)">Right</button>
+        <button onclick="nudgeFaceObject('misc1', 0, -0.05)"><img src="assets/svg/up.svg" alt="up" width="50%"></button>
+        <button onclick="nudgeFaceObject('misc1', 0, 0.05)"><img src="assets/svg/down.svg" alt="down" width="50%"></button>
+        <button onclick="nudgeFaceObject('misc1', -0.05, 0)"><img src="assets/svg/left.svg" alt="left" width="40%"></button>
+        <button onclick="nudgeFaceObject('misc1', 0.05, 0)"><img src="assets/svg/right.svg" alt="right" width="40%"></button>
         <h3>Size</h3>
-        <button onclick="scaleFaceObject('misc1', 0.05, 0.05)">Up</button>
-        <button onclick="scaleFaceObject('misc1', -0.05, -0.05)">Down</button>
+        <button onclick="scaleFaceObject('misc1', 0.05, 0.05)"><img src="assets/svg/plus.svg" alt="plus" width="50%"></button>
+        <button onclick="scaleFaceObject('misc1', -0.05, -0.05)"><img src="assets/svg/minus.svg" alt="minus" width="50%"></button>
         <h3>Squint</h3>
-        <button onclick="scaleFaceObject('misc1', 0, 0.05)">Up</button>
-        <button onclick="scaleFaceObject('misc1', 0, -0.05)">Down</button>
+        <button onclick="scaleFaceObject('misc1', 0, 0.05)"><img src="assets/svg/unsquint.svg" alt="unsquint" width="50%"></button>
+        <button onclick="scaleFaceObject('misc1', 0, -0.05)"><img src="assets/svg/squint.svg" alt="squint" width="50%"></button>
         <h3>Rotate</h3>
-        <button onclick="rotateFaceObject('misc1', -5)">Left</button>
-        <button onclick="rotateFaceObject('misc1', 5)">Right</button>
+        <button onclick="rotateFaceObject('misc1', -5)"><img src="assets/svg/rotateLeft.svg" alt="rotateLeft" width="60%"></button>
+        <button onclick="rotateFaceObject('misc1', 5)"><img src="assets/svg/rotateRight.svg" alt="rotateRight" width="60%"></button>
     </div>
 
     <div id="misc2" class="tabcontent">
         <h2>Misc. 2</h2>
-        <button onclick="changePart('misc2', -1)">&lt</button>
-        <button onclick="changePart('misc2', 1)">&gt</button>
+        <button onclick="changePart('misc2', -1)"><img src="assets/svg/left.svg" alt="left" width="50%"></button>
+        <button onclick="changePart('misc2', 1)"><img src="assets/svg/right.svg" alt="right" width="50%"></button>
         <h3>Color</h3>
         <input id="Misc2ColorInput" type="color"></input>
         <input id="Misc2ColorInputHex" placeholder="#ffffff"></input>
-        <button onclick="setColor('misc2', 'Misc2ColorInput', 'Misc2ColorInputHex')">✔</button>
+        <button onclick="setColor('misc2', 'Misc2ColorInput', 'Misc2ColorInputHex')">OK</button>
         <h3>Nudge</h3>
-        <button onclick="nudgeFaceObject('misc2', 0, -0.05)">Up</button>
-        <button onclick="nudgeFaceObject('misc2', 0, 0.05)">Down</button>
-        <button onclick="nudgeFaceObject('misc2', -0.05, 0)">Left</button>
-        <button onclick="nudgeFaceObject('misc2', 0.05, 0)">Right</button>
+        <button onclick="nudgeFaceObject('misc2', 0, -0.05)"><img src="assets/svg/up.svg" alt="up" width="50%"></button>
+        <button onclick="nudgeFaceObject('misc2', 0, 0.05)"><img src="assets/svg/down.svg" alt="down" width="50%"></button>
+        <button onclick="nudgeFaceObject('misc2', -0.05, 0)"><img src="assets/svg/left.svg" alt="left" width="40%"></button>
+        <button onclick="nudgeFaceObject('misc2', 0.05, 0)"><img src="assets/svg/right.svg" alt="right" width="40%"></button>
         <h3>Size</h3>
-        <button onclick="scaleFaceObject('misc2', 0.05, 0.05)">Up</button>
-        <button onclick="scaleFaceObject('misc2', -0.05, -0.05)">Down</button>
+        <button onclick="scaleFaceObject('misc2', 0.05, 0.05)"><img src="assets/svg/plus.svg" alt="plus" width="50%"></button>
+        <button onclick="scaleFaceObject('misc2', -0.05, -0.05)"><img src="assets/svg/minus.svg" alt="minus" width="50%"></button>
         <h3>Squint</h3>
-        <button onclick="scaleFaceObject('misc2', 0, 0.05)">Up</button>
-        <button onclick="scaleFaceObject('misc2', 0, -0.05)">Down</button>
+        <button onclick="scaleFaceObject('misc2', 0, 0.05)"><img src="assets/svg/unsquint.svg" alt="unsquint" width="50%"></button>
+        <button onclick="scaleFaceObject('misc2', 0, -0.05)"><img src="assets/svg/squint.svg" alt="squint" width="50%"></button>
         <h3>Rotate</h3>
-        <button onclick="rotateFaceObject('misc2', -5)">Left</button>
-        <button onclick="rotateFaceObject('misc2', 5)">Right</button>
+        <button onclick="rotateFaceObject('misc2', -5)"><img src="assets/svg/rotateLeft.svg" alt="rotateLeft" width="60%"></button>
+        <button onclick="rotateFaceObject('misc2', 5)"><img src="assets/svg/rotateRight.svg" alt="rotateRight" width="60%"></button>
     </div>
 
     <div id="bodyinfo" class="tabcontent">
@@ -259,11 +260,11 @@
         <h3>Skin Tone</h3>
         <input id="SkinToneInput" type="color"></input>
         <input id="SkinToneInputHex" placeholder="#ffffff"></input>
-        <button onclick="setColor('neck', 'SkinToneInput', 'SkinToneInputHex')">✔</button>
+        <button onclick="setColor('neck', 'SkinToneInput', 'SkinToneInputHex')">OK</button>
         <h3>Shirt Color</h3>
         <input id="ShirtColorInput" type="color"></input>
         <input id="ShirtColorInputHex" placeholder="#ffffff"></input>
-        <button onclick="setColor('torso', 'ShirtColorInput', 'ShirtColorInputHex')">✔</button>
+        <button onclick="setColor('torso', 'ShirtColorInput', 'ShirtColorInputHex')">OK</button>
     </div>
 
     <div id="info" class="tabcontent">
@@ -272,7 +273,6 @@
         <input id="NameInput" maxlength="32"></input>
         <h3>Birthday</h3>
         <input id="MonthDayInput" placeholder="MMDD" maxlength="4"></input> <input id="YearInput" placeholder="YYYY" maxlength="4"></input>
-        <h3>Personality</h3>
     </div>
 
     <div id="download" class="tabcontent">
@@ -288,6 +288,7 @@
         <h3>Friend Code</h3>
         <input id="FriendCodeInput"></input>
         <button onclick="uploadCode('FriendCodeInput')">Upload</button>
+    </div>
     </div>
 
     <p>Site by Colin Day - In Progress!</p>
