@@ -66,8 +66,8 @@
 
     <div id="head" class="tabcontent">
         <h2>Head</h2>
-        <button onclick="changePart('head', -1)"><img src="assets/svg/left.svg" alt="left" width="50%"></button>
-        <button onclick="changePart('head', 1)"><img src="assets/svg/right.svg" alt="right" width="50%"></button>
+        <button class="partButton" onclick="changePart('head', -1)"><img src="assets/svg/left.svg" alt="left" width="50%"></button>
+        <button class="partButton" onclick="changePart('head', 1)"><img src="assets/svg/right.svg" alt="right" width="50%"></button>
         <h3>Skin Tone</h3>
         <input id="HeadSkinToneInput" type="color"></input>
         <input id="HeadSkinToneInputHex" maxlength="7" placeholder="#ffffff"></input>
@@ -79,8 +79,8 @@
 
     <div id="bangs" class="tabcontent">
         <h2>Bangs</h2>
-        <button onclick="changePart('bang', -1)" class="partButton"><img src="assets/svg/left.svg" alt="left" width="50%"></button>
-        <button onclick="changePart('bang', 1)" class="partButton"><img src="assets/svg/right.svg" alt="right" width="50%"></button>
+        <button class="partButton" onclick="changePart('bang', -1)" class="partButton"><img src="assets/svg/left.svg" alt="left" width="50%"></button>
+        <button class="partButton" onclick="changePart('bang', 1)" class="partButton"><img src="assets/svg/right.svg" alt="right" width="50%"></button>
         <h3>Color</h3>
         <input id="BangsColorInput" type="color"></input>
         <input id="BangsColorInputHex" placeholder="#ffffff"></input>
@@ -100,8 +100,8 @@
     
     <div id="back" class="tabcontent">
         <h2>Back</h2>
-        <button onclick="changePart('back', -1)"><img src="assets/svg/left.svg" alt="left" width="50%"></button>
-        <button onclick="changePart('back', 1)"><img src="assets/svg/right.svg" alt="right" width="50%"></button>
+        <button class="partButton" onclick="changePart('back', -1)"><img src="assets/svg/left.svg" alt="left" width="50%"></button>
+        <button class="partButton" onclick="changePart('back', 1)"><img src="assets/svg/right.svg" alt="right" width="50%"></button>
         <h3>Color</h3>
         <input id="HairColorInput" type="color"></input>
         <input id="HairColorInputHex" placeholder="#ffffff"></input>
@@ -121,8 +121,8 @@
 
     <div id="eyes" class="tabcontent">
         <h2>Eyes</h2>
-        <button onclick="changePart('eye', -1)"><img src="assets/svg/left.svg" alt="left" width="50%"></button>
-        <button onclick="changePart('eye', 1)"><img src="assets/svg/right.svg" alt="right" width="50%"></button>
+        <button class="partButton" onclick="changePart('eye', -1)"><img src="assets/svg/left.svg" alt="left" width="50%"></button>
+        <button class="partButton" onclick="changePart('eye', 1)"><img src="assets/svg/right.svg" alt="right" width="50%"></button>
         <h3>Color</h3>
         <input id="EyeColorInput" type="color"></input>
         <input id="EyeColorInputHex" placeholder="#ffffff"></input>
@@ -145,8 +145,8 @@
 
     <div id="brows" class="tabcontent">
         <h2>Eyebrows</h2>
-        <button onclick="changePart('brow', -1)"><img src="assets/svg/left.svg" alt="left" width="50%"></button>
-        <button onclick="changePart('brow', 1)"><img src="assets/svg/right.svg" alt="right" width="50%"></button>
+        <button class="partButton" onclick="changePart('brow', -1)"><img src="assets/svg/left.svg" alt="left" width="50%"></button>
+        <button class="partButton" onclick="changePart('brow', 1)"><img src="assets/svg/right.svg" alt="right" width="50%"></button>
         <h3>Nudge</h3>
         <button onclick="nudgeFaceObject('brow', 0, -0.05)"><img src="assets/svg/up.svg" alt="up" width="50%"></button>
         <button onclick="nudgeFaceObject('brow', 0, 0.05)"><img src="assets/svg/down.svg" alt="down" width="50%"></button>
@@ -165,8 +165,8 @@
 
     <div id="noses" class="tabcontent">
         <h2>Nose</h2>
-        <button onclick="changePart('nose', -1)"><img src="assets/svg/left.svg" alt="left" width="50%"></button>
-        <button onclick="changePart('nose', 1)"><img src="assets/svg/right.svg" alt="right" width="50%"></button>
+        <button class="partButton" onclick="changePart('nose', -1)"><img src="assets/svg/left.svg" alt="left" width="50%"></button>
+        <button class="partButton" onclick="changePart('nose', 1)"><img src="assets/svg/right.svg" alt="right" width="50%"></button>
         <h3>Nudge</h3>
         <button onclick="nudgeFaceObject('nose', 0, -0.05)"><img src="assets/svg/up.svg" alt="up" width="50%"></button>
         <button onclick="nudgeFaceObject('nose', 0, 0.05)"><img src="assets/svg/down.svg" alt="down" width="50%"></button>
@@ -185,8 +185,8 @@
 
     <div id="mouths" class="tabcontent">
         <h2>Mouth</h2>
-        <button onclick="changePart('mouth', -1)"><img src="assets/svg/left.svg" alt="left" width="50%"></button>
-        <button onclick="changePart('mouth', 1)"><img src="assets/svg/right.svg" alt="right" width="50%"></button>
+        <button class="partButton" onclick="changePart('mouth', -1)"><img src="assets/svg/left.svg" alt="left" width="50%"></button>
+        <button class="partButton" onclick="changePart('mouth', 1)"><img src="assets/svg/right.svg" alt="right" width="50%"></button>
         <h3>Color</h3>
         <input id="MouthColorInput" type="color"></input>
         <input id="MouthColorInputHex" placeholder="#ffffff"></input>
@@ -209,8 +209,8 @@
 
     <div id="misc1" class="tabcontent">
         <h2>Misc. 1</h2>
-        <button onclick="changePart('misc1', -1)"><img src="assets/svg/left.svg" alt="left" width="50%"></button>
-        <button onclick="changePart('misc1', 1)"><img src="assets/svg/right.svg" alt="right" width="50%"></button>
+        <button class="partButton" onclick="changePart('misc1', -1)"><img src="assets/svg/left.svg" alt="left" width="50%"></button>
+        <button class="partButton" onclick="changePart('misc1', 1)"><img src="assets/svg/right.svg" alt="right" width="50%"></button>
         <h3>Color</h3>
         <input id="Misc1ColorInput" type="color"></input>
         <input id="Misc1ColorInputHex" placeholder="#ffffff"></input>
@@ -233,8 +233,8 @@
 
     <div id="misc2" class="tabcontent">
         <h2>Misc. 2</h2>
-        <button onclick="changePart('misc2', -1)"><img src="assets/svg/left.svg" alt="left" width="50%"></button>
-        <button onclick="changePart('misc2', 1)"><img src="assets/svg/right.svg" alt="right" width="50%"></button>
+        <button class="partButton" onclick="changePart('misc2', -1)"><img src="assets/svg/left.svg" alt="left" width="50%"></button>
+        <button class="partButton" onclick="changePart('misc2', 1)"><img src="assets/svg/right.svg" alt="right" width="50%"></button>
         <h3>Color</h3>
         <input id="Misc2ColorInput" type="color"></input>
         <input id="Misc2ColorInputHex" placeholder="#ffffff"></input>

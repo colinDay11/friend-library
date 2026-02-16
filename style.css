@@ -35,7 +35,9 @@ input {
     display: flex;
     flex-wrap: wrap;
     overflow: hidden;
-    border: 1px, solid, #b8afc2;
+    border: 1px solid #b8afc2;
+    width: 100%;
+    justify-content: center;
 }
 
 h2 {
@@ -60,10 +62,13 @@ h2 {
 
 .tabcontent {
   display: none;
+  align-self: flex-start;
   padding: 6px 12px;
   border: 1px solid #ccc;
   border-top: none;
-  max-width: 400px;
+  width: 400px;
+  max-height: 400px;
+  overflow: auto;
 }
 
 .tabcontent h2 {
