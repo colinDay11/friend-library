@@ -8,7 +8,7 @@ body {
     display: flex;
     flex-direction: column;
 
-    justify-content: center;
+    justify-content: start;
     align-items: center; 
     
     background-color: #f4f4f4;
@@ -22,6 +22,7 @@ body {
     position: relative;
     width: 90%;
     max-width: 500px;
+    min-width: 320px;
     min-height: 140px;
 
     overflow: hidden;
