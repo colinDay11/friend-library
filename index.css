@@ -1,0 +1,75 @@
+.creatorButtonWrapper {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+
+    position: relative;
+    width: 30%;
+    max-width: 500px;
+    min-width: 320px;
+    min-height: 15vh ;
+    overflow: hidden;
+    border: 2px solid #ddd;
+    background-color: #264aff;
+    border-radius: 12px;
+    transition: background-color 1s ease;
+    cursor: pointer;
+}
+
+.creatorButtonWrapper:hover {
+    background-color: #ffffff;
+}
+
+.creatorButtonText {
+    position: absolute;
+    z-index: 5;
+    right: 5%;
+    top: 60%;
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 500;
+
+    color: #ffffff;
+    transition: color 0.5s ease;
+}
+
+.creatorButtonWrapper:hover .creatorButtonText {
+    color: #264aff;
+}
+
+.creatorButtonWrapper img {
+    position: absolute;
+    bottom: -100%;
+    width: 14vh;
+    transform: translateY(0%);
+    transition-timing-function: transform cubic-bezier(0.175, 0.9, 0.32, 1.2);
+    
+}
+
+.firstIMG {
+    left: -5%;
+    z-index: 1;
+    transition: transform 0.3s;
+}
+
+.lastIMG {
+    left: 25%;
+    z-index: 1;
+    transition: transform 0.3s;
+}
+
+.middleIMG {
+    z-index: 2;
+    transform: translateY(0%) scale(1.1);
+    transition: transform 0.4s;
+    transition-delay: transform 0.1s;
+    left: 10%;
+}
+
+.creatorButtonWrapper:hover .sideIMG {
+    transform: translateY(-100%);
+}
+
+.creatorButtonWrapper:hover .middleIMG {
+    transform: translateY(-105%) scale(1.1);;
+}
