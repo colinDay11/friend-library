@@ -27,10 +27,17 @@ body {
 
     overflow: hidden;
     border: 2px solid #ddd;
-    background-color: #264aff;
     border-radius: 12px;
     transition: background-color 1s ease;
     cursor: pointer;
+}
+
+.blueButtonWrapper {
+    background-color: #264aff;
+}
+
+.magentaButtonWrapper {
+    background-color: #e226ff;
 }
 
 .creatorButtonWrapper:hover {
@@ -50,8 +57,12 @@ body {
     transition: color 0.5s ease;
 }
 
-.creatorButtonWrapper:hover .creatorButtonText {
+.blueButtonWrapper:hover .creatorButtonText {
     color: #264aff;
+}
+
+.magentaButtonWrapper:hover .creatorButtonText {
+    color: #e226ff;
 }
 
 .creatorButtonWrapper img {
@@ -71,6 +82,7 @@ body {
     left: 0%;
     z-index: 1;
     transition: transform 0.3s;
+    transition-delay: 0.05s;
 }
 
 .lastIMG {
