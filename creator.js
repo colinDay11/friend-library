@@ -47,7 +47,7 @@ function setup() {
     rectMode(CENTER);
 
     myFriend = new Friend();
-    myFriendRenderer = new FriendRenderer(myFriend, [s, s], [
+    myFriendRenderer = new CreatorRenderer(myFriend, [s, s], [
         createFaceObjects(backStrings, 2, false, createVector(myFriend.partStates["back"].transMin, myFriend.partStates["back"].transMax)),
         createFaceObjects(torsoStrings, 9, false, createVector(myFriend.partStates["torso"].transMin, myFriend.partStates["torso"].transMax)),
         createFaceObjects(neckStrings, 8, false, createVector(myFriend.partStates["neck"].transMin, myFriend.partStates["neck"].transMax)),
@@ -68,8 +68,6 @@ function calculateCanvasSize() {
     let marginPercent = 0.8;
     let size = minDimension * marginPercent;
     
-    // 3. (Optional) Set a maximum size so it doesn't look absurd on 4k monitors
-    // Remove this line if you want it to be huge on desktop
     let maxSize = 600;
     size = min(size, maxSize); 
     
@@ -84,65 +82,15 @@ function windowResized() {
 }
 
 function preload() {
-    basepath = "assets/svg/";
-
-    headFilepaths = getFilepaths(basepath, "head", 8);
-    headStrings = getStrings(headFilepaths);
-
-    bangsFilepaths = getFilepaths(basepath, "bangs", 10);
-    bangsStrings = getStrings(bangsFilepaths);
-
-    backFilepaths = getFilepaths(basepath, "back", 7);
-    backStrings = getStrings(backFilepaths);
-
-    eyeFilepaths = getFilepaths(basepath, "eye", 9);
-    eyeStrings = getStrings(eyeFilepaths);
-
-    browFilepaths = getFilepaths(basepath, "brow", 5);
-    browStrings = getStrings(browFilepaths);
-
-    noseFilepaths = getFilepaths(basepath, "nose", 7);
-    noseStrings = getStrings(noseFilepaths);
-
-    mouthFilepaths = getFilepaths(basepath, "mouth", 9);
-    mouthStrings = getStrings(mouthFilepaths);
-
-    miscFilepaths = getFilepaths(basepath, "misc", 15);
-    miscStrings = getStrings(miscFilepaths);
-
-    neckStrings = [loadStrings("assets/svg/neck.svg")];
-    torsoStrings = [loadStrings("assets/svg/torso.svg")];
+    loadAssets();
 }
 
 function draw() {
     clear();
-    myFriendRenderer.show();
+    myFriendRenderer.show([width, height]);
 }
 
-function getFilepaths(basepath, basefile, amount) {
-    var filepathList = [amount];
-    for (let i = 0; i < amount; i++) {
-        filepathList[i] = basepath + basefile + String(i + 1) + ".svg"
-    }
-    return filepathList;
-}
 
-function getStrings(filepaths) {
-    var stringList = [filepaths.length];
-    for (let i = 0; i < filepaths.length; i++) {
-        stringList[i] = loadStrings(filepaths[i]);
-    }
-    return stringList;
-}
-
-function createFaceObjects(stringLists, type, mirrored, translateRange) {
-    var faceObjectList = [stringLists.length];
-    for (let i = 0; i < stringLists.length; i++) {
-        faceObjectList[i] = new FaceObject(stringLists[i], type, i + 1, mirrored, translateRange);
-        faceObjectList[i].reloadIMG();
-    }
-    return faceObjectList;
-}
 
 function nudgeHeadHeight(amount) {
     myFriend.headHeight += amount;
@@ -175,7 +123,7 @@ function setColor(part, id, idHex) {
     }
 
     myFriend.partStates[part].color = finalValue;
-    myFriendRenderer.reloadParts();
+    myFriendRenderer.myFriendRenderer.reloadParts();
 }
 
 function nudgeFaceObject(part, amountX, amountY) {
@@ -183,7 +131,7 @@ function nudgeFaceObject(part, amountX, amountY) {
     myFriend.partStates[part].positionY += amountY;
     myFriend.partStates[part].positionX = constrain(myFriend.partStates[part].positionX, 0.0, 1.0);
     myFriend.partStates[part].positionY = constrain(myFriend.partStates[part].positionY, 0.0, 1.0);
-    myFriendRenderer.reloadPartsSoft();
+    myFriendRenderer.myFriendRenderer.reloadPartsSoft();
 }
 
 function scaleFaceObject(part, amountX, amountY) {
@@ -191,12 +139,12 @@ function scaleFaceObject(part, amountX, amountY) {
     myFriend.partStates[part].scaleY += amountY;
     myFriend.partStates[part].scaleX = constrain(myFriend.partStates[part].scaleX, 0.0, 1.0);
     myFriend.partStates[part].scaleY = constrain(myFriend.partStates[part].scaleY, 0.0, 1.0);
-    myFriendRenderer.reloadPartsSoft();
+    myFriendRenderer.myFriendRenderer.reloadPartsSoft();
 }
 
 function rotateFaceObject(part, amount) {
     myFriend.partStates[part].rotationDegrees += amount;
-    myFriendRenderer.reloadPartsSoft();
+    myFriendRenderer.myFriendRenderer.reloadPartsSoft();
 }
 
 function changePart(part, amount) {
@@ -296,7 +244,7 @@ function applyCode(newCode) {
 
 function saveImage() {
     myFriendRenderer.overrideBackground = true;
-    myFriendRenderer.show();
+    myFriendRenderer.show([width, height]);
     saveCanvas(myFriend.name + ".png");
     describe('A picture of a friend created with Friend Library');
 }
