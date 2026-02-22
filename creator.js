@@ -45,8 +45,26 @@ function setup() {
     let canvas = createCanvas(s, s);
     canvas.parent('sketch-container');
     rectMode(CENTER);
+    angleMode(DEGREES);
+    imageMode(CENTER);
+
+    FriendAssets.init({
+        "head": headStrings,
+        "bang": bangsStrings,
+        "back": backStrings,
+        "eye": eyeStrings,
+        "brow": browStrings,
+        "nose": noseStrings,
+        "mouth": mouthStrings,
+        "misc1": miscStrings,
+        "misc2": miscStrings,
+        "neck": neckStrings,
+        "torso": torsoStrings
+    })
 
     myFriend = new Friend();
+    myFriendRenderer = new FriendRenderer(myFriend);
+    /*
     myFriendRenderer = new CreatorRenderer(myFriend, [s, s], [
         createFaceObjects(backStrings, 2, false, createVector(myFriend.partStates["back"].transMin, myFriend.partStates["back"].transMax)),
         createFaceObjects(torsoStrings, 9, false, createVector(myFriend.partStates["torso"].transMin, myFriend.partStates["torso"].transMax)),
@@ -59,7 +77,7 @@ function setup() {
         createFaceObjects(mouthStrings, 6, false, createVector(myFriend.partStates["mouth"].transMin, myFriend.partStates["back"].transMax)),
         createFaceObjects(noseStrings, 5, false, createVector(myFriend.partStates["nose"].transMin, myFriend.partStates["back"].transMax)),
         createFaceObjects(miscStrings, 7, false, createVector(myFriend.partStates["misc2"].transMin, myFriend.partStates["back"].transMax))
-    ]);
+    ]); */
 }
 
 function calculateCanvasSize() {
@@ -87,7 +105,7 @@ function preload() {
 
 function draw() {
     clear();
-    myFriendRenderer.show([width, height]);
+    myFriendRenderer.show(0, 0, width);
 }
 
 

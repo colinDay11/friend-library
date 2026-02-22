@@ -1,6 +1,7 @@
 class Friend {
     constructor() {
         this.HEAD_HEIGHT_RANGE = createVector(0.5, 0.6);
+        this.SVG_SIZE = 583;
 
         this.name = "Friend";
         this.birthMonthDay = "0101";
@@ -26,55 +27,30 @@ class Friend {
 
 }
 
-class CreatorRenderer {
-    constructor(myFriend, canvasSize) {
-        this.MIN_BG_COLOR = color(205);
-        this.MAX_BG_COLOR = color(245);
+const FriendAssets = {
+    data: {},
+    isLoaded: false,
 
-        this.myFriendRenderer = new FriendRenderer(myFriend, canvasSize, [
-        createFaceObjects(backStrings, 2, false, createVector(myFriend.partStates["back"].transMin, myFriend.partStates["back"].transMax)),
-        createFaceObjects(torsoStrings, 9, false, createVector(myFriend.partStates["torso"].transMin, myFriend.partStates["torso"].transMax)),
-        createFaceObjects(neckStrings, 8, false, createVector(myFriend.partStates["neck"].transMin, myFriend.partStates["neck"].transMax)),
-        createFaceObjects(headStrings, 0.0, false, createVector(myFriend.partStates["head"].transMin, myFriend.partStates["head"].transMax)),
-        createFaceObjects(eyeStrings, 3, true, createVector(myFriend.partStates["eye"].transMin, myFriend.partStates["back"].transMax)),
-        createFaceObjects(miscStrings, 7, false, createVector(myFriend.partStates["misc1"].transMin, myFriend.partStates["back"].transMax)),
-        createFaceObjects(bangsStrings, 1, false, createVector(myFriend.partStates["bang"].transMin, myFriend.partStates["back"].transMax)),
-        createFaceObjects(browStrings, 4, true, createVector(myFriend.partStates["brow"].transMin, myFriend.partStates["back"].transMax)),
-        createFaceObjects(mouthStrings, 6, false, createVector(myFriend.partStates["mouth"].transMin, myFriend.partStates["back"].transMax)),
-        createFaceObjects(noseStrings, 5, false, createVector(myFriend.partStates["nose"].transMin, myFriend.partStates["back"].transMax)),
-        createFaceObjects(miscStrings, 7, false, createVector(myFriend.partStates["misc2"].transMin, myFriend.partStates["back"].transMax))
-        ]);
-        this.bgPercent = 0;
-        this.bgSpeed = 1;
-    }
+    init: function(dataObj) {
+        this.data = dataObj;
+        this.isLoaded = true;
+    },
 
-    show(scale) {
-        clear();
-        angleMode(DEGREES);
-        this.bgPercent += this.bgSpeed;
-        
-        let easeVal = map(sin(this.bgPercent), -1, 1, 0, 1)
-        this.backgroundColor = lerpColor(this.MIN_BG_COLOR, this.MAX_BG_COLOR, easeVal);
-        
-        
-        if (this.overrideBackground) {
-            background(0, 0, 0, 0);
-        } else {
-            background(this.backgroundColor);
-        }
-
-        this.myFriendRenderer.show(scale);
-
-        this.overrideBackground = false;
+    getSVG: function(type, index) {
+        if (!this.data[type] || !this.data[type][index]) return null;
+        return this.data[type][index].join('\n');
     }
 }
 
-class FriendRenderer {
-    constructor(friend, canvasSize, faceObjects) {
-        this.backgroundColor = this.MIN_BG_COLOR;
-        this.overrideBackground = false;
 
+class FriendRenderer {
+    constructor(friend) {
         this.friend = friend;
+        this.parts = {};
+        this.zOrder = ["back", "torso", "neck", "head", "eye", "misc2", "bang", "brow", "mouth", "nose", "misc1"];
+        this.setupParts();
+
+        /*
         this.headHeightRange = this.friend.HEAD_HEIGHT_RANGE;
         this.canvasSize = createVector(canvasSize[0], canvasSize[1]);
         this.faceObjects = faceObjects;
@@ -87,9 +63,23 @@ class FriendRenderer {
         this.scale = canvasSize[0]/583;
         this.reloadParts();
         this.reloadPartsSoft();
+        */
     }
 
-    reloadParts(){
+    setupParts() {
+        this.zOrder.forEach(type => {
+            const state = this.friend.partStates[type];
+            const partTotal = FriendAssets.data[type].length;
+            this.parts[type] = [];
+            
+            for (let i = 0; i < partTotal; i++) {
+                let transRange = createVector(state.transMin, state.transMax);
+                let newFO = new FaceObject(type, )
+            }
+        })
+    }
+
+    reloadParts() {
         for (let partType = 0; partType < this.faceObjects.length; partType++) {
             for (let part = 0; part < this.faceObjects[partType].length; part++) {
                 this.faceObjects[partType][part].color = this.partStatesArray[partType].color;
@@ -230,9 +220,6 @@ class FaceObject {
 
 }
 
-
-
-
 function createFaceObjects(stringLists, type, mirrored, translateRange) {
     var faceObjectList = [stringLists.length];
     for (let i = 0; i < stringLists.length; i++) {
@@ -287,4 +274,49 @@ function loadAssets(){
 
     neckStrings = [loadStrings("assets/svg/neck.svg")];
     torsoStrings = [loadStrings("assets/svg/torso.svg")];
+}
+
+class CreatorRenderer {
+    constructor(myFriend, canvasSize) {
+        this.MIN_BG_COLOR = color(205);
+        this.MAX_BG_COLOR = color(245);
+        this.backgroundColor = this.MIN_BG_COLOR;
+        this.overrideBackground = false;
+
+        this.myFriendRenderer = new FriendRenderer(myFriend, canvasSize, [
+        createFaceObjects(backStrings, 2, false, createVector(myFriend.partStates["back"].transMin, myFriend.partStates["back"].transMax)),
+        createFaceObjects(torsoStrings, 9, false, createVector(myFriend.partStates["torso"].transMin, myFriend.partStates["torso"].transMax)),
+        createFaceObjects(neckStrings, 8, false, createVector(myFriend.partStates["neck"].transMin, myFriend.partStates["neck"].transMax)),
+        createFaceObjects(headStrings, 0.0, false, createVector(myFriend.partStates["head"].transMin, myFriend.partStates["head"].transMax)),
+        createFaceObjects(eyeStrings, 3, true, createVector(myFriend.partStates["eye"].transMin, myFriend.partStates["back"].transMax)),
+        createFaceObjects(miscStrings, 7, false, createVector(myFriend.partStates["misc1"].transMin, myFriend.partStates["back"].transMax)),
+        createFaceObjects(bangsStrings, 1, false, createVector(myFriend.partStates["bang"].transMin, myFriend.partStates["back"].transMax)),
+        createFaceObjects(browStrings, 4, true, createVector(myFriend.partStates["brow"].transMin, myFriend.partStates["back"].transMax)),
+        createFaceObjects(mouthStrings, 6, false, createVector(myFriend.partStates["mouth"].transMin, myFriend.partStates["back"].transMax)),
+        createFaceObjects(noseStrings, 5, false, createVector(myFriend.partStates["nose"].transMin, myFriend.partStates["back"].transMax)),
+        createFaceObjects(miscStrings, 7, false, createVector(myFriend.partStates["misc2"].transMin, myFriend.partStates["back"].transMax))
+        ]);
+        this.bgPercent = 0;
+        this.bgSpeed = 1;
+    }
+
+    show(scale) {
+        clear();
+        angleMode(DEGREES);
+        this.bgPercent += this.bgSpeed;
+        
+        let easeVal = map(sin(this.bgPercent), -1, 1, 0, 1)
+        this.backgroundColor = lerpColor(this.MIN_BG_COLOR, this.MAX_BG_COLOR, easeVal);
+        
+        
+        if (this.overrideBackground) {
+            background(0, 0, 0, 0);
+        } else {
+            background(this.backgroundColor);
+        }
+
+        this.myFriendRenderer.show(scale);
+
+        this.overrideBackground = false;
+    }
 }
