@@ -1,0 +1,51 @@
+body {
+    width: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.content {
+    width: 90%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.uploads {
+    display: flex;
+    flex-direction: row;
+    gap:5%;
+    justify-content: center;
+}
+
+.bar {
+    width: 100%;
+    background-color: #888888;
+    border: 2px solid #ddd;
+    border-radius: 32px;
+    overflow: hidden;
+    display: flex;
+}
+
+.compatabilityVisualizer {
+    width: 100%;
+}
+
+.progressNum {
+    position: absolute;
+    right: 5%;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.progress {
+    background-color: #e226ff;
+    height: 50px;
+    width: 1%;
+}

@@ -24,6 +24,65 @@ class Friend {
         this.friendCode = "";
     }
 
+    generateCode() {
+        var newCode = "V1|";
+        newCode += this.name + "|";
+        newCode += this.birthMonthDay + this.birthYear + "|";
+        newCode += this.convertTo36(this.headHeight, true) + "|";
+        const partOrder = ["head", "bang", "back", "eye", "brow", "nose", "mouth", "misc1", "misc2", "neck", "torso"];
+        for (let i = 0; i < partOrder.length; i++) {
+            if (this.partStates.hasOwnProperty(partOrder[i])) {
+                newCode += this.convertTo36(this.partStates[partOrder[i]]["index"], false) + "|";
+                newCode += this.partStates[partOrder[i]]["color"] + "|";
+                newCode += this.convertTo36(this.partStates[partOrder[i]]["scaleX"], true);
+                newCode += this.convertTo36(this.partStates[partOrder[i]]["scaleY"], true);
+                newCode += this.convertTo36(this.partStates[partOrder[i]]["positionX"], true);
+                newCode += this.convertTo36(this.partStates[partOrder[i]]["positionY"], true);
+                newCode += this.convertTo36(this.partStates[partOrder[i]]["rotationDegrees"], false) + "|";
+            }
+        }
+        return newCode;
+    }
+
+    loadCode(friendCode) {
+        let codeArray = friendCode.split("|").map(s => s.trim());
+        this.name = codeArray[1];
+        this.birthMonthDay = codeArray[2].substring(0,4);
+        this.birthYear = codeArray[2].substring(4,8);
+        this.headHeight = (this.convertTo10(codeArray[3].substring(0,2)) - 10) / 100;
+        var codei = 4;
+        const partOrder = ["head", "bang", "back", "eye", "brow", "nose", "mouth", "misc1", "misc2", "neck", "torso"];
+        for (let part = 0; part < partOrder.length; part++) {
+            var substringCounter = 0;
+            if (this.partStates.hasOwnProperty(partOrder[part])) {
+                this.partStates[partOrder[part]] ["index"] = this.convertTo10(codeArray[codei]) - 10;
+                codei += 1;
+                this.partStates[partOrder[part]] ["color"] = codeArray[codei];
+                codei += 1;
+                let aspectArray = ["scaleX", "scaleY", "positionX", "positionY"];
+                for (let aspectIndex = 0; aspectIndex < 4; aspectIndex++){
+                    this.partStates[partOrder[part]][aspectArray[aspectIndex]] = (this.convertTo10(codeArray[codei].substring(substringCounter, substringCounter + 2)) - 10) / 100;
+                    substringCounter += 2;
+                }
+                this.partStates[partOrder[part]]["rotationDegrees"] = this.convertTo10(codeArray[codei].substring(substringCounter, (substringCounter + 2) )) - 10;
+            }
+            codei += 1;
+        }
+
+    }
+
+    convertTo36(myFloat, multiply) {
+        var by = 1;
+        if (multiply) {
+            by = 100;
+        }
+        return parseInt(myFloat * by + 10).toString(36).padStart(2, '0');
+    }
+
+    convertTo10(myFloat) {
+        return parseInt(myFloat, 36);
+    }
+
 }
 
 class FriendRenderer {
@@ -57,7 +116,6 @@ class FriendRenderer {
                 this.faceObjects[partType][part].reloadIMG();
             }
         }
-        updateInfo();
     }
 
     reloadPartsSoft() {
@@ -70,47 +128,47 @@ class FriendRenderer {
             this.faceObjects[partType][part].rotation = this.partStatesArray[partType].rotationDegrees;
             }
         }
-        updateInfo();
     }
 
-    show() {
-    clear();
+    show(canvasDimensions) {
+        angleMode(DEGREES);
+        this.bgPercent += this.bgSpeed;
+        
+        let easeVal = map(sin(this.bgPercent), -1, 1, 0, 1)
+        this.backgroundColor = lerpColor(this.MIN_BG_COLOR, this.MAX_BG_COLOR, easeVal);
+        
+        push();
+        
 
-    //Change BG Color
-    angleMode(DEGREES);
-    this.bgPercent += this.bgSpeed;
-    
-    let easeVal = map(sin(this.bgPercent), -1, 1, 0, 1)
-    this.backgroundColor = lerpColor(this.MIN_BG_COLOR, this.MAX_BG_COLOR, easeVal);
-    
-    
-    if (this.overrideBackground) {
-        background(0, 0, 0, 0);
-    } else {
-        background(this.backgroundColor);
-    }
-
-    this.scale = width/583;
-
-    push();
-    // back, torso, neck, head, eyes, misc2, bangs, brows, mouth, nose, misc1
-    for (let i = 0; i < this.faceObjects.length; i++) {
-        let headHeight = lerp(this.headHeightRange.x, this.headHeightRange.y, this.friend.headHeight);
-
-        // No floating body
-        if ((i == 1 || i == 2)) {
-            headHeight = this.headHeightRange.y;
+        if (!this.overrideBackground) {
+            noStroke();
+            fill(this.backgroundColor);
+            rect(canvasDimensions[0]/2, canvasDimensions[1]/2, canvasDimensions[0], canvasDimensions[1]); 
         }
 
-        let partNum = this.partStatesArray[i].index;
-        if (this.faceObjects[i] && this.faceObjects[i][partNum]) {
-            this.faceObjects[i][partNum].show(
-                int(width/2 + (width * this.partStatesArray[i].dOffsetX)), 
-                (headHeight + this.partStatesArray[i].dOffsetY) * int(width), 
-                this.scale);
+        this.scale = canvasDimensions[0]/583;
+
+        // back, torso, neck, head, eyes, misc2, bangs, brows, mouth, nose, misc1
+        for (let i = 0; i < this.faceObjects.length; i++) {
+            let headHeight = lerp(this.headHeightRange.x, this.headHeightRange.y, this.friend.headHeight);
+
+            // No floating body
+            if ((i == 1 || i == 2)) {
+                headHeight = this.headHeightRange.y;
+            }
+
+            let partNum = this.partStatesArray[i].index;
+            if (this.faceObjects[i] && this.faceObjects[i][partNum]) {
+                this.faceObjects[i][partNum].show(
+                    int(canvasDimensions[0]/2 + (canvasDimensions[0] * this.partStatesArray[i].dOffsetX)), 
+                    (headHeight + this.partStatesArray[i].dOffsetY) * int(canvasDimensions[0]), 
+                    this.scale
+                );
+            }
         }
-    }
-    this.overrideBackground = false;
+
+        pop();
+        this.overrideBackground = false;
     }
 }
 

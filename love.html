@@ -9,20 +9,67 @@
     <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="love.css">
     <!--link rel="stylesheet" type="text/css" href="fortune.css"-->
     <meta charset="utf-8" />
 
-    <title>Love Tester</title>
+    <title>Affinity Tester</title>
 
   </head>
   <body>
     <main>
-        <h1> <a href="index.html" style="text-decoration: none; color: inherit;">FriendLibrary</a> <span style="color: #e226ff;">Love Tester</span></h1>
+        <h1> <a href="index.html" style="text-decoration: none; color: inherit;">FriendLibrary</a> <span style="color: #e226ff;">Affinity Tester</span></h1>
     </main>
+    <script src="friend.js"></script>
+    <script src="love.js"></script>
 
-    <p>Coming Soon!</p>
+    <div class="content">
 
-    <p>Powered by <a href="https://freeastrologyapi.com/">Free Astrology API</a></p>
+    <h3>Overall Compatability</h3>
+    <div id="overall" class="bar">
+      <div id="overallProgress" class="progress overallProgress"></div>
+      <p id="overallNum" class="progressNum">100%</p>
+    </div>
+
+
+    <div id="friendRenderer"></div>
+
+    <div class="uploads">
+    <div>
+    <h3 id="friend1Label">Friend 1</h3>
+    <input id="friend1Code" placeholder="Friend Code"></input>
+    <button id="friend1Load" onclick="friendLoad('friend1Code', 1)">Load</button>
+    </div>
+    <div>
+    <h3 id="friend2Label">Friend 2</h3>
+    <input id="friend2Code" placeholder="Friend Code"></input>
+    <button id="friend2Load" onclick="friendLoad('friend2Code', 2)">Load</button>
+    </div>
+    </div>
+
+    <div id="compatabilityVisualizer" class="compatabilityVisualizer">
+
+      <h3>Zodiac</h3>
+      <div id="zodiac" class="bar">
+        <div id="zodiacProgress" class="progress zodiacProgress"></div>
+        <p id="zodiacNum" class="progressNum">100%</p>
+      </div>
+
+      <h3>Numerology</h3>
+      <div id="numerology" class="bar">
+        <div id="numerologyProgress" class="progress numerologyProgress"></div>
+        <p id="numerologyNum" class="progressNum">100%</p>
+      </div>
+
+      <h3>Age Similarity</h3>
+      <div id="ageGap" class="bar">
+        <div id="ageGapProgress" class="progress ageGapProgress"></div>
+        <p id="ageGapNum" class="progressNum">100%</p>
+      </div>
+
+    </div>
+
+    </div>
 
   </body>
 </html>

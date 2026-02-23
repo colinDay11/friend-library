@@ -273,7 +273,7 @@
 
     <div id="info" class="tabcontent">
         <h2>Info</h2>
-        <h3>Name</h3>
+        <h3>Nickname</h3>
         <input id="NameInput" maxlength="32"></input>
         <h3>Birthday</h3>
         <input id="MonthDayInput" placeholder="MMDD" maxlength="4"></input> <input id="YearInput" placeholder="YYYY" maxlength="4"></input>
@@ -282,6 +282,7 @@
     <div id="download" class="tabcontent">
         <h2>Download (Only Download Image Works)</h2>
         <code id="FriendCodeExport"><span id="friendCode">...</span></code>
+        <button onclick="generateCode()">Generate Friend Code</button>
         <button onclick="copyCode('FriendCodeExport')">Copy Friend Code</button>
         <button onclick="downloadCode('FriendCodeExport')">Download Friend Code</button>
         <button onclick="saveImage()">Download Image</button>

@@ -68,8 +68,6 @@ function calculateCanvasSize() {
     let marginPercent = 0.8;
     let size = minDimension * marginPercent;
     
-    // 3. (Optional) Set a maximum size so it doesn't look absurd on 4k monitors
-    // Remove this line if you want it to be huge on desktop
     let maxSize = 600;
     size = min(size, maxSize); 
     
@@ -116,7 +114,7 @@ function preload() {
 
 function draw() {
     clear();
-    myFriendRenderer.show();
+    myFriendRenderer.show([width, height]);
 }
 
 function getFilepaths(basepath, basefile, amount) {
@@ -147,7 +145,6 @@ function createFaceObjects(stringLists, type, mirrored, translateRange) {
 function nudgeHeadHeight(amount) {
     myFriend.headHeight += amount;
     myFriend.headHeight = constrain(myFriend.headHeight, 0, 1);
-    friendCode = createCode();
 }
 
 function isValidHex(str) {
@@ -233,40 +230,10 @@ function updateInfo(){
     }
 }
 
-function createCode() {
+function generateCode() {
     updateInfo();
+    document.getElementById("friendCode").innerHTML = myFriend.generateCode();
     return;
-
-    var codeString = "";
-    //Version
-    codeString += "1";    
-    //Name
-    codeString += "|" + friendName;
-    //Birthday
-    codeString += "|" + birthday;
-    //Head
-    codeString += "|" + String(headNum) + "-" + String(heads[0].color) + "-" + String(headHeight);
-    //Bangs
-    codeString += "|" + String(bangNum) + "-" + String(bangs[0].color) + "-" + String(bangs[0].scaleX) + "-" + String(bangs[0].scaleY) + "-" + String(bangs[0].offsetX) + "-" + String(bangs[0].offsetY);
-    //Back
-    codeString += "|" + String(backNum) + "-" + String(backs[0].color) + "-" + String(backs[0].scaleX) + "-" + String(backs[0].scaleY) + "-" + String(backs[0].offsetX) + "-" + String(backs[0].offsetY);
-    //Eyes
-    codeString += "|" + String(eyeNum) + "-" + String(eyes[0].color) + "-" + String(eyes[0].scaleX) + "-" + String(eyes[0].scaleY) + "-" + String(eyes[0].offsetX) + "-" + String(eyes[0].offsetY) + "-" + String(eyes[0].rotation);
-    //Brows
-    codeString += "|" + String(browNum) + "-" + String(brows[0].scaleX) + "-" + String(brows[0].scaleY) + "-" + String(brows[0].offsetX) + "-" + String(brows[0].offsetY) + "-" + String(brows[0].rotation);
-    //Nose
-    codeString += "|" + String(noseNum) + "-" + String(noses[0].scaleX) + "-" + String(noses[0].scaleY) + "-" + String(noses[0].offsetX) + "-" + String(noses[0].offsetY) + "-" + String(noses[0].rotation);
-    //Mouth
-    codeString += "|" + String(mouthNum) + "-" + String(mouths[0].color) + "-" + String(mouths[0].scaleX) + "-" + String(mouths[0].scaleY) + "-" + String(mouths[0].offsetX) + "-" + String(mouths[0].offsetY) + "-" + String(mouths[0].rotation);
-    //Misc.1
-    codeString += "|" + String(misc1Num) + "-" + String(miscs1[0].color) + "-" + String(miscs1[0].scaleX) + "-" + String(miscs1[0].scaleY) + "-" + String(miscs1[0].offsetX) + "-" + String(miscs1[0].offsetY) + "-" + String(miscs1[0].rotation);
-    //Misc.2
-    codeString += "|" + String(misc2Num) + "-" + String(miscs2[0].color) + "-" + String(miscs2[0].scaleX) + "-" + String(miscs2[0].scaleY) + "-" + String(miscs2[0].offsetX) + "-" + String(miscs2[0].offsetY) + "-" + String(miscs2[0].rotation);
-    //Body
-    codeString += "|" + String(torso[0].color);
-    codeString += "|" + String(neck[0].color);
-    document.getElementById("friendCode").innerHTML = codeString;
-    return codeString;
 }
 
 function uploadCode(codeID) {
@@ -282,6 +249,10 @@ function uploadCode(codeID) {
 }
 
 function applyCode(newCode) {
+    myFriend.loadCode(newCode);
+    myFriendRenderer.reloadParts();
+    myFriendRenderer.reloadPartsSoft();
+    return;
     const myCode = newCode.split("|");
     friendName = myCode[1];
     birthday = myCode[2];
@@ -296,7 +267,7 @@ function applyCode(newCode) {
 
 function saveImage() {
     myFriendRenderer.overrideBackground = true;
-    myFriendRenderer.show();
+    myFriendRenderer.show([width,height]);
     saveCanvas(myFriend.name + ".png");
     describe('A picture of a friend created with Friend Library');
 }
