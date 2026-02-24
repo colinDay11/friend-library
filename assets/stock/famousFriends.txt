@@ -9,3 +9,6 @@ V1|Tabia|11192006|2d|0a|#985812|1o1o1o1o0a|0c|#4e0354|1o191o0z0a|0d|#400040|1y28
 
 Colin
 V1|Colin|07312003|32|0a|#ffd5b9|1o1o1o1o0a|0a|#c4aa66|1o1e1o1o0a|0g|#ab7a49|1j1t1o0a0a|0d|#3a5b98|190z1e0u-dv|0e|#ffffff|190z1e1o05|0a|#ffffff|1t1t230f05|0g|#ffffff|1j191o0ksc|0d|#000000|0p0a1r1j-1xq|0e|#febd9a|32321z0p-8vi|0a|#fdb097|1o1o1o1o0a|0a|#f7782d|1o1o1o1o0a|
+
+Lum
+V1|Lum|10141967|28|0a|#ffebdb|1o1o1o1o0a|0h|#49bc99|1o1t1o320a|0e|#49a7a5|1t231o0a0a|0e|#54a1bb|1j1o1e14-15e|0b|#ffffff|140p1o192pi|0e|#ffffff|0z0k230z-1x6|0c|#ffebdb|281e1o19s2|0d|#ffffff|0p0k1e1ke6|0f|#ffe252|1o1y1o0a0a|0a|#fdd8c4|1o1o1o1o0a|0a|#ffe252|1o1o1o1o0a|

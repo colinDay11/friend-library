@@ -196,6 +196,7 @@ function friendLoad(codeID, friend) {
         friend1.loadCode(codeString);
         friend1Renderer.reloadParts();
         friend1Renderer.reloadPartsSoft();
+        checkCompatability()
         return;
     } else {
         friend2.loadCode(codeString);

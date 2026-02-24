@@ -15,12 +15,22 @@ body {
 }
 
 .content {
-    width: 90%;
+    width: 95%;
     max-width: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: left;
+}
+
+h1 { font-size: 2.5rem; }
+h3 { font-size: 1.5rem; }
+p, .friendCode { font-size: 1.1rem; }
+
+@media (min-width: 600px) {
+    .content {
+        width: 95%; /* On desktop, we can afford more margin */
+    }
 }
 
 .friendCode {

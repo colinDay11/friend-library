@@ -20,7 +20,7 @@ body {
     color: inherit;
 
     position: relative;
-    width: 90%;
+    width: 95%;
     max-width: 500px;
     min-width: 320px;
     min-height: 140px;
@@ -31,6 +31,7 @@ body {
     transition: background-color 1s ease;
     cursor: pointer;
 }
+
 
 .blueButtonWrapper {
     background-color: #264aff;
@@ -55,7 +56,7 @@ body {
 .sideBySide {
     display: flex;
     flex-direction: row;
-    width: 90%;
+    width: 95%;
     max-width: 500px;
 }
 
