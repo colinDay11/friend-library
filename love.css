@@ -49,4 +49,5 @@ body {
     background-color: #e226ff;
     height: 50px;
     width: 1%;
+    transition: width 02s cubic-bezier(0.25, 1, 0.5, 1);
 }

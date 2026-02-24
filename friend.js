@@ -64,7 +64,7 @@ class Friend {
                     this.partStates[partOrder[part]][aspectArray[aspectIndex]] = (this.convertTo10(codeArray[codei].substring(substringCounter, substringCounter + 2)) - 10) / 100;
                     substringCounter += 2;
                 }
-                this.partStates[partOrder[part]]["rotationDegrees"] = (this.convertTo10(codeArray[codei].substring(substringCounter, (substringCounter + 2) )) - 10) / 100;
+                this.partStates[partOrder[part]]["rotationDegrees"] = (this.convertTo10(codeArray[codei].substring(substringCounter)) - 10) / 100;
             }
             codei += 1;
         }
@@ -93,6 +93,7 @@ class FriendRenderer {
         this.bgSpeed = 1;
         this.backgroundColor = this.MIN_BG_COLOR;
         this.overrideBackground = false;
+        this.clearBackground = true;
 
         this.friend = friend;
         this.headHeightRange = this.friend.HEAD_HEIGHT_RANGE;
@@ -139,12 +140,11 @@ class FriendRenderer {
         
         push();
         
-
         if (!this.overrideBackground) {
             noStroke();
             fill(this.backgroundColor);
             rect(canvasDimensions[0]/2, canvasDimensions[1]/2, canvasDimensions[0], canvasDimensions[1]); 
-        } else {
+        } else if (this.clearBackground) {
             clear();
         }
 

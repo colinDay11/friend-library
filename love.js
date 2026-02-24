@@ -38,10 +38,10 @@ let friendCode;
 
 const BASE_DESIGN_SIZE = 350;
 
-let overallCompatability = 50;
-let zodiacCompatability = 75;
-let numerologyCompatability = 25;
-let ageCompatability = 100;
+let overallCompatability = 0;
+let zodiacCompatability = 0;
+let numerologyCompatability = 0;
+let ageCompatability = 0;
 
 function setup() {
     let s = calculateCanvasSize();
@@ -138,6 +138,8 @@ function draw() {
 
     friend1Renderer.overrideBackground = true;
     friend2Renderer.overrideBackground = true;
+    friend1Renderer.clearBackground = false;
+    friend2Renderer.clearBackground = false;
 
     push();
     friend1Renderer.show([halfWidth, height]);
@@ -255,6 +257,26 @@ function checkCompatability() {
     updateBars();
 }
 
+// Coded By AI :()
+function animateNumber(element, targetValue) {
+    let currentValue = parseInt(element.innerHTML) || 0;
+    let duration = 1500;
+    let start = null;
+
+    function step(timestamp) {
+        if (!start) start = timestamp;
+        let progress = Math.min((timestamp - start) / duration, 1);
+
+        let currentDisplay = Math.floor(progress * (targetValue - currentValue) + currentValue);
+        element.innerHTML = currentDisplay + "%";
+        
+        if (progress < 1) {
+            window.requestAnimationFrame(step);
+        }
+    }
+    window.requestAnimationFrame(step);
+}
+
 function updateBars() {
     let friend1Label = document.getElementById("friend1Label");
     friend1Label.innerHTML = friend1.name;
@@ -271,12 +293,12 @@ function updateBars() {
     var ageTextElem = document.getElementById("ageGapNum");
 
     overallElem.style.width = Math.round(overallCompatability) + "%";
-    overallTextElem.innerHTML = Math.round(overallCompatability) + "%";
+    animateNumber(overallTextElem, Math.round(overallCompatability));
     let factor34 = 2.94117647059;
     zodiacElem.style.width = (zodiacCompatability * factor34) + "%";
-    zodiacTextElem.innerHTML = Math.round((zodiacCompatability * factor34)) + "%";
+    animateNumber(zodiacTextElem, Math.round(zodiacCompatability * factor34));
     numerologyElem.style.width = Math.round((numerologyCompatability * factor34)) + "%";
-    numerologyTextElem.innerHTML = Math.round((numerologyCompatability * factor34)) + "%";
+    animateNumber(numerologyTextElem, Math.round(numerologyCompatability * factor34));
     ageElem.style.width = Math.round((ageCompatability * 3.125)) + "%";
-    ageTextElem.innerHTML = Math.round((ageCompatability * 3.125)) + "%";
+    animateNumber(ageTextElem, Math.round(ageCompatability * 3.125));
 }
