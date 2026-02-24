@@ -38,7 +38,7 @@ class Friend {
                 newCode += this.convertTo36(this.partStates[partOrder[i]]["scaleY"], true);
                 newCode += this.convertTo36(this.partStates[partOrder[i]]["positionX"], true);
                 newCode += this.convertTo36(this.partStates[partOrder[i]]["positionY"], true);
-                newCode += this.convertTo36(this.partStates[partOrder[i]]["rotationDegrees"], false) + "|";
+                newCode += this.convertTo36(this.partStates[partOrder[i]]["rotationDegrees"], true) + "|";
             }
         }
         return newCode;
@@ -64,7 +64,7 @@ class Friend {
                     this.partStates[partOrder[part]][aspectArray[aspectIndex]] = (this.convertTo10(codeArray[codei].substring(substringCounter, substringCounter + 2)) - 10) / 100;
                     substringCounter += 2;
                 }
-                this.partStates[partOrder[part]]["rotationDegrees"] = this.convertTo10(codeArray[codei].substring(substringCounter, (substringCounter + 2) )) - 10;
+                this.partStates[partOrder[part]]["rotationDegrees"] = (this.convertTo10(codeArray[codei].substring(substringCounter, (substringCounter + 2) )) - 10) / 100;
             }
             codei += 1;
         }
@@ -144,6 +144,8 @@ class FriendRenderer {
             noStroke();
             fill(this.backgroundColor);
             rect(canvasDimensions[0]/2, canvasDimensions[1]/2, canvasDimensions[0], canvasDimensions[1]); 
+        } else {
+            clear();
         }
 
         this.scale = canvasDimensions[0]/583;

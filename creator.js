@@ -248,11 +248,23 @@ function uploadCode(codeID) {
     }
 }
 
+function copyCode(friendSpan) {
+    var copySpan = document.getElementById(friendSpan);
+    const copyText = copySpan.innerText
+    navigator.clipboard.writeText(copyText)
+        .then(() => {
+            alert("Copied: " + copyText);
+        })
+        .catch(err => {
+            alert("Could not copy code, please select by hand");
+        });
+
+}
+
 function applyCode(newCode) {
     myFriend.loadCode(newCode);
     myFriendRenderer.reloadParts();
     myFriendRenderer.reloadPartsSoft();
-    return;
     const myCode = newCode.split("|");
     friendName = myCode[1];
     birthday = myCode[2];
@@ -261,6 +273,7 @@ function applyCode(newCode) {
     document.getElementById("NameInput").value = friendName;
     document.getElementById("MonthDayInput").value = mdString;
     document.getElementById("YearInput").value = yString;
+    return;
 
     
 }

@@ -51,19 +51,19 @@
         //document.getElementById("defaultCreatorTab").click();
     </script>
     <div class="tab">
-        <button class="tablinks" onclick="changeTab(event, 'head')" id="defaultCreatorTab"><img src="assets/svg/head1.svg" width = 20px></button>
-        <button class="tablinks" onclick="changeTab(event, 'bangs')"><img src="assets/svg/bangs1.svg" width = 20px></button>
-        <button class="tablinks" onclick="changeTab(event, 'back')"><img src="assets/svg/back5.svg" width = 20px></button>
-        <button class="tablinks" onclick="changeTab(event, 'eyes')"><img src="assets/svg/eye3.svg" width = 20px></button>
-        <button class="tablinks" onclick="changeTab(event, 'brows')"><img src="assets/svg/brow5.svg" width = 20px></button>
-        <button class="tablinks" onclick="changeTab(event, 'noses')"><img src="assets/svg/nose4.svg" width = 20px></button>
-        <button class="tablinks" onclick="changeTab(event, 'mouths')"><img src="assets/svg/mouth1.svg" width = 20px></button>
-        <button class="tablinks" onclick="changeTab(event, 'misc1')"><img src="assets/svg/misc1.svg" width = 20px></button>
-        <button class="tablinks" onclick="changeTab(event, 'misc2')"><img src="assets/svg/misc5.svg" width = 20px></button>
-        <button class="tablinks" onclick="changeTab(event, 'bodyinfo')"><img src="assets/svg/body.svg" width = 20px></button>
-        <button class="tablinks" onclick="changeTab(event, 'info')"><img src="assets/svg/info.svg" width = 17px></button>
-        <button class="tablinks" onclick="changeTab(event, 'download')"><img src="assets/svg/download.svg" width = 20px></button>
-        <button class="tablinks" onclick="changeTab(event, 'upload')"><img src="assets/svg/upload.svg" width = 20px></button>
+        <button class="tablinks" onclick="changeTab(event, 'head')" id="defaultCreatorTab"><img src="assets/svg/head1.svg" width = 20px alt="head"></button>
+        <button class="tablinks" onclick="changeTab(event, 'bangs')"><img src="assets/svg/bangs1.svg" width = 20px alt="bangs"></button>
+        <button class="tablinks" onclick="changeTab(event, 'back')"><img src="assets/svg/back5.svg" width = 20px alt="ack of hair"></button>
+        <button class="tablinks" onclick="changeTab(event, 'eyes')"><img src="assets/svg/eye3.svg" width = 20px alt="eye"></button>
+        <button class="tablinks" onclick="changeTab(event, 'brows')"><img src="assets/svg/brow5.svg" width = 20px alt="eyebrow"></button>
+        <button class="tablinks" onclick="changeTab(event, 'noses')"><img src="assets/svg/nose4.svg" width = 20px alt="nose"></button>
+        <button class="tablinks" onclick="changeTab(event, 'mouths')"><img src="assets/svg/mouth1.svg" width = 20px alt="mouth"></button>
+        <button class="tablinks" onclick="changeTab(event, 'misc1')"><img src="assets/svg/misc1.svg" width = 20px alt="mustache (misc.)"></button>
+        <button class="tablinks" onclick="changeTab(event, 'misc2')"><img src="assets/svg/misc8.svg" width = 20px alt="glasses (misc.)"></button>
+        <button class="tablinks" onclick="changeTab(event, 'bodyinfo')"><img src="assets/svg/body.svg" width = 20px alt="shirt (body)"></button>
+        <button class="tablinks" onclick="changeTab(event, 'info')"><img src="assets/svg/info.svg" width = 17px alt="bust of figure (info)"></button>
+        <button class="tablinks" onclick="changeTab(event, 'download')"><img src="assets/svg/download.svg" width = 20px alt="download"></button>
+        <button class="tablinks" onclick="changeTab(event, 'upload')"><img src="assets/svg/upload.svg" width = 20px alt="upload"></button>
     </div>
 
     <div id="sketch-container" class="sketch-container"></div>
@@ -280,16 +280,16 @@
     </div>
 
     <div id="download" class="tabcontent">
-        <h2>Download (Only Download Image Works)</h2>
-        <code id="FriendCodeExport"><span id="friendCode">...</span></code>
+        <h2>Download</h2>
+        <code id="friendCode">...</code>
         <button onclick="generateCode()">Generate Friend Code</button>
-        <button onclick="copyCode('FriendCodeExport')">Copy Friend Code</button>
-        <button onclick="downloadCode('FriendCodeExport')">Download Friend Code</button>
+        <button onclick="copyCode('friendCode')">Copy Friend Code</button>
+        <!--button onclick="downloadCode('FriendCodeExport')">Download Friend Code</button-->
         <button onclick="saveImage()">Download Image</button>
     </div>
 
     <div id="upload" class="tabcontent">
-        <h2>Upload (Not Working)</h2>
+        <h2>Upload</h2>
         <h3>Friend Code</h3>
         <input id="FriendCodeInput"></input>
         <button onclick="uploadCode('FriendCodeInput')">Upload</button>

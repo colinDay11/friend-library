@@ -1,0 +1,11 @@
+Default Friend
+V1|Friend|01012000|2d|0a|#ffffff|1o1o1o1o0a|0a|#ffffff|1o1o1o1o0a|09|#ffffff|1o1o1o1o0a|0c|#000000|1e1e1e1e0a|0e|#ffffff|1e1e1e1o0a|0a|#ffffff|1o1o1y1o0a|0d|#ffffff|1o1o1o1o0a|09|#ffffff|1o1o1o1o0a|09|#ffffff|1o1o1o1o0a|0a|#e8eaf6|1o1o1o1o0a|0a|#ff0000|1o1o1o1o0a|
+
+Brad
+V1|Brad|08052006|0a|0e|#ffd2c6|1o1o1o1o0a|0a|#bbb591|1j191o1e0a|0g|#959672|191o1o1j0a|0c|#804000|1e141e1400|0e|#ffffff|190u1e1y-5|0c|#ffffff|2i1t1n1o2s|0a|#ffd2c6|230z1o1y0a|0d|#000000|0p0a1o1v0a|0d|#000000|0f0f1c1a1j|0a|#ffc9bb|1o1o1o1o0a|0a|#516aae|1o1o1o1o0a|
+
+Tabia
+V1|Tabia|11192006|2d|0a|#985812|1o1o1o1o0a|0c|#4e0354|1o191o0z0a|0d|#400040|1y281o1y0a|0i|#000000|1e1e191928|0a|#ffffff|0z0z191o0f|0d|#ffffff|140z1n1o0a|0h|#ffffff|1y1t191j0k|0o|#ff9fcf|1j1j0u0m-u|0m|#8e301c|1o191o190a|0a|#884611|1o1o1o1o0a|0a|#ff2d96|1o1o1o1o0a|
+
+Colin
+V1|Colin|07312003|32|0a|#ffd5b9|1o1o1o1o0a|0a|#c4aa66|1o1e1o1o0a|0g|#ab7a49|1j1t1o0a0a|0d|#3a5b98|190z1e0u00|0e|#ffffff|190z1e1o05|0a|#ffffff|1t1t230f05|0g|#ffffff|1j191o0k0k|0d|#000000|0p0a1r1j-a|0e|#febd9a|322x1z0p-2z|0a|#fdb097|1o1o1o1o0a|0a|#f7782d|1o1o1o1o0a|
