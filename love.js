@@ -47,7 +47,7 @@ let ageCompatability = 0;
 let statusMessages = ["You have NO chemistry!", "Not impossible", "Room to grow", "Get along well!", "Meant for each other?"];
 let heartEmpty;
 let heartFiller;
-let heartSize = 100;
+let heartSize = 200;
 
 function setup() {
     let s = calculateCanvasSize();
@@ -158,7 +158,7 @@ function draw() {
     image(heartEmpty, 0, height/2, heartSize, heartSize);
     image(heartFiller, 0, height/2, heartSize * (displayCompatability/100), heartSize * (displayCompatability/100));
     fill('white');
-    text(Math.round(displayCompatability) + "%", 0, height/2, heartSize);
+    text(Math.round(displayCompatability) + "%", 0, height/2);
     translate(-halfWidth, 0);
 
     friend1Renderer.overrideBackground = true;
