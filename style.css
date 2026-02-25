@@ -25,3 +25,13 @@ body {
 .button:hover {
     background-color: #b8afc2;
 }
+
+.siteLogo:hover {
+    color: #264aff;
+    font-size: 2.5rem;
+}
+
+.siteLogo {
+    text-decoration: none; 
+    color: black;
+}

@@ -26,6 +26,19 @@ body {
     flex-wrap: wrap;
 }
 
+.uploads div {
+    flex: 1 1 45%; 
+    min-width: 200px;
+    display: flex; 
+    align-items: center; 
+    gap: 5px; 
+}
+
+.uploads input {
+    flex: 1;
+    min-width: 50px;
+}
+
 .bar {
     width: 100%;
     background-color: #888888;

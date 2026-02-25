@@ -39,9 +39,15 @@ let friendCode;
 const BASE_DESIGN_SIZE = 350;
 
 let overallCompatability = 0;
+let displayCompatability = 0;
 let zodiacCompatability = 0;
 let numerologyCompatability = 0;
 let ageCompatability = 0;
+
+let statusMessages = ["You have NO chemistry!", "Not impossible", "Room to grow", "Get along well!", "Meant for each other?"];
+let heartEmpty;
+let heartFiller;
+let heartSize = 100;
 
 function setup() {
     let s = calculateCanvasSize();
@@ -80,6 +86,11 @@ function setup() {
         createFaceObjects(noseStrings, 5, false, createVector(friend2.partStates["nose"].transMin, friend2.partStates["back"].transMax)),
         createFaceObjects(miscStrings, 7, false, createVector(friend2.partStates["misc2"].transMin, friend2.partStates["back"].transMax))
     ]);
+
+    textFont('Bai Jamjuree'); 
+    textSize(24);
+    textAlign(CENTER, CENTER);
+    textStyle(BOLD);
 
     checkCompatability();
 }
@@ -127,7 +138,9 @@ function preload() {
     neckStrings = [loadStrings("assets/svg/neck.svg")];
     torsoStrings = [loadStrings("assets/svg/torso.svg")];
 
-    
+    heartEmpty = loadImage("assets/svg/heartEmpty.svg");
+    heartFiller = loadImage("assets/svg/heartFiller.svg");
+
     zodiacTable = loadTable("assets/data/zodiac.csv", "csv", "header");
     numerologyTable = loadTable("assets/data/numbers.csv", "csv", "header");
 }
@@ -135,6 +148,18 @@ function preload() {
 function draw() {
     clear();
     let halfWidth = width / 2;
+
+    displayCompatability = lerp(displayCompatability, overallCompatability, 0.05);
+    if (abs(overallCompatability - displayCompatability) < 0.1) {
+    displayCompatability = overallCompatability;
+    }
+    translate(halfWidth, 0);
+    imageMode(CENTER);
+    image(heartEmpty, 0, height/2, heartSize, heartSize);
+    image(heartFiller, 0, height/2, heartSize * (displayCompatability/100), heartSize * (displayCompatability/100));
+    fill('white');
+    text(Math.round(displayCompatability) + "%", 0, height/2, heartSize);
+    translate(-halfWidth, 0);
 
     friend1Renderer.overrideBackground = true;
     friend2Renderer.overrideBackground = true;
@@ -144,8 +169,9 @@ function draw() {
     push();
     friend1Renderer.show([halfWidth, height]);
 
-    translate(halfWidth, 0); 
-    friend2Renderer.show([halfWidth, height]);    
+    translate(halfWidth, 0);
+
+    friend2Renderer.show([halfWidth, height]); 
     pop();
 }
 
@@ -252,13 +278,14 @@ function checkCompatability() {
     let friend2Zodiac = getZodiac(friend2MMDD);
     zodiacCompatability = getZodiacCompatability(friend1Zodiac, friend2Zodiac);
     numerologyCompatability = getNumberCompatability(friend1Day, friend2Day);
-    ageCompatability = 32 - (friend1Year - friend2Year);
+    ageCompatability = 32 - abs(friend1Year - friend2Year);
+    ageCompatability = max(ageCompatability, 0);
     overallCompatability = zodiacCompatability + numerologyCompatability + ageCompatability;
 
     updateBars();
 }
 
-// Coded By AI :()
+// Coded By AI :(
 function animateNumber(element, targetValue) {
     let currentValue = parseInt(element.innerHTML) || 0;
     let duration = 1500;
@@ -302,4 +329,19 @@ function updateBars() {
     animateNumber(numerologyTextElem, Math.round(numerologyCompatability * factor34));
     ageElem.style.width = Math.round((ageCompatability * 3.125)) + "%";
     animateNumber(ageTextElem, Math.round(ageCompatability * 3.125));
+
+    var statusElem = document.getElementById("status");
+    var statusI = 0;
+    if (overallCompatability < 20) {
+        var statusI = 0;
+    } else if (overallCompatability < 50) {
+        var statusI = 1;
+    } else if (overallCompatability < 75) {
+        var statusI = 2;
+    } else if (overallCompatability < 85) {
+        var statusI = 3;
+    } else {
+        var statusI = 4;
+    }
+    statusElem.innerHTML = statusMessages[statusI];
 }

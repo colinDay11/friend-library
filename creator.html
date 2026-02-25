@@ -41,7 +41,7 @@
   </head>
   <body>
     <main>
-        <h1> <a href="index.html" style="text-decoration: none; color: inherit;">FriendLibrary</a> <span style="color: #264aff;">Creator</span></h1>
+        <h1> <a href="index.html" class="siteLogo">FriendLibrary</a> <span style="color: #264aff;">Creator</span></h1>
     </main>
     <div class="creator">
     <script src="friend.js"></script>
@@ -281,18 +281,18 @@
 
     <div id="download" class="tabcontent">
         <h2>Download</h2>
-        <code id="friendCode">...</code>
-        <button onclick="generateCode()">Generate Friend Code</button>
-        <button onclick="copyCode('friendCode')">Copy Friend Code</button>
+        <code id="friendCode" class="friendCodeText">...</code>
+        <button onclick="generateCode()" class="downloadButton">Generate Friend Code</button>
+        <button onclick="copyCode('friendCode')" class="downloadButton">Copy Friend Code</button>
         <!--button onclick="downloadCode('FriendCodeExport')">Download Friend Code</button-->
-        <button onclick="saveImage()">Download Image</button>
+        <button onclick="saveImage()" class="downloadButton">Download Image</button>
     </div>
 
     <div id="upload" class="tabcontent">
         <h2>Upload</h2>
         <h3>Friend Code</h3>
         <input id="FriendCodeInput"></input>
-        <button onclick="uploadCode('FriendCodeInput')">Upload</button>
+        <button onclick="uploadCode('FriendCodeInput')" class="downloadButton">Upload</button>
     </div>
     </div>
 
