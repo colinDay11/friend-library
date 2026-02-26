@@ -50,6 +50,10 @@ p, .friendCode { font-size: 1.1rem; }
     flex-wrap: wrap;
 }
 
+.contentArticle {
+    min-width: 500px;
+}
+
 .friendCodeContainer h3 {
     margin-bottom: 0%;
 }
