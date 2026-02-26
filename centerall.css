@@ -19,7 +19,7 @@ body {
     max-width: 500px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     text-align: left;
 }
 
@@ -61,4 +61,12 @@ p, .friendCode { font-size: 1.1rem; }
 .friendCodeContainer img {
     width: 25%;
     min-width: 200px;
+}
+
+.contentArticle img {
+    width: 100%;
+}
+
+.h3List li {
+    font-size: 1.5rem;
 }

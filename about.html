@@ -20,11 +20,103 @@
         <h1> <a href="index.html" class="siteLogo">FriendLibrary</a> <span style="color: #888888;">Devlog</span></h1>
     </main>
 
-    <div class="content">
+    <article>
+    <div class="content contentArticle">
+      <h2>V2 Affinity Tester - 2.24.25</h2>
+      <div class="versionInfo">
+      <img src="assets/devlog/FriendLibrary Stats.png" style="max-width: 150px; float: right; margin-left: 10px;">
+      <p>I knew from the very beginning of the project that I wanted to use
+        the created friend characters to play with data, but I didn't want to
+        just phone it in like this "Stats" concept from my brainstorming period.
+      </p>
+      <p>Before I could properly get started on a much better compatability tester
+        idea that I had in mind for this project from the inception of the project,
+        I needed to update the rest of the website to ensure it could scale to 
+        accommodate ideas that went beyond the creation of a single friend.
+      </p>
+      <p>I needed to sort out 3 key aspects of my site before I could even 
+        <em>think</em> about creating this feature:</p>
+      <ol class="h3List">
+        <li>
+          <h3>Index Page</h3>
+          <p>The old index page was just the creator page, and considering
+            my ambitions for the site had now outgrown a character creator,
+            my first course of action was to make a new page to greet users
+            visiting FriendLibrary.
+          </p>
+
+          <p>This site takes <em>heavy</em> inspiration from the original
+          concept behind Nintendo's <em>Tomodachi Life</em> series and the
+          Mii characters in general, so I knew I wanted the "things" users
+          do with their created Friends to things like compatability testers
+          and horoscope readings. Like the original Japanese title of the
+          aformentioned series implies, I want users to create a [Tomodachi]
+          <em>Collection</em> of caricatures of the people they know, so
+          features supporting this main concept needed to support the idea
+          that by creating all of these codes, users are beginning their own
+          "database" of sorts.</p>
+          <img src="assets/devlog/old_index.png" alt="An early depiction of the
+          home menu, with a scrapped Fortune Telling option depicted by two
+          renditions of the same woman character: one young and one old">
+          <p>To that end, for a minute the first of these features I
+            wanted to implement was the planned fortune teller that would
+            show a Friend's projected luck in multiple areas throughout the
+            upcoming week. I even implemented its icon, which featured a
+            FriendLibrary sample character in both young and old stages, and
+            had it replace the Affinity Tester, which you can see by the shared
+            magenta color scheme the two both have.
+          </p>
+          <img src="assets/devlog/old_index2.png" alt="The other selected button
+          in this older index rendition, showing three Sample characters as
+          representitives of the Creator mode's capabilities">
+          <p>Speaking of the index icons, I had a lot of fun coding the CSS
+            animations for the characters that pop up whenever you hover over
+            the icon. I also wanted to make sure I could reuse the same properties
+            for different icons with minimal code. The characters pop up at different
+            rates depending on their tag, with the middle showing in front and going
+            up the highest. I designed the characters to not look too much like any
+            specific person in my life, but instead as the perfect representitives 
+            for the different kind of people you can depict with my intentionally
+            limited tools. You can even find a few of these on the <a href="samples.html">
+            Samples</a> page. Of course, these are just close recreations based on
+            saved images because my other issue at this point was the lack of...
+          </p>
+        </li>
+        <li>
+          <h3>Working Codes</h3>
+          <p>I had actually begun developing a code solution that was working fairly
+            well before V1's last-minute refactor that de-centralized a lot of the
+            logic powering the friend creator, but when reimplementing the logic, I
+            decided to start from scratch. Instead of creating the code within the
+            creator's javascript file, I decided to give the logic to the friend's class,
+            so that anywhere the friend was, it could be copied. Because I had designed
+            the class as a dictionary of attributes anyway, automating the encoding
+            process was <em>relatively</em> painless, though there were several hiccups
+            the more I tried to shrink the code.
+          </p>
+          <p>I knew I wanted to represent the floating-point values in a different base
+            than 10 to truncate the characters used, but it took a surprising amount of
+            research online to come to the simple realization that the best way to standardize
+            the character length of each value with my current parameters was to do a bit
+            of multiplication to convert each float into Base36 with two digit places. After
+            this I had some issues with the way colors loaded and rotation worked, but these
+            were solved with minimal issue. After getting a good foundation in to save and
+            load characters, (Finally!) I knew there was one more step before I could
+            play with them...
+          </p>
+        </li>
+        <li>
+          <h3>Getting the Data</h3>
+          <p>Remember that aforementioned luck calendar idea from earlier? A big part of
+            the reason it was put on the backburner was my struggles during this stage of
+            the process... (Devlog in progress)
+          </p>
+        </li>
+      </ol>
+      </div>
 
     </div>
-
-    <p>Coming Soon!</p>
+    </article>
 
   </body>
 </html>
