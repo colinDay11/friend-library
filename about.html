@@ -109,10 +109,65 @@
           <h3>Getting the Data</h3>
           <p>Remember that aforementioned luck calendar idea from earlier? A big part of
             the reason it was put on the backburner was my struggles during this stage of
-            the process... (Devlog in progress)
+            the process. I originally wanted to get a bunch of detailed information from an
+            astrology API so users could read horoscopes without much work on my end, but most
+            of my options were a lot more limited than they originally looked without spending a
+            <em>lot</em> more money than I was willing to at this stage in the process. I also
+            briefly considered using an actual scientific NASA API that tracked the positions of
+            the planets before realizing that was a massive overscope for the amount of time I
+            had on the project with the other things I needed to do to get it working. So
+            like any good astrologist I decided to half-make some stuff up. Pulling up multiple
+            sources on Zodiac and Numerology compatability, I put together a chart that I would
+            later pull data from for the Affinity Tester.
+          </p>
+          <img src="assets/devlog/ZodiacChart.png" alt="A Google Sheets document described by the article">
+          <p>
+            While the Numerology chart had some more creative liberties, especially because I
+            wanted to compare the other numbers to 0, which doesn't seem to be all that recognized,
+            the Zodiac chart was created with a bit more care. It also served multiple purposes as
+            a source of data, binding the birthdays of friends to star signs <em>alongside</em> 
+            comparing their compatability with others. Both of these charts represent 34 points of
+            the overall friend affinity level, with a gap in age accounting for the other 32, 
+            because age is an incredibly important factor in one's ability to get along, 
+            <em>especially</em> romantically.
           </p>
         </li>
       </ol>
+
+      <p>With all this data in hand I could get to work on the page itself. I once
+        again had to fudge with the code in my FriendRenderer class responsible for
+        drawing the characters to the canvas, and I don't see this being the last time
+        if I ever want to scale up the project again unfortunetly. In this case I had to
+        once and for all ensure that the FriendRenderer could be moved around the canvas
+        and sized in at least slightly differing ways than before, but eventually I had
+        two characters side by side on the same canvas, which was an exciting start.
+      </p>
+      <img src="assets/devlog/sidebyside.png" alt="The two rendered friends shown side by side">
+      <p>The friend code loading was actually partially developed in sync with this part, 
+        because some of the strategies I had for rendering friends meant showing two at a
+        time was impossible without strangeness. I wish I had taken a few screenshots of the
+        wild scaling and placement errors these guys initially had.
+      </p>
+      <p>After this was the development of the bars and heart to represent the compatability, 
+        which was fairly boring to implement. I mostly followed the method shown on W3 Schools and
+        peeked around the net for things like smooth animation, though the CSS work I had
+        done on the index page certainly helped with this step. The heart drawn on the canvas
+        actually shares a lot more logic with the bars drawn by html than I had initially 
+        imagined they would which was a pleasent surprise.
+      </p>
+      <h3>Final Edits</h3>
+      <p>I got some feedback on the editor by testers of the Affinity Tester, so I used my
+        devtime to slightly polish some of the assets and scaling on mobile. It wasn't much
+        more than rounding out the buttons and changing up some unpleasent colors in the former's
+        case but the latter step took a lot of trial and error without a quick way for me to test
+        true mobile layout on PC at the time. Even though at the time of writing this website stores
+        no data, so privacy is not much of a concern, a tester rightfully pointed out that asking for
+        names and birthdays felt a bit suspicious, which I unfortunetly had to agree with. To compromise
+        a bit on my vision for now, I changed the "Name" option in the Creator to "Nickname", to make it
+        more clear that this is a site that is meant to design caricatures of friends first and foremost, 
+        not harvest data. Future adjustments to the site will likely further this goal.
+      </p>
+
       </div>
 
     </div>
