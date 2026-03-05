@@ -51,7 +51,10 @@ p, .friendCode { font-size: 1.1rem; }
 }
 
 .contentArticle {
+    display: flex;
+    flex-direction: column;
     min-width: 500px;
+    flex-wrap: wrap;
 }
 
 .friendCodeContainer h3 {
